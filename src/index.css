@@ -1,0 +1,38 @@
+a {
+  text-decoration: none !important;
+  color: rgb(46, 194, 177) !important;
+}
+
+.cart_single {
+  display: flex;
+  background-color: whitesmoke;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.cart_single img {
+  height: 100px;
+}
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cart_single p {
+  max-width: 50px;
+  /* background-color: blue; */
+}
+.cart_single h6 {
+  /* max-width: 5px; */
+  /* background-color: rgb(185, 29, 216); */
+}
+
+.cart-total-quantity {
+  color: rgb(225, 36, 196);
+  font-weight: bold;
+  margin: 0 1rem;
+}
+.imp-link {
+  color: black !important;
+}
