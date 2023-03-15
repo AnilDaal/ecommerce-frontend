@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate } from 'react-router-dom';
 
 import Cart from './pages/cart-page/Cart';
 import WishList from './pages/wishlist-page/WishList';
@@ -12,7 +11,7 @@ import NavbarComponent from './components/navbar/Navbar';
 import CheckoutSuccess from './components/stripe/CheckoutSuccess';
 import SingleProduct from './components/singleProduct/SingleProduct';
 import AuthenticateRoute from './utils/AuthenticateRoute';
-import SellerHomePage from './seller-page/SellerHomepage';
+import SellerHomePage from './seller-page/SellerHomePage';
 import SellerAddProduct from './seller-page/SellerAddProduct';
 import AdminLogin from './components/auth/AdminLogin';
 import CustomerLogin from './components/auth/CustomerLogin';
