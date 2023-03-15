@@ -1,0 +1,21 @@
+.nav-login-rel-parent {
+  position: relative;
+
+  z-index: 20;
+}
+.nav-login-rel-child {
+  position: absolute;
+  bottom: -80px;
+  z-index: 20;
+  border: 1px solid gray;
+  padding: 0 10px;
+  border-radius: 5px;
+  /* display: none; */
+}
+.nav-login-rel-child li:hover {
+  background-color: rgb(176, 42, 191);
+}
+
+.nav-login-rel-parent:hover .nav-login-rel-child {
+  display: block;
+}

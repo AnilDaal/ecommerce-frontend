@@ -2,19 +2,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'http://api.furniturelelo.com/api/v1',
 });
 
 const registerUser = createAsyncThunk(
   'user/register',
   async (values, { rejectWithValue }) => {
     try {
-      const response = await instance.post('/register', {
+      const response = await instance.post('/signup', {
         name: values.name,
         email: values.email,
         password: values.password,
+        number: values.number,
       });
-      localStorage.setItem('token', response.data.token);
+      console.log(response);
+      // localStorage.setItem('token', response.data.token);
       return response.data.token;
     } catch (error) {
       console.log(error.response.data);
@@ -28,7 +30,6 @@ const loginUser = createAsyncThunk(
   async (values, { rejectWithValue }) => {
     try {
       const response = await instance.post('/login', {
-        name: values.name,
         email: values.email,
         password: values.password,
       });
@@ -41,4 +42,20 @@ const loginUser = createAsyncThunk(
   }
 );
 
-export { registerUser, loginUser };
+const loginAdmin = createAsyncThunk(
+  'admin/login',
+  async (values, { rejectWithValue }) => {
+    try {
+      const response = await instance.post('/admin/login', {
+        email: values.email,
+        password: values.password,
+      });
+      localStorage.setItem('token', response.data.token);
+      return response.data.token;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export { registerUser, loginUser, loginAdmin };

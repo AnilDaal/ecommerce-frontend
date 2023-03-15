@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser } from '../thunks/auth';
+import { registerUser, loginUser, loginAdmin } from '../thunks/auth';
 import jwtDecode from 'jwt-decode';
 
 const authSlice = createSlice({
