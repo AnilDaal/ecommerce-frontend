@@ -19,6 +19,9 @@ import SellerLogin from './components/auth/SellerLogin';
 import CustomerRegister from './components/auth/CustomerRegister';
 
 import AuthProtected from './utils/AuthProtected';
+import AdminHomePage from './admin-page/AdminHomePage';
+import AdminRouteProtected from './utils/AdminRouteProtected';
+import AllProducts from './components/products/AllProducts';
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -57,6 +60,12 @@ function App() {
           <Route element={<SellerLogin />} path="/seller-login" />
           <Route element={<CustomerRegister />} path="/customer-register" />
         </Route>
+
+        <Route element={<AdminRouteProtected />}>
+          <Route element={<AdminHomePage />} path="/admin" />
+        </Route>
+
+        <Route element={<AllProducts />} path="/products" />
       </Routes>
     </BrowserRouter>
   );

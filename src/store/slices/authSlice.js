@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { registerUser, loginUser, loginAdmin } from '../thunks/auth';
-import jwtDecode from 'jwt-decode';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     token: localStorage.getItem('token') || null,
-    name: '',
-    email: '',
-    _id: '',
+
     registerLoading: false,
     registerError: null,
+
     loginLoading: false,
     loginError: null,
+
+    loginAdminLoading: false,
+    loginAdminError: null,
   },
   reducers: {
     logoutUser(state, action) {
@@ -26,12 +27,8 @@ const authSlice = createSlice({
       state.registerError = null;
     });
     builder.addCase(registerUser.fulfilled, (state, action) => {
-      const user = jwtDecode(action.payload);
       state.registerLoading = false;
       state.token = action.payload;
-      state.name = user.name;
-      state.email = user.email;
-      state._id = user._id;
     });
     builder.addCase(registerUser.rejected, (state, action) => {
       state.registerLoading = false;
@@ -43,16 +40,25 @@ const authSlice = createSlice({
       state.loginError = null;
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      const user = jwtDecode(action.payload);
       state.loginLoading = false;
       state.token = action.payload;
-      state.name = user.name;
-      state.email = user.email;
-      state._id = user._id;
     });
     builder.addCase(loginUser.rejected, (state, action) => {
       state.loginLoading = false;
       state.loginError = action.payload;
+    });
+
+    builder.addCase(loginAdmin.pending, (state, action) => {
+      state.loginAdminLoading = true;
+      state.loginAdminError = null;
+    });
+    builder.addCase(loginAdmin.fulfilled, (state, action) => {
+      state.loginAdminLoading = false;
+      state.token = action.payload;
+    });
+    builder.addCase(loginAdmin.rejected, (state, action) => {
+      state.loginAdminLoading = false;
+      state.loginAdminError = action.payload;
     });
   },
 });

@@ -1,6 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { arr } from '../../data/jsonTestData';
+import './product.css';
 
 const Products = () => {
+  console.log(arr);
   return (
     <div>
       <section class="section product">
@@ -26,6 +30,65 @@ const Products = () => {
           </ul>
 
           <ul class="product-list">
+            {arr.map((product) => {
+              return (
+                <li className="product-single-item">
+                  <div class="product-card">
+                    <figure class="card-banner">
+                      <Link to={`/product/${arr.ID}`}>
+                        <img
+                          src={product.Images}
+                          alt={product.Name}
+                          loading="lazy"
+                          width="800"
+                          height="1034"
+                          class="w-100"
+                        />
+                      </Link>
+
+                      <div class="card-badge green">New</div>
+
+                      <div class="card-actions">
+                        <button class="card-action-btn" aria-label="Quick view">
+                          <ion-icon name="eye-outline"></ion-icon>
+                        </button>
+
+                        <button class="card-action-btn cart-btn">
+                          <ion-icon
+                            name="bag-handle-outline"
+                            aria-hidden="true"
+                          ></ion-icon>
+
+                          <p>Add to Cart</p>
+                        </button>
+
+                        <button
+                          class="card-action-btn"
+                          aria-label="Add to Whishlist"
+                        >
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                      </div>
+                    </figure>
+
+                    <div class="card-content">
+                      <h3 class="h4 card-title">
+                        <Link to={`/product/${product.ID}`}>
+                          {product['Name']}
+                        </Link>
+                      </h3>
+
+                      <div class="card-price">
+                        <data value={product['Regular price']}>
+                          &#8377;{product['Regular price']}
+                        </data>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+
             <li>
               <div class="product-card">
                 <figure class="card-banner">
@@ -488,60 +551,6 @@ const Products = () => {
 
                   <div class="card-price">
                     <data value="32.00">&#8377;78,957</data>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-                <figure class="card-banner">
-                  <a href="#">
-                    <img
-                      src="https://ii2.pepperfry.com/media/catalog/product/w/h/494x544/white-100--cotton-solid-150-gsm-single-bed-comforter-by-sleeping-owls-white-100--cotton-solid-150-gs-tnmc9w.jpg"
-                      alt="Ribbed Cotton Bodysuits"
-                      loading="lazy"
-                      width="800"
-                      height="1034"
-                      class="w-100"
-                    />
-                  </a>
-
-                  <div class="card-badge green">New</div>
-
-                  <div class="card-actions">
-                    <button class="card-action-btn" aria-label="Quick view">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </button>
-
-                    <button class="card-action-btn cart-btn">
-                      <ion-icon
-                        name="bag-handle-outline"
-                        aria-hidden="true"
-                      ></ion-icon>
-
-                      <p>Add to Cart</p>
-                    </button>
-
-                    <button
-                      class="card-action-btn"
-                      aria-label="Add to Whishlist"
-                    >
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-                  </div>
-                </figure>
-
-                <div class="card-content">
-                  <h3 class="h4 card-title">
-                    <a href="#">
-                      White 100% Cotton 150 AC Room Single Bed Comforter by
-                      SLEEPING OWLS
-                    </a>
-                  </h3>
-
-                  <div class="card-price">
-                    <data value="71.00">&#8377;3,899</data>
                   </div>
                 </div>
               </div>

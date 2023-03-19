@@ -174,7 +174,7 @@ const Footer = () => {
       <div class="footer-bottom">
         <div class="container">
           <p class="copyright">
-            &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
+            &copy; 2023 <a href="#">furniturelelo</a>. All Rights Reserved
           </p>
 
           <ul class="footer-bottom-list">

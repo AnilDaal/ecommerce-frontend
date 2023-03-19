@@ -2,14 +2,13 @@ import ProductCard from './ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProducts, useGetAllProductsQuery } from '../store';
-import Slider from './slider/Slider';
+
 import Hero from './hero/Hero';
 import Category from './category/Category';
 import Products from './products/Products';
 import Services from './services/Services';
 import Blog from './blog/Blog';
 import Footer from './footer/Footer';
-import ProductListing from '../bootstrap-comp/ProductListing';
 
 function Home() {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -26,6 +25,7 @@ function Home() {
     <main>
       <article>
         <Hero />
+
         <Category />
         <Services />
         <Products />

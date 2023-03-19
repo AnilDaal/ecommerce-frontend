@@ -1,31 +1,27 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { loginUser } from '../../store';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginAdmin } from '../../store';
 import Loader from '../../utils/Loader';
 import './auth.css';
 
 const AdminLogin = () => {
-  const {
-    token,
-    name,
-    email,
-    _id,
-    registerLoading,
-    registerError,
-    loginLoading,
-    loginError,
-  } = useSelector((state) => state.auth);
+  const { loginAdminLoading, loginAdminError } = useSelector(
+    (state) => state.auth
+  );
 
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(user));
+    dispatch(loginAdmin(user))
+      .unwrap()
+      .then(() => navigate('/admin'))
+      .catch((err) => console.log(err));
   };
   console.log(user);
   return (
@@ -74,9 +70,9 @@ const AdminLogin = () => {
                       }
                     />
                   </div>
-                  {loginError && <p>{loginError.message}</p>}
+                  {loginAdminError && <p>{loginAdminError.message}</p>}
                   <div class="field padding-bottom--24">
-                    <button>{loginLoading ? <Loader /> : 'Submit'}</button>
+                    <button>{loginAdminLoading ? <Loader /> : 'Submit'}</button>
                   </div>
                 </form>
                 <p

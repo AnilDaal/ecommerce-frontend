@@ -2,13 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://api.furniturelelo.com/api/v1',
+  baseURL: 'https://api.furniturelelo.com/api/v1',
 });
 
 const registerUser = createAsyncThunk(
   'user/register',
   async (values, { rejectWithValue }) => {
     try {
+      console.log(values);
       const response = await instance.post('/signup', {
         name: values.name,
         email: values.email,
