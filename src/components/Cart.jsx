@@ -9,6 +9,7 @@ import {
   getTotals,
 } from '../store';
 import PayButton from './stripe/PayButton';
+import './cart.css';
 
 const Cart = () => {
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
@@ -42,10 +43,10 @@ const Cart = () => {
       </div>
       <div>
         {cartItems.map((product) => (
-          <div key={product.id} className="cart_single">
-            <img src={product.image} alt={product.name} />
-            <p>{product.name}</p>
-            <p>${product.price}</p>
+          <div key={product.ID} className="cart_single">
+            <img src={product.Images} alt={product.Name} />
+            <p className="cart-title">{product.Name}</p>
+            <p>&#8377;{product['Regular price']}</p>
             <button
               className="btn btn-danger"
               onClick={() => handleCartRemove(product)}

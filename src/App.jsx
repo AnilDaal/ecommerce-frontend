@@ -3,13 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Cart from './pages/cart-page/Cart';
+import Cart from './components/Cart';
 import WishList from './pages/wishlist-page/WishList';
 import Home from './components/Home';
 
 import NavbarComponent from './components/navbar/Navbar';
 import CheckoutSuccess from './components/stripe/CheckoutSuccess';
-import SingleProduct from './components/singleProduct/SingleProduct';
+import SingleProduct from './components/products/single-product/SingleProduct';
 import AuthenticateRoute from './utils/AuthenticateRoute';
 import SellerHomePage from './seller-page/SellerHomePage';
 import SellerAddProduct from './seller-page/SellerAddProduct';
@@ -21,7 +21,8 @@ import CustomerRegister from './components/auth/CustomerRegister';
 import AuthProtected from './utils/AuthProtected';
 import AdminHomePage from './admin-page/AdminHomePage';
 import AdminRouteProtected from './utils/AdminRouteProtected';
-import AllProducts from './components/products/AllProducts';
+// import AllProducts from './components/products/AllProducts';
+import ProductList from './components/products/product-list/ProductList';
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -65,7 +66,9 @@ function App() {
           <Route element={<AdminHomePage />} path="/admin" />
         </Route>
 
-        <Route element={<AllProducts />} path="/products" />
+        {/* <Route element={<AllProducts />} path="/products" /> */}
+        <Route element={<SingleProduct />} path="/product/:id" />
+        <Route element={<ProductList />} path="/product-list" />
       </Routes>
     </BrowserRouter>
   );

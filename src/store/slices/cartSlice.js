@@ -12,19 +12,19 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       state.cartTotalQuantity++;
       const itemIndex = state.cartItems.findIndex(
-        (p) => p.id === action.payload.id
+        (p) => p.ID === action.payload.ID
       );
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
         state.cartTotalAmount += state.cartItems[itemIndex].price;
-        toast.info(`increased ${action.payload.name} cart quantity`, {
+        toast.info(`increased ${action.payload.Name} cart quantity`, {
           position: 'top-right',
         });
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProduct);
         state.cartTotalAmount += action.payload.price;
-        toast.success(`${action.payload.name} added to cart`, {
+        toast.success(`${action.payload.Name} added to cart`, {
           position: 'top-right',
         });
       }
@@ -58,10 +58,11 @@ const cartSlice = createSlice({
     },
     incrementCart(state, action) {
       const foundProductIndex = state.cartItems.findIndex(
-        (p) => p.id === action.payload.id
+        (p) => p.ID === action.payload.ID
       );
       state.cartItems[foundProductIndex].cartQuantity += 1;
-      state.cartTotalAmount += state.cartItems[foundProductIndex].price;
+      state.cartTotalAmount +=
+        state.cartItems[foundProductIndex]['Regular price'];
       state.cartTotalQuantity += 1;
 
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
@@ -95,7 +96,7 @@ const cartSlice = createSlice({
     },
     removeCart(state, action) {
       const filterArray = state.cartItems.filter(
-        (p) => p.id !== action.payload.id
+        (p) => p.ID !== action.payload.ID
       );
       state.cartItems = filterArray;
       let sum = 0;
@@ -115,7 +116,7 @@ const cartSlice = createSlice({
         'cartTotalQuantity',
         JSON.stringify(state.cartTotalQuantity)
       );
-      toast.error(`${action.payload.name} removed from  cart`, {
+      toast.error(`${action.payload.Name} removed from  cart`, {
         position: 'bottom-left',
       });
     },

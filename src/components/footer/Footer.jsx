@@ -2,210 +2,177 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer class="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img src="./assets/images/logo.svg" alt="Casmart logo" />
-            </a>
-
-            <p class="footer-text">
-              Casmart is a fashion theme for presents a complete wardrobe of
-              uniquely crafted Ethnic Wear, Casuals, Edgy Denims, & Accessories
-              inspired from the most contemporary
-            </p>
-
-            <ul class="social-list">
+    <footer class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Tailblocks</span>
+          </a>
+          <p class="mt-2 text-sm text-gray-500">
+            Air plant banjo lyft occupy retro adaptogen indego
+          </p>
+        </div>
+        <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+              CATEGORIES
+            </h2>
+            <nav class="list-none mb-10">
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
               </li>
-
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
               </li>
-
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
               </li>
-
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-pinterest"></ion-icon>
-                </a>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
               </li>
-            </ul>
+            </nav>
           </div>
-
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Information</p>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                About Company
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Payment Type
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Awards Winning
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                World Media Partner
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Become an Agent
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Refund Policy
-              </a>
-            </li>
-          </ul>
-
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Category</p>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Handbags & Wallets
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Women's Clothing
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Plus Sizes
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Complete Your Look
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Baby Corner
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Man & Woman Shoe
-              </a>
-            </li>
-          </ul>
-
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Help & Support</p>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Dealers & Agents
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                FAQ Information
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Return Policy
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Shipping & Delivery
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                Order Tranking
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                List of Shops
-              </a>
-            </li>
-          </ul>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+              CATEGORIES
+            </h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+              CATEGORIES
+            </h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+              CATEGORIES
+            </h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            &copy; 2023 <a href="#">furniturelelo</a>. All Rights Reserved
+      <div class="bg-gray-100">
+        <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+          <p class="text-gray-500 text-sm text-center sm:text-left">
+            © 2020 Tailblocks —
+            <a
+              href="https://twitter.com/knyttneve"
+              rel="noopener noreferrer"
+              class="text-gray-600 ml-1"
+              target="_blank"
+            >
+              @knyttneve
+            </a>
           </p>
-
-          <ul class="footer-bottom-list">
-            <li>
-              <a href="#" class="footer-bottom-link">
-                Privacy Policy
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-bottom-link">
-                Terms & Conditions
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-bottom-link">
-                Sitemap
-              </a>
-            </li>
-          </ul>
-
-          <div class="payment">
-            <p class="payment-title">We Support</p>
-
-            <img
-              src="./assets/images/payment-img.png"
-              alt="Online payment logos"
-              class="payment-img"
-            />
-          </div>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+            <a class="text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="none"
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                ></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
         </div>
       </div>
     </footer>

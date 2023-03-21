@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*-----------------------------------*\
  * #style.css
 \*-----------------------------------*/
@@ -172,8 +176,9 @@ h3 > a {
   background: var(--background, var(--eerie-black));
   color: var(--color, var(--white));
   font-weight: var(--fw-600);
-  height: var(--height, 60px);
-  padding-inline: 50px;
+  /* height: var(--height, 60px); */
+  /* padding-inline: 50px; */
+  padding: 10px;
   border: 1px solid var(--border-color, var(--eerie-black));
   border-radius: 6px;
   display: flex;
@@ -215,7 +220,7 @@ h3 > a {
 }
 
 .section {
-  padding-block: var(--section-padding);
+  /* padding-block: var(--section-padding); */
 }
 
 .w-100 {
@@ -376,7 +381,7 @@ h3 > a {
   border-bottom: 1px solid var(--cultured);
 }
 
-.overlay {
+/* .overlay {
   position: fixed;
   inset: 0;
   background: var(--black);
@@ -384,12 +389,12 @@ h3 > a {
   pointer-events: none;
   transition: var(--transition-1);
   z-index: 2;
-}
+} */
 
-.overlay.active {
+/* .overlay.active {
   opacity: 0.7;
   pointer-events: all;
-}
+} */
 
 /*-----------------------------------*\
  * #HERO

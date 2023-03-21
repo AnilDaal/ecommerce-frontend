@@ -5,10 +5,11 @@ import { fetchProducts, useGetAllProductsQuery } from '../store';
 
 import Hero from './hero/Hero';
 import Category from './category/Category';
-import Products from './products/Products';
+
 import Services from './services/Services';
 import Blog from './blog/Blog';
 import Footer from './footer/Footer';
+import Products from './products/products/Products';
 
 function Home() {
   const { data, error, isLoading } = useGetAllProductsQuery();

@@ -1,0 +1,16 @@
+.cart_single {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cart_single img {
+  height: 100px;
+  object-fit: contain;
+}
+.cart_single .cart-title {
+  width: 150px;
+}
