@@ -16,14 +16,14 @@ const cartSlice = createSlice({
       );
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
-        state.cartTotalAmount += state.cartItems[itemIndex].price;
+        // state.cartTotalAmount += state.cartItems[itemIndex]['Regular price'];
         toast.info(`increased ${action.payload.Name} cart quantity`, {
           position: 'top-right',
         });
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProduct);
-        state.cartTotalAmount += action.payload.price;
+        // state.cartTotalAmount += action.payload['Regular price'];
         toast.success(`${action.payload.Name} added to cart`, {
           position: 'top-right',
         });
@@ -34,10 +34,10 @@ const cartSlice = createSlice({
         'cartTotalQuantity',
         JSON.stringify(state.cartTotalQuantity)
       );
-      localStorage.setItem(
-        'cartTotalAmount',
-        JSON.stringify(state.cartTotalAmount)
-      );
+      // localStorage.setItem(
+      //   'cartTotalAmount',
+      //   JSON.stringify(state.cartTotalAmount)
+      // );
     },
     resetCart(state, action) {
       state.cartItems = [];
@@ -51,18 +51,18 @@ const cartSlice = createSlice({
         'cartTotalQuantity',
         JSON.stringify(state.cartTotalQuantity)
       );
-      localStorage.setItem(
-        'cartTotalAmount',
-        JSON.stringify(state.cartTotalAmount)
-      );
+      // localStorage.setItem(
+      //   'cartTotalAmount',
+      //   JSON.stringify(state.cartTotalAmount)
+      // );
     },
     incrementCart(state, action) {
       const foundProductIndex = state.cartItems.findIndex(
         (p) => p.ID === action.payload.ID
       );
       state.cartItems[foundProductIndex].cartQuantity += 1;
-      state.cartTotalAmount +=
-        state.cartItems[foundProductIndex]['Regular price'];
+      // state.cartTotalAmount +=
+      //   state.cartItems[foundProductIndex]['Regular price'];
       state.cartTotalQuantity += 1;
 
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
@@ -77,21 +77,22 @@ const cartSlice = createSlice({
     },
     decrementCart(state, action) {
       const foundProductIndex = state.cartItems.findIndex(
-        (p) => p.id === action.payload.id
+        (p) => p.ID === action.payload.ID
       );
       if (state.cartItems[foundProductIndex].cartQuantity > 1) {
         state.cartTotalQuantity--;
         state.cartItems[foundProductIndex].cartQuantity -= 1;
-        state.cartTotalAmount -= state.cartItems[foundProductIndex].price;
+        state.cartTotalAmount -=
+          state.cartItems[foundProductIndex]['Regular price'];
         localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
         localStorage.setItem(
           'cartTotalQuantity',
           JSON.stringify(state.cartTotalQuantity)
         );
-        localStorage.setItem(
-          'cartTotalAmount',
-          JSON.stringify(state.cartTotalAmount)
-        );
+        // localStorage.setItem(
+        //   'cartTotalAmount',
+        //   JSON.stringify(state.cartTotalAmount)
+        // );
       }
     },
     removeCart(state, action) {
@@ -102,16 +103,16 @@ const cartSlice = createSlice({
       let sum = 0;
       let quantity = 0;
       state.cartItems.map((p) => {
-        sum += p.price;
+        sum += p['Regular price'];
         quantity += p.cartQuantity;
       });
       state.cartTotalAmount = sum;
       state.cartTotalQuantity = quantity;
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-      localStorage.setItem(
-        'cartTotalAmount',
-        JSON.stringify(state.cartTotalAmount)
-      );
+      // localStorage.setItem(
+      //   'cartTotalAmount',
+      //   JSON.stringify(state.cartTotalAmount)
+      // );
       localStorage.setItem(
         'cartTotalQuantity',
         JSON.stringify(state.cartTotalQuantity)
@@ -131,15 +132,22 @@ const cartSlice = createSlice({
       // state.cartTotalQuantity = a[-1].y;
       // state.cartTotalAmount = cartTotalAmount;
       // state.cartTotalQuantity = cartQuantity;
-      state.cartItems.reduce(
-        (cartTotal, cartItem) => {
-          const { price, cartQuantity } = cartItem;
-          const itemTotal = price * cartQuantity;
-          cartTotal.total += itemTotal;
-          cartTotal.quantity += cartQuantity;
-        },
-        { total: 0, quantity: 0 }
-      );
+      // state.cartItems.reduce(
+      //   (cartTotal, cartItem) => {
+      //     const { price, cartQuantity } = cartItem;
+      //     const itemTotal = price * cartQuantity;
+      //     cartTotal.total += itemTotal;
+      //     cartTotal.quantity += cartQuantity;
+      //   },
+      //   { total: 0, quantity: 0 }
+      // );
+
+      let sum = 0;
+      const totalPrice = state.cartItems.map((item) => {
+        sum += item.cartQuantity * item['Regular price'];
+      });
+      state.cartTotalAmount = sum;
+      localStorage.setItem('cartTotalAmount', JSON.stringify(sum));
     },
   },
 });

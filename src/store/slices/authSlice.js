@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, loginAdmin } from '../thunks/auth';
+import {
+  registerUser,
+  loginUser,
+  loginAdmin,
+  registerSeller,
+  loginSeller,
+} from '../thunks/auth';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -14,6 +20,12 @@ const authSlice = createSlice({
 
     loginAdminLoading: false,
     loginAdminError: null,
+
+    registerSellerLoading: false,
+    registerSellerError: null,
+
+    loginSellerLoading: false,
+    loginSellerError: null,
   },
   reducers: {
     logoutUser(state, action) {
@@ -59,6 +71,31 @@ const authSlice = createSlice({
     builder.addCase(loginAdmin.rejected, (state, action) => {
       state.loginAdminLoading = false;
       state.loginAdminError = action.payload;
+    });
+
+    builder.addCase(registerSeller.pending, (state, action) => {
+      state.loginAdminLoading = true;
+      state.loginAdminError = null;
+    });
+    builder.addCase(registerSeller.fulfilled, (state, action) => {
+      state.loginAdminLoading = false;
+    });
+    builder.addCase(registerSeller.rejected, (state, action) => {
+      state.loginAdminLoading = false;
+      state.loginAdminError = action.payload;
+    });
+
+    builder.addCase(loginSeller.pending, (state, action) => {
+      state.loginSellerLoading = true;
+      state.loginSellerError = null;
+    });
+    builder.addCase(loginSeller.fulfilled, (state, action) => {
+      state.loginSellerLoading = false;
+      state.token = action.payload;
+    });
+    builder.addCase(loginSeller.rejected, (state, action) => {
+      state.loginSellerLoading = false;
+      state.loginSellerError = action.payload;
     });
   },
 });

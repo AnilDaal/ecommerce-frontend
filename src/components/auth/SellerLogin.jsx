@@ -1,21 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { loginUser } from '../../store';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginSeller } from '../../store';
 import Loader from '../../utils/Loader';
 import './auth.css';
 const SellerLogin = () => {
-  const {
-    token,
-    name,
-    email,
-    _id,
-    registerLoading,
-    registerError,
-    loginLoading,
-    loginError,
-  } = useSelector((state) => state.auth);
-
+  const { loginSellerLoading, loginSellerError } = useSelector(
+    (state) => state.auth
+  );
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -24,7 +17,10 @@ const SellerLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(user));
+    dispatch(loginSeller(user))
+      .unwrap()
+      .then(() => navigate('/seller'))
+      .catch((err) => console.log(err));
   };
   console.log(user);
   return (
@@ -73,9 +69,11 @@ const SellerLogin = () => {
                       }
                     />
                   </div>
-                  {loginError && <p>{loginError.message}</p>}
+                  {loginSellerError && <p>{loginSellerError.message}</p>}
                   <div class="field padding-bottom--24">
-                    <button>{loginLoading ? <Loader /> : 'Submit'}</button>
+                    <button>
+                      {loginSellerLoading ? <Loader /> : 'Submit'}
+                    </button>
                   </div>
                 </form>
                 <p
@@ -85,7 +83,8 @@ const SellerLogin = () => {
                     gap: '2rem',
                   }}
                 >
-                  don't have an account <Link to="/register">Register</Link>
+                  don't have an account{' '}
+                  <Link to="/seller-register">Register</Link>
                 </p>
               </div>
             </div>

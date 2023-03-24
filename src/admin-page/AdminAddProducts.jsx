@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import instance from '../utils/api';
 import { useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';

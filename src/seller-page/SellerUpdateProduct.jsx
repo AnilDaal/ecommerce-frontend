@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { addProduct } from '../store';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { addProduct, updateProduct } from '../store';
 
-const SellerAddProduct = () => {
+const SellerUpdateProduct = () => {
+  const { sellerList } = useSelector((state) => state.seller);
+  const { productId } = useParams();
+  const product = sellerList.find((p) => p._id === productId);
+
+  console.log(product);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [productData, setProductData] = useState({
-    title: '',
-    description: '',
-    category: '',
-    price: '',
-    image: '',
+    title: product.title,
+    description: product.description,
+    category: product.category,
+    price: product.price,
+    image: product.image,
+    id: productId,
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProduct(productData))
+    dispatch(updateProduct(productData))
       .unwrap()
       .then(() => navigate('/seller'));
   };
@@ -78,10 +85,10 @@ const SellerAddProduct = () => {
           />
         </div>
 
-        <button>Add Product</button>
+        <button>Update Product</button>
       </form>
     </div>
   );
 };
 
-export default SellerAddProduct;
+export default SellerUpdateProduct;

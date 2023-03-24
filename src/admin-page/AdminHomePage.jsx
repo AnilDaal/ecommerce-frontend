@@ -1,12 +1,14 @@
 import React from 'react';
-import AdminAddProducts from './AdminAddProducts';
+
+import SellersListing from './SellersListing';
 
 const AdminHomePage = () => {
   return (
-    <>
+    <div className="container">
       <div>AdminHomePage</div>
-      <AdminAddProducts />
-    </>
+      {/* <AdminAddProducts /> */}
+      <SellersListing />
+    </div>
   );
 };
 

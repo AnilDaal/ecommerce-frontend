@@ -304,6 +304,11 @@ h3 > a {
   position: relative;
   width: 50px;
   text-align: center;
+
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-action-btn ion-icon {
@@ -326,7 +331,7 @@ h3 > a {
   position: absolute;
   top: -5px;
   right: 0;
-  background: var(--background, var(--eerie-black));
+
   width: 20px;
   height: 20px;
   display: grid;
@@ -1130,7 +1135,7 @@ h3 > a {
   }
 
   .nav-open-btn,
-  .header-action-btn:nth-child(2),
+  /* .header-action-btn:nth-child(2), */
   .navbar-top,
   .overlay {
     display: none;
@@ -1300,4 +1305,12 @@ h3 > a {
   .footer-bottom .container {
     justify-content: space-between;
   }
+}
+
+.active {
+  background-color: #42a5f5;
+}
+
+input {
+  border: 1px solid gray;
 }

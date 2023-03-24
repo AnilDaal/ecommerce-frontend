@@ -52,7 +52,7 @@ const Products = () => {
                 </Link>
                 <div className="container">
                   <h5 style={{ height: '40px' }}>{item.Name}</h5>
-                  <p>${item['Regular price']}</p>
+                  <p>&#8377;{item['Regular price']}</p>
                 </div>
 
                 <div className="btn-container">

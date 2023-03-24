@@ -27,9 +27,13 @@ const Cart = () => {
   const handleCartRemove = (product) => {
     dispatch(removeCart(product));
   };
+
+  // dispatch(getTotals());
   // useEffect(() => {
   //   dispatch(getTotals());
   // }, [dispatch]);
+
+  dispatch(getTotals());
   return (
     <div className="container">
       <h1>Shopping Cart</h1>
@@ -59,7 +63,8 @@ const Cart = () => {
               <button onClick={() => handleIncrementCart(product)}>+</button>
             </div>
             <h6 style={{ paddingRight: '1rem' }}>
-              total:${(product.price * product.cartQuantity).toFixed(2)}
+              total:&#8377;
+              {(product['Regular price'] * product.cartQuantity).toFixed(2)}
             </h6>
           </div>
         ))}
@@ -70,7 +75,7 @@ const Cart = () => {
               <button onClick={handleReset}>Clear Cart</button>
               <div>
                 <span>Subtotal</span>
-                <strong>${cartTotalAmount.toFixed(2)}</strong>
+                <strong>&#8377;{cartTotalAmount.toFixed(2)}</strong>
               </div>
             </div>
           </>

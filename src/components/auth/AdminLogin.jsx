@@ -24,6 +24,7 @@ const AdminLogin = () => {
       .catch((err) => console.log(err));
   };
   console.log(user);
+  console.log(loginAdminError);
   return (
     <div class="login-root">
       <div
@@ -75,15 +76,6 @@ const AdminLogin = () => {
                     <button>{loginAdminLoading ? <Loader /> : 'Submit'}</button>
                   </div>
                 </form>
-                <p
-                  style={{
-                    backgroundColor: 'pink',
-                    display: 'flex',
-                    gap: '2rem',
-                  }}
-                >
-                  don't have an account <Link to="/register">Register</Link>
-                </p>
               </div>
             </div>
           </div>

@@ -12,7 +12,7 @@ import Footer from './footer/Footer';
 import Products from './products/products/Products';
 
 function Home() {
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  // const { data, error, isLoading } = useGetAllProductsQuery();
   // const { items, error } = useSelector((state) => state.products);
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -32,7 +32,6 @@ function Home() {
         <Products />
         {/* <ProductListing /> */}
         <Blog />
-        <Footer />
       </article>
     </main>
   );
