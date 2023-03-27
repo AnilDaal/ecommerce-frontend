@@ -4,6 +4,7 @@ import instance from '../utils/api';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { adminAddProduct } from '../store';
+import AdminHomePage from './AdminHomePage';
 
 const style = {
   display: 'flex',
@@ -29,7 +30,7 @@ const AdminAddProducts = () => {
     dispatch(adminAddProduct(productData));
   };
   return (
-    <div>
+    <AdminHomePage>
       <h2>Add product</h2>
       <form onSubmit={handleSubmit} style={style}>
         <div>
@@ -95,7 +96,7 @@ const AdminAddProducts = () => {
 
         <button>Add Product</button>
       </form>
-    </div>
+    </AdminHomePage>
   );
 };
 

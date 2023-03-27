@@ -80,12 +80,12 @@ const CustomerLogin = () => {
                 </form>
                 <p
                   style={{
-                    backgroundColor: 'pink',
                     display: 'flex',
                     gap: '2rem',
                   }}
                 >
-                  don't have an account <Link to="/register">Register</Link>
+                  don't have an account{' '}
+                  <Link to="/customer-register">Register</Link>
                 </p>
               </div>
             </div>

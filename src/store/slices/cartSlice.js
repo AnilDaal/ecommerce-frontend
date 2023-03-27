@@ -12,19 +12,19 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       state.cartTotalQuantity++;
       const itemIndex = state.cartItems.findIndex(
-        (p) => p.ID === action.payload.ID
+        (p) => p._id === action.payload._id
       );
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
         // state.cartTotalAmount += state.cartItems[itemIndex]['Regular price'];
-        toast.info(`increased ${action.payload.Name} cart quantity`, {
+        toast.info(`increased ${action.payload.title} cart quantity`, {
           position: 'top-right',
         });
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProduct);
         // state.cartTotalAmount += action.payload['Regular price'];
-        toast.success(`${action.payload.Name} added to cart`, {
+        toast.success(`${action.payload.title} added to cart`, {
           position: 'top-right',
         });
       }
@@ -58,7 +58,7 @@ const cartSlice = createSlice({
     },
     incrementCart(state, action) {
       const foundProductIndex = state.cartItems.findIndex(
-        (p) => p.ID === action.payload.ID
+        (p) => p._id === action.payload._id
       );
       state.cartItems[foundProductIndex].cartQuantity += 1;
       // state.cartTotalAmount +=
@@ -77,13 +77,12 @@ const cartSlice = createSlice({
     },
     decrementCart(state, action) {
       const foundProductIndex = state.cartItems.findIndex(
-        (p) => p.ID === action.payload.ID
+        (p) => p._id === action.payload._id
       );
       if (state.cartItems[foundProductIndex].cartQuantity > 1) {
         state.cartTotalQuantity--;
         state.cartItems[foundProductIndex].cartQuantity -= 1;
-        state.cartTotalAmount -=
-          state.cartItems[foundProductIndex]['Regular price'];
+        state.cartTotalAmount -= state.cartItems[foundProductIndex]['price'];
         localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
         localStorage.setItem(
           'cartTotalQuantity',
@@ -97,13 +96,13 @@ const cartSlice = createSlice({
     },
     removeCart(state, action) {
       const filterArray = state.cartItems.filter(
-        (p) => p.ID !== action.payload.ID
+        (p) => p._id !== action.payload._id
       );
       state.cartItems = filterArray;
       let sum = 0;
       let quantity = 0;
       state.cartItems.map((p) => {
-        sum += p['Regular price'];
+        sum += p['price'];
         quantity += p.cartQuantity;
       });
       state.cartTotalAmount = sum;
@@ -117,7 +116,7 @@ const cartSlice = createSlice({
         'cartTotalQuantity',
         JSON.stringify(state.cartTotalQuantity)
       );
-      toast.error(`${action.payload.Name} removed from  cart`, {
+      toast.error(`${action.payload.title} removed from  cart`, {
         position: 'bottom-left',
       });
     },
@@ -144,7 +143,7 @@ const cartSlice = createSlice({
 
       let sum = 0;
       const totalPrice = state.cartItems.map((item) => {
-        sum += item.cartQuantity * item['Regular price'];
+        sum += item.cartQuantity * item['price'];
       });
       state.cartTotalAmount = sum;
       localStorage.setItem('cartTotalAmount', JSON.stringify(sum));

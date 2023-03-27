@@ -34,7 +34,7 @@ const Cart = () => {
 
   dispatch(getTotals());
   return (
-    <div className="container">
+    <div className="container mx-auto">
       <h1>Shopping Cart</h1>
       {cartItems.length === 0 && (
         <p>
@@ -46,25 +46,38 @@ const Cart = () => {
       </div>
       <div>
         {cartItems.map((product) => (
-          <div key={product.ID} className="cart_single">
-            <img src={product.Images} alt={product.Name} />
-            <p className="cart-title">{product.Name}</p>
-            <p>&#8377;{product['Regular price']}</p>
+          <div key={product._id} className="cart_single">
+            <img src={product.image} alt={product.title} />
+            <p className="cart-title">{product.title}</p>
+            <p>&#8377;{product.price}</p>
+
+            <div style={{ display: 'flex', gap: '4px' }}>
+              <button
+                onClick={() => handleDecrementCart(product)}
+                className="border px-2 "
+                style={{ fontSize: '1.2rem' }}
+              >
+                -
+              </button>
+              <span>{product.cartQuantity}</span>
+              <button
+                className="border px-2 "
+                style={{ fontSize: '1.2rem' }}
+                onClick={() => handleIncrementCart(product)}
+              >
+                +
+              </button>
+            </div>
+            <h6 style={{ paddingRight: '1rem' }}>
+              total:&#8377;
+              {(product.price * product.cartQuantity).toFixed(2)}
+            </h6>
             <button
               className="btn btn-danger bg-red-600 border-none"
               onClick={() => handleCartRemove(product)}
             >
               Remove
             </button>
-            <div>
-              <button onClick={() => handleDecrementCart(product)}>-</button>
-              <span>{product.cartQuantity}</span>
-              <button onClick={() => handleIncrementCart(product)}>+</button>
-            </div>
-            <h6 style={{ paddingRight: '1rem' }}>
-              total:&#8377;
-              {(product['Regular price'] * product.cartQuantity).toFixed(2)}
-            </h6>
           </div>
         ))}
 

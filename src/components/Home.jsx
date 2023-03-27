@@ -31,7 +31,6 @@ function Home() {
     <main>
       {/* <Slider /> */}
       <HeroBanner />
-      {/* <HeroImage /> */}
       {/* <Hero /> */}
       <FeatureCategory />
       <Category />
@@ -47,6 +46,7 @@ function Home() {
       <Products />
       {/* <ProductListing /> */}
       {/* <Blog /> */}
+      <HeroImage />
     </main>
   );
 }

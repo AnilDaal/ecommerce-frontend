@@ -109,12 +109,12 @@ const CustomerRegister = () => {
                 </form>
                 <p
                   style={{
-                    backgroundColor: 'pink',
                     display: 'flex',
                     gap: '2rem',
                   }}
                 >
-                  already have an account <Link to="/login">Login</Link>
+                  already have an account{' '}
+                  <Link to="/customer-login">Login</Link>
                 </p>
               </div>
             </div>

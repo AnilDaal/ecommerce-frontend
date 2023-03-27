@@ -27,6 +27,8 @@ import Footer from './components/footer/Footer';
 import SellerRegister from './components/auth/SellerRegister';
 import SellerUpdateProduct from './seller-page/SellerUpdateProduct';
 import ProductListClone from './components/products/product-list/ProductListClone';
+import ProductListing from './admin-page/ProductListing';
+import SellersListing from './admin-page/SellersListing';
 
 function App() {
   return (
@@ -70,8 +72,9 @@ function App() {
         </Route>
 
         <Route element={<AdminRouteProtected />}>
-          <Route element={<AdminHomePage />} path="/admin" />
+          <Route element={<ProductListing />} path="/admin/product-list" />
           <Route element={<AdminAddProducts />} path="/admin/create-product" />
+          <Route element={<SellersListing />} path="/admin/seller-list" />
         </Route>
 
         {/* <Route element={<AllProducts />} path="/products" /> */}
@@ -90,6 +93,14 @@ function App() {
         />
       </Routes>
       <Footer />
+      {/* <div class="bg-gray-800 py-4 w-full">
+        <div class="container flex items-center justify-between">
+          <p class="text-white">&copy; FurnitureLelo - All Right Reserved</p>
+          <div>
+            <img src="assets/images/methods.png" alt="methods" class="h-5" />
+          </div>
+        </div>
+      </div> */}
     </BrowserRouter>
   );
 }
