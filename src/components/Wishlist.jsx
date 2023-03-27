@@ -1,31 +1,34 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  decrementCart,
-  incrementCart,
-  resetCart,
-  removeCart,
+  decrementwishlist,
+  incrementwishlist,
+  resetwishlist,
+  removewishlist,
   getTotals,
 } from "../store";
 import PayButton from "./stripe/PayButton";
-import "./cart.css";
+import "./wishlist.css";
 
-const Cart = () => {
-  const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
+const wishlist = () => {
+  const { wishlistItems, wishlistTotalAmount } = useSelector(
+    (state) => state.wishlist
+  );
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleReset = () => {
-    dispatch(resetCart());
+    dispatch(resetwishlist());
   };
-  const handleIncrementCart = (product) => {
-    dispatch(incrementCart(product));
+  const handleIncrementwishlist = (product) => {
+    dispatch(incrementwishlist(product));
   };
-  const handleDecrementCart = (product) => {
-    dispatch(decrementCart(product));
+  const handleDecrementwishlist = (product) => {
+    dispatch(decrementwishlist(product));
   };
-  const handleCartRemove = (product) => {
-    dispatch(removeCart(product));
+  const handlewishlistRemove = (product) => {
+    dispatch(removewishlist(product));
   };
 
   // dispatch(getTotals());
@@ -36,56 +39,60 @@ const Cart = () => {
   dispatch(getTotals());
   return (
     <div className="container">
-      <h1>Shopping Cart</h1>
-      {cartItems.length === 0 && (
+      <h1>Shopping wishlist</h1>
+      {wishlistItems.length === 0 && (
         <p>
-          Your cart is empty click <Link to="/">Here</Link>
+          Your wishlist is empty click <Link to="/">Here</Link>
         </p>
       )}
       <div>
         <Link to="/">&#x2190; Continue Shopping</Link>
       </div>
       <div>
-        {cartItems.map((product) => (
-          <div key={product.ID} className="cart_single">
+        {wishlistItems.map((product) => (
+          <div key={product.ID} className="wishlist_single">
             <img src={product.Images} alt={product.Name} />
-            <p className="cart-title">{product.Name}</p>
+            <p className="wishlist-title">{product.Name}</p>
             <p>&#8377;{product["Regular price"]}</p>
             <button
               className="btn btn-danger"
-              onClick={() => handleCartRemove(product)}
+              onClick={() => handlewishlistRemove(product)}
             >
               Remove
             </button>
             <div>
-              <button onClick={() => handleDecrementCart(product)}>-</button>
-              <span>{product.cartQuantity}</span>
-              <button onClick={() => handleIncrementCart(product)}>+</button>
+              <button onClick={() => handleDecrementwishlist(product)}>
+                -
+              </button>
+              <span>{product.wishlistQuantity}</span>
+              <button onClick={() => handleIncrementwishlist(product)}>
+                +
+              </button>
             </div>
             <h6 style={{ paddingRight: "1rem" }}>
               total:&#8377;
-              {(product["Regular price"] * product.cartQuantity).toFixed(2)}
+              {(product["Regular price"] * product.wishlistQuantity).toFixed(2)}
             </h6>
           </div>
         ))}
 
-        {cartItems.length > 0 && (
+        {wishlistItems.length > 0 && (
           <>
-            <div className="cart-total">
-              <button onClick={handleReset}>Clear Cart</button>
+            <div className="wishlist-total">
+              <button onClick={handleReset}>Clear wishlist</button>
               <div>
                 <span>Subtotal</span>
-                <strong>&#8377;{cartTotalAmount.toFixed(2)}</strong>
+                <strong>&#8377;{wishlistTotalAmount.toFixed(2)}</strong>
               </div>
             </div>
           </>
         )}
 
-        {cartItems.length > 0 && (
+        {wishlistItems.length > 0 && (
           <div style={{ textAlign: "end" }}>
             <p>Taxes and shipping charge calculated at checkout page</p>
             {token ? (
-              <PayButton cartItems={cartItems} />
+              <PayButton wishlistItems={wishlistItems} />
             ) : (
               <Button variant="warning">
                 <Link
@@ -104,4 +111,8 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const Wishlist = () => {
+  return <div>{wishlist}</div>;
+};
+
+export default Wishlist;

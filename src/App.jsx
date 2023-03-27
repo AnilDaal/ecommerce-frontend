@@ -1,30 +1,30 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import Cart from './components/Cart';
-import WishList from './pages/wishlist-page/WishList';
-import Home from './components/Home';
+import Cart from "./components/Cart";
+import WishList from "./components/Wishlist";
+import Home from "./components/Home";
 
-import NavbarComponent from './components/navbar/Navbar';
-import CheckoutSuccess from './components/stripe/CheckoutSuccess';
-import SingleProduct from './components/products/single-product/SingleProduct';
+import NavbarComponent from "./components/navbar/Navbar";
+import CheckoutSuccess from "./components/stripe/CheckoutSuccess";
+import SingleProduct from "./components/products/single-product/SingleProduct";
 
-import SellerHomePage from './seller-page/SellerHomePage';
-import SellerAddProduct from './seller-page/SellerAddProduct';
-import AdminLogin from './components/auth/AdminLogin';
-import CustomerLogin from './components/auth/CustomerLogin';
-import SellerLogin from './components/auth/SellerLogin';
-import CustomerRegister from './components/auth/CustomerRegister';
+import SellerHomePage from "./seller-page/SellerHomePage";
+import SellerAddProduct from "./seller-page/SellerAddProduct";
+import AdminLogin from "./components/auth/AdminLogin";
+import CustomerLogin from "./components/auth/CustomerLogin";
+import SellerLogin from "./components/auth/SellerLogin";
+import CustomerRegister from "./components/auth/CustomerRegister";
 
-import AuthProtected from './utils/AuthProtected';
-import AdminHomePage from './admin-page/AdminHomePage';
-import AdminRouteProtected from './utils/AdminRouteProtected';
+import AuthProtected from "./utils/AuthProtected";
+import AdminHomePage from "./admin-page/AdminHomePage";
+import AdminRouteProtected from "./utils/AdminRouteProtected";
 // import AllProducts from './components/products/AllProducts';
-import ProductList from './components/products/product-list/ProductList';
-import Footer from './components/footer/Footer';
-import SellerRegister from './components/auth/SellerRegister';
-import SellerUpdateProduct from './seller-page/SellerUpdateProduct';
+import ProductList from "./components/products/product-list/ProductList";
+import Footer from "./components/footer/Footer";
+import SellerRegister from "./components/auth/SellerRegister";
+import SellerUpdateProduct from "./seller-page/SellerUpdateProduct";
 
 function App() {
   return (
@@ -32,7 +32,6 @@ function App() {
       <NavbarComponent />
       <ToastContainer />
       <Routes>
-        <Route path="/cart" element={<Cart />} />
         {/* <Route
           path="/customerregister"
           element={token ? <Navigate to="/" /> : <Register />}

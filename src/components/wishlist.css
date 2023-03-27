@@ -1,0 +1,17 @@
+.wishlist_single {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .wishlist_single img {
+    height: 100px;
+    object-fit: contain;
+  }
+  .wishlist_single .wishlist-title {
+    width: 150px;
+  }
+  
