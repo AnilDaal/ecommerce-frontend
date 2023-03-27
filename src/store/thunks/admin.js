@@ -27,4 +27,51 @@ const approveSeller = createAsyncThunk(
   }
 );
 
-export { approveSeller };
+const adminAddProduct = createAsyncThunk(
+  'addProduct/admin',
+  async (values, { rejectWithValue, getState }) => {
+    const state = getState();
+
+    try {
+      const response = await instance.post(
+        `/seller/products`,
+        { ...values },
+        {
+          headers: {
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+        }
+      );
+
+      return response.data.data;
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+const adminGetProduct = createAsyncThunk(
+  'getproduct/admin',
+  async (values, { rejectWithValue, getState }) => {
+    const state = getState();
+
+    try {
+      const response = await instance.get(
+        `/seller/products`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+        }
+      );
+      return response.data.data;
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export { approveSeller, adminAddProduct, adminGetProduct };

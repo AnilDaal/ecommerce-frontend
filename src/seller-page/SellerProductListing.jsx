@@ -22,10 +22,19 @@ const SellerProductListing = () => {
         {sellerList?.map((item) => {
           return (
             <div>
-              <img src={item.image} alt="" style={{ height: '100px' }} />
-              <button onClick={() => handleDelete(item._id)}>Delete</button>
+              <img
+                src={item.image}
+                alt=""
+                style={{ height: '200px', width: '200px' }}
+              />
+              <button
+                className="btn bg-red-400"
+                onClick={() => handleDelete(item._id)}
+              >
+                Delete
+              </button>
               <Link to={`/seller/update-product/${item._id}`}>
-                <button>Update</button>
+                <button className="btn bg-green-400">Update</button>
               </Link>
             </div>
           );

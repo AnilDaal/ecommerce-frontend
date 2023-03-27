@@ -10,10 +10,10 @@ const addProduct = createAsyncThunk(
   'product/add',
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
-    const { id } = jwtDecode(state.auth.token);
+
     try {
       const response = await instance.post(
-        `/seller/${id}/product`,
+        `/seller/products`,
         { ...values },
         {
           headers: {
@@ -34,10 +34,10 @@ const getProduct = createAsyncThunk(
   'product/get',
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
-    const { id } = jwtDecode(state.auth.token);
+
     try {
       const response = await instance.get(
-        `/seller/${id}/product`,
+        `/seller/products`,
 
         {
           headers: {
@@ -57,10 +57,10 @@ const deleteProduct = createAsyncThunk(
   'product/add',
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
-    const { id } = jwtDecode(state.auth.token);
+
     try {
       const response = await instance.delete(
-        `/seller/${id}/product/${values}`,
+        `/seller/product/${values}`,
 
         {
           headers: {
@@ -82,10 +82,10 @@ const updateProduct = createAsyncThunk(
   'product/update',
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
-    const { id } = jwtDecode(state.auth.token);
+
     try {
       const response = await instance.put(
-        `/seller/${id}/product/${values.id}`,
+        `/seller/product/${values.id}`,
         { ...values },
         {
           headers: {

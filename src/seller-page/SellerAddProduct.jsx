@@ -20,7 +20,7 @@ const SellerAddProduct = () => {
       .then(() => navigate('/seller'));
   };
   return (
-    <div>
+    <div className="container">
       <Link to="/seller">Seller Listing</Link>
       <h2>Add product</h2>
       <form onSubmit={handleSubmit}>

@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -52,7 +51,7 @@ const Cart = () => {
             <p className="cart-title">{product.Name}</p>
             <p>&#8377;{product['Regular price']}</p>
             <button
-              className="btn btn-danger"
+              className="btn btn-danger bg-red-600 border-none"
               onClick={() => handleCartRemove(product)}
             >
               Remove
@@ -71,8 +70,10 @@ const Cart = () => {
 
         {cartItems.length > 0 && (
           <>
-            <div className="cart-total">
-              <button onClick={handleReset}>Clear Cart</button>
+            <div className="flex justify-between mt-10">
+              <button onClick={handleReset} className="btn bg-red-400">
+                Clear Cart
+              </button>
               <div>
                 <span>Subtotal</span>
                 <strong>&#8377;{cartTotalAmount.toFixed(2)}</strong>
@@ -82,12 +83,12 @@ const Cart = () => {
         )}
 
         {cartItems.length > 0 && (
-          <div style={{ textAlign: 'end' }}>
+          <div className=" flex flex-col items-end py-5 gap-1">
             <p>Taxes and shipping charge calculated at checkout page</p>
             {token ? (
               <PayButton cartItems={cartItems} />
             ) : (
-              <Button variant="warning">
+              <button className="btn bg-yellow-300">
                 <Link
                   to="/login"
                   style={{ color: 'white', fontWeight: 'bold' }}
@@ -95,7 +96,7 @@ const Cart = () => {
                 >
                   Login To Checkout
                 </Link>
-              </Button>
+              </button>
             )}
           </div>
         )}

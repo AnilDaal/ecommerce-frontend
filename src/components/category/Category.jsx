@@ -1,8 +1,8 @@
-import React from 'react';
+import './category.css';
 
 const Category = () => {
   return (
-    <section class="service">
+    <section class="service" style={{ margin: '0 auto' }}>
       <div class="container">
         <ul class="service-list">
           <li class="service-item">

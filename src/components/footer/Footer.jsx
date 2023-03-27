@@ -21,7 +21,7 @@ const Footer = () => {
             <span class="ml-3 text-xl">FurnitureLelo</span>
           </a>
           <p class="mt-2 text-sm text-gray-500">
-            Air plant banjo lyft occupy retro adaptogen indego
+            A unique place to get your dream furniture
           </p>
         </div>
         <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">

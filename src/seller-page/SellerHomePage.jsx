@@ -5,14 +5,16 @@ import SellerProductListing from './SellerProductListing';
 
 const SellerHomePage = () => {
   return (
-    <>
-      <Link to="/seller/create-product">Add Product</Link>
+    <div className="container ">
+      <Link to="/seller/create-product">
+        <button className="btn bg-slate-500">Add Product</button>
+      </Link>
 
       <div className="flex items-center flex-col">
         <h1>SellerHomepage</h1>
         <SellerProductListing />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,49 @@
+.d-feature-cat img {
+  border-radius: 10px;
+}
+
+.d-feature-cat-div {
+  position: relative;
+  transition: all 0.4s ease-in-out;
+}
+.d-cat-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.d-cat-content h1 {
+  font-size: 1.6rem;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+.d-cat-content button {
+  padding: 10px;
+  font-weight: normal;
+  font-size: 1.2rem;
+  border: 1px solid aliceblue;
+
+  transition: all 0.4s ease-in-out;
+  background-color: aliceblue;
+  color: black;
+}
+.d-cat-content p {
+  color: #fff;
+}
+.d-cat-content button:hover {
+  background-color: aliceblue;
+  color: black;
+}
+
+@media screen and (width<576px) {
+  .d-feature-cat {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
