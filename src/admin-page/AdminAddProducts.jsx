@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import instance from '../utils/api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
+import { adminAddProduct } from '../store';
 
 const style = {
   display: 'flex',
@@ -13,37 +14,19 @@ const style = {
 };
 const AdminAddProducts = () => {
   const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const { id } = jwtDecode(token);
 
   const [productData, setProductData] = useState({
     title: '',
     description: '',
-    short_description: '',
     category: '',
-    stock: '',
     price: '',
-    sale_price: '',
     image: '',
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await instance.post(
-        `/admin/${id}/product`,
-        {
-          ...productData,
-          sellerId: id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(productData);
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(adminAddProduct(productData));
   };
   return (
     <div>
@@ -61,20 +44,6 @@ const AdminAddProducts = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="">Short Description</label>
-          <input
-            required
-            type="text"
-            value={productData.short_description}
-            onChange={(e) =>
-              setProductData((prev) => ({
-                ...prev,
-                short_description: e.target.value,
-              }))
-            }
-          />
-        </div>
         <div>
           <label htmlFor="">Description</label>
           <input
@@ -120,31 +89,6 @@ const AdminAddProducts = () => {
             value={productData.image}
             onChange={(e) =>
               setProductData((prev) => ({ ...prev, image: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="">Sale price</label>
-          <input
-            required
-            type="text"
-            value={productData.sale_price}
-            onChange={(e) =>
-              setProductData((prev) => ({
-                ...prev,
-                sale_price: e.target.value,
-              }))
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="">Stock</label>
-          <input
-            required
-            type="text"
-            value={productData.stock}
-            onChange={(e) =>
-              setProductData((prev) => ({ ...prev, stock: e.target.value }))
             }
           />
         </div>

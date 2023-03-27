@@ -19,12 +19,14 @@ import CustomerRegister from "./components/auth/CustomerRegister";
 
 import AuthProtected from "./utils/AuthProtected";
 import AdminHomePage from "./admin-page/AdminHomePage";
+import AdminAddProducts from "./admin-page/AdminAddProducts";
 import AdminRouteProtected from "./utils/AdminRouteProtected";
-// import AllProducts from './components/products/AllProducts';
+
 import ProductList from "./components/products/product-list/ProductList";
 import Footer from "./components/footer/Footer";
 import SellerRegister from "./components/auth/SellerRegister";
 import SellerUpdateProduct from "./seller-page/SellerUpdateProduct";
+import ProductListClone from "./components/products/product-list/ProductListClone";
 
 function App() {
   return (
@@ -68,11 +70,13 @@ function App() {
 
         <Route element={<AdminRouteProtected />}>
           <Route element={<AdminHomePage />} path="/admin" />
+          <Route element={<AdminAddProducts />} path="/admin/create-product" />
         </Route>
 
         {/* <Route element={<AllProducts />} path="/products" /> */}
         <Route element={<SingleProduct />} path="/product/:id" />
-        <Route element={<ProductList />} path="/product-list" />
+        {/* <Route element={<ProductList />} path="/product-list" /> */}
+        <Route element={<ProductListClone />} path="/product-list" />
 
         <Route
           element={

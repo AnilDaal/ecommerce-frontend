@@ -31,7 +31,7 @@ const ProductList = () => {
   return (
     <>
       <div className="product-list-container">
-        <div
+        {/* <div
           className="product-list-filter"
           style={{ position: 'sticky', left: 0, top: '100px' }}
         >
@@ -43,11 +43,46 @@ const ProductList = () => {
             <p onClick={() => handleFilter('Restaurant')}>Restaurant Chairs</p>
             <p onClick={() => handleFilter('Student')}>Student Chairs</p>
           </div>
-        </div>
-        <ul class="product-list">
-          {filterArr.map((item) => {
-            return (
-              <div className="card" key={item.ID}>
+        </div> */}
+        {/* <ul class="product-list"> */}
+        <section class="text-gray-600 body-font">
+          <div class="container px-5 py-24 mx-auto">
+            {filterArr.map((item) => {
+              return (
+                <div class="flex flex-wrap -m-4">
+                  <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                    <Link class="block relative h-48 rounded overflow-hidden">
+                      <img
+                        alt="ecommerce"
+                        class="object-cover object-center w-full h-full block"
+                        src={item.Images}
+                      />
+                    </Link>
+                    <div class="mt-4">
+                      <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                        CATEGORY
+                      </h3>
+                      <h2 class="text-gray-900 title-font text-lg font-medium">
+                        The Catalyzer
+                      </h2>
+                      <p class="mt-1">$16.00</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+        {/* </ul> */}
+      </div>
+    </>
+  );
+};
+
+export default ProductList;
+
+{
+  /* <div className="card" key={item.ID}>
                 <Link to={`/product/${item.ID}`}>
                   <img
                     src={item.Images}
@@ -76,14 +111,5 @@ const ProductList = () => {
                     <button className="btn-1 detail-btn">Details</button>
                   </Link>
                 </div>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <Footer />
-    </>
-  );
-};
-
-export default ProductList;
+              </div> */
+}
