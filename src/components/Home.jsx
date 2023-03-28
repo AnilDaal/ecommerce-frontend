@@ -17,7 +17,7 @@ import HeroBanner from './hero/HeroBanner';
 import TopProducts from './products/products/TopProducts';
 import DummyProducts from '../utils/DummyProducts';
 import { Link } from 'react-router-dom';
-
+import offerImg from '../assets/offerpic.png';
 function Home() {
   // const { data, error, isLoading } = useGetAllProductsQuery();
   // const { items, error } = useSelector((state) => state.products);
@@ -44,7 +44,7 @@ function Home() {
       {/* add section */}
       <div class="container pb-16" style={{ margin: '0 auto' }}>
         <Link to="/">
-          <img src="images/offer.jpg" class="w-full" />
+          <img src={offerImg} class="w-full" alt="offer pic" />
         </Link>
       </div>
       <Products />

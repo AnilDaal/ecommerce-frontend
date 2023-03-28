@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateProduct } from '../store';
 import instance from '../utils/api';
+import Loader from '../utils/Loader';
 
 const AdminUpdateProduct = () => {
   const { error, isLoading } = useSelector((state) => state.admin);
