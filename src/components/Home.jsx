@@ -1,20 +1,20 @@
-import ProductCard from './ProductCard';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchProducts, useGetAllProductsQuery } from '../store';
+import ProductCard from "./ProductCard";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts, useGetAllProductsQuery } from "../store";
 
-import Hero from './hero/Hero';
-import Category from './category/Category';
+import Hero from "./hero/Hero";
+import Category from "./category/Category";
 
-import Services from './services/Services';
-import Blog from './blog/Blog';
-import Footer from './footer/Footer';
-import Products from './products/products/Products';
-import FeatureCategory from './feature-category/FeatureCategory';
-import Slider from './slider/Slider';
-import HeroImage from './hero/HeroImage';
-import HeroBanner from './hero/HeroBanner';
-import TopProducts from './products/products/TopProducts';
+import Services from "./services/Services";
+import Blog from "./blog/Blog";
+import Footer from "./footer/Footer";
+import Products from "./products/products/Products";
+import FeatureCategory from "./feature-category/FeatureCategory";
+import Slider from "./slider/Slider";
+import HeroImage from "./hero/HeroImage";
+import HeroBanner from "./hero/HeroBanner";
+import TopProducts from "./products/products/TopProducts";
 
 function Home() {
   // const { data, error, isLoading } = useGetAllProductsQuery();
@@ -38,9 +38,9 @@ function Home() {
       <TopProducts />
 
       {/* add section */}
-      <div class="container pb-16" style={{ margin: '0 auto' }}>
+      <div class="container pb-16" style={{ margin: "0 auto" }}>
         <a href="#">
-          <img src="images/offer.jpg" class="w-full" />
+          <img src="/offer pic.png" class="w-full" />
         </a>
       </div>
       <Products />
