@@ -1,97 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useGetAllProductsQuery } from '../../../store';
 
 import Skeleton from 'react-loading-skeleton';
-let arr = [];
-let i = 0;
+
 const ProductListClone = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
-  console.log(
-    data?.data.slice(0, 3).map((p) => {
-      const newArr = p.category.split(/[,>\s]/).filter((x) => x !== '');
-      console.log(newArr.length);
-      // for (let i = 0; i < newArr.length / 2; i = i + 2) {
-      let happy = [];
-      const newJoinValue = `${newArr[i]} ${newArr[i + 1]}`;
-      happy.push(newJoinValue);
-      arr.push(happy);
-      i = i + 2;
-      // }
-      return arr;
-    })
-  );
+  const [sortData, setSortData] = useState([]);
 
-  console.log(arr);
+  const handleLowToHigh = () => {
+    console.log(data?.data.slice().sort((a, b) => a.price - b.price));
+    setSortData(data?.data.slice().sort((a, b) => a.price - b.price));
+  };
+  const handleHighToLow = () => {
+    console.log(data?.data.slice().sort((a, b) => b.price - a.price));
+    setSortData(data?.data.slice().sort((a, b) => b.price - a.price));
+  };
 
-  const content = data?.data.map((item) => {
-    return (
-      <div class="bg-white shadow rounded overflow-hidden group">
-        <div class="relative">
-          <img src={item.image} alt="product 1" class="w-full" />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+  const filterProduct = (filterKey) => {
+    const filteredArray = data?.data.category.includes(filterKey);
+    console.log(filteredArray);
+  };
+
+  console.log(sortData);
+
+  const content = (sortData.length === 0 ? data?.data : sortData).map(
+    (item) => {
+      return (
+        <div class="bg-white shadow rounded overflow-hidden group">
+          <div class="relative">
+            <img src={item.image} alt="product 1" class="w-full" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
             justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
-          >
-            <a
-              href="#"
-              class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-              title="view product"
             >
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-            <a
-              href="#"
-              class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-              title="add to wishlist"
-            >
-              <i class="fa-solid fa-heart"></i>
-            </a>
-          </div>
-        </div>
-        <div class="pt-4 pb-3 px-4">
-          <a href="#">
-            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-              {item.title}
-            </h4>
-          </a>
-          <div class="flex items-baseline mb-1 space-x-2">
-            <p class="text-xl text-primary font-semibold">
-              &#8377;{item.price}
-            </p>
-            {/* <p class="text-sm text-gray-400 line-through">$55.90</p> */}
-          </div>
-          <div class="flex items-center">
-            <div class="flex gap-1 text-sm text-yellow-400">
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
+              <a
+                href="#"
+                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                title="view product"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+              <a
+                href="#"
+                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                title="add to wishlist"
+              >
+                <i class="fa-solid fa-heart"></i>
+              </a>
             </div>
-            <div class="text-xs text-gray-500 ml-3">(150)</div>
           </div>
+          <div class="pt-4 pb-3 px-4">
+            <a href="#">
+              <h4 class="uppercase font-medium text-sm mb-2 text-gray-800 hover:text-primary transition">
+                {item.title}
+              </h4>
+            </a>
+            <div class="flex items-baseline mb-1 space-x-2">
+              <p class="text-xl text-primary font-semibold">
+                &#8377;{item.price}
+              </p>
+              {/* <p class="text-sm text-gray-400 line-through">$55.90</p> */}
+            </div>
+            <div class="flex items-center">
+              <div class="flex gap-1 text-sm text-yellow-400">
+                <span>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+              </div>
+              <div class="text-xs text-gray-500 ml-3">(150)</div>
+            </div>
+          </div>
+          <a
+            href="#"
+            class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
+          >
+            Add to cart
+          </a>
         </div>
-        <a
-          href="#"
-          class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
-        >
-          Add to cart
-        </a>
-      </div>
-    );
-  });
-
+      );
+    }
+  );
   return (
     <div>
       <div class="container py-4 flex items-center gap-3">
@@ -112,12 +113,12 @@ const ProductListClone = () => {
                 Categories
               </h3>
               <div class="space-y-2">
-                <div class="flex items-center">
+                <div class="flex items-center ">
                   <input
                     type="checkbox"
                     name="cat-1"
                     id="cat-1"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label for="cat-1" class="text-gray-600 ml-3 cusror-pointer">
                     Bedroom
@@ -129,7 +130,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="cat-2"
                     id="cat-2"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label for="cat-2" class="text-gray-600 ml-3 cusror-pointer">
                     Sofa
@@ -141,7 +142,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="cat-3"
                     id="cat-3"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label for="cat-3" class="text-gray-600 ml-3 cusror-pointer">
                     Office
@@ -153,7 +154,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="cat-4"
                     id="cat-4"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label for="cat-4" class="text-gray-600 ml-3 cusror-pointer">
                     Outdoor
@@ -173,7 +174,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="brand-1"
                     id="brand-1"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label
                     for="brand-1"
@@ -188,7 +189,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="brand-2"
                     id="brand-2"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label
                     for="brand-2"
@@ -203,7 +204,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="brand-3"
                     id="brand-3"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label
                     for="brand-3"
@@ -218,7 +219,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="brand-4"
                     id="brand-4"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label
                     for="brand-4"
@@ -233,7 +234,7 @@ const ProductListClone = () => {
                     type="checkbox"
                     name="brand-5"
                     id="brand-5"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
                   />
                   <label
                     for="brand-5"
@@ -358,16 +359,29 @@ const ProductListClone = () => {
 
         <div class="col-span-3">
           <div class="flex items-center mb-4">
-            <select
+            {/* <select
               name="sort"
               id="sort"
-              class="w-44 text-sm text-gray-600 py-3 px-4 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary"
+              class="w-44 text-sm text-gray-600 py-3 px-4 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary "
+              style={{ border: '1px solid black' }}
+            > */}
+            {/* <option value="">Default sorting</option> */}
+            <button
+              value="price-low-to-high"
+              onClick={handleLowToHigh}
+              className="btn bg-slate-500"
             >
-              <option value="">Default sorting</option>
-              <option value="price-low-to-high">Price low to high</option>
-              <option value="price-high-to-low">Price high to low</option>
-              <option value="latest">Latest product</option>
-            </select>
+              Price low to high
+            </button>
+            <button
+              value="price-high-to-low"
+              onClick={handleHighToLow}
+              className="btn bg-slate-500"
+            >
+              Price high to low
+            </button>
+            {/* <option value="latest">Latest product</option>
+            </select> */}
 
             <div class="flex gap-2 ml-auto">
               <div class="border border-primary w-10 h-9 flex items-center justify-center text-white bg-primary rounded cursor-pointer">

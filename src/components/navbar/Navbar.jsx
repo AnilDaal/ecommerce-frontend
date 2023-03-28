@@ -1,14 +1,31 @@
 import './navbar.css';
 import { BsCart2, BsSearch } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { BiUser } from 'react-icons/bi';
+
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store';
+
 const Navbar = () => {
+  // const { role } = useSelector((state) => state.auth);
+  // const [role, setRole] = useState(null);
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   try {
+  //     setRole(jwtDecode(token).role || '');
+  //   } catch (error) {
+  //     setRole(null);
+  //     return;
+  //     throw new Error('invalid token');
+  //     console.err('error');
+  //     role = '';
+  //   }
+  // }, []);
+
+  if (token) return;
 
   return (
     <header class="text-gray-600 body-font ">
@@ -31,32 +48,72 @@ const Navbar = () => {
           </svg>
           <span class="ml-3 text-xl">Furniture Lelo</span>
         </Link>
-        <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center gap-5">
-          <Link
-            class="mr-5 hover:text-gray-900"
-            className="header-action-btn"
-            to="/cart"
-          >
-            <BsCart2 className="text-2xl" />
-            <p className="header-action-label">Cart</p>
-            <div className="btn-badge bg-teal-600" aria-hidden="true">
-              {cartTotalQuantity}
-            </div>
-          </Link>
-          <Link class="mr-5 hover:text-gray-900" className="header-action-btn">
-            <AiOutlineHeart className="text-2xl" />
 
-            <p className="header-action-label">Wish</p>
+        {/* {role === 'admin' && (
+          <>
+            <h2>Admin Panel</h2>
+            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center gap-5">
+              <Link class="mr-5 hover:text-gray-900" to="/admin/product-list">
+                Product List
+              </Link>
+              <Link class="mr-5 hover:text-gray-900" to="/admin/create-product">
+                Add Product
+              </Link>
+              <Link class="mr-5 hover:text-gray-900" to="/admin/seller-list">
+                Seller List
+              </Link>
+            </nav>
+          </>
+        )}
 
-            <div className="btn-badge bg-pink-600" aria-hidden="true">
-              2
-            </div>
-          </Link>
-          <Link class="mr-5 hover:text-gray-900" to="/product-list">
-            Products
-          </Link>
-          {/* <Link class="mr-5 hover:text-gray-900">Fourth Link</Link> */}
-        </nav>
+        {role === 'seller' && (
+          <>
+            <h2>Seller Panel</h2>
+            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center gap-5">
+              <Link class="mr-5 hover:text-gray-900" to="/seller">
+                Seller Home Page
+              </Link>
+              <Link
+                class="mr-5 hover:text-gray-900"
+                to="/seller/create-product"
+              >
+                Add Product
+              </Link>
+            </nav>
+          </>
+        )} */}
+
+        {!token && (
+          <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center gap-5">
+            <Link
+              class="mr-5 hover:text-gray-900"
+              className="header-action-btn"
+              to="/cart"
+            >
+              <BsCart2 className="text-2xl" />
+              <p className="header-action-label">Cart</p>
+              <div className="btn-badge bg-teal-600" aria-hidden="true">
+                {cartTotalQuantity}
+              </div>
+            </Link>
+            <Link
+              class="mr-5 hover:text-gray-900"
+              className="header-action-btn"
+            >
+              <AiOutlineHeart className="text-2xl" />
+
+              <p className="header-action-label">Wish</p>
+
+              <div className="btn-badge bg-pink-600" aria-hidden="true">
+                2
+              </div>
+            </Link>
+            <Link class="mr-5 hover:text-gray-900" to="/product-list">
+              Products
+            </Link>
+            {/* <Link class="mr-5 hover:text-gray-900">Fourth Link</Link> */}
+          </nav>
+        )}
         {!token ? (
           <Link to="/customer-login">
             <button class="inline-flex items-center bg-teal-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">

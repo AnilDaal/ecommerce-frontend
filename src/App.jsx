@@ -29,6 +29,8 @@ import SellerUpdateProduct from './seller-page/SellerUpdateProduct';
 import ProductListClone from './components/products/product-list/ProductListClone';
 import ProductListing from './admin-page/ProductListing';
 import SellersListing from './admin-page/SellersListing';
+import AdminUpdateProduct from './admin-page/AdminUpdateProduct';
+import SellerRouteProtected from './utils/SellerRouteProtected';
 
 function App() {
   return (
@@ -49,7 +51,7 @@ function App() {
         <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/checkout-success" element={<CheckoutSuccess />} />
 
-        <Route element={<AdminRouteProtected />}>
+        <Route element={<SellerRouteProtected />}>
           <Route path="/seller" element={<SellerHomePage />} />
           <Route path="/seller/create-product" element={<SellerAddProduct />} />
           <Route
@@ -72,9 +74,18 @@ function App() {
         </Route>
 
         <Route element={<AdminRouteProtected />}>
-          <Route element={<ProductListing />} path="/admin/product-list" />
-          <Route element={<AdminAddProducts />} path="/admin/create-product" />
-          <Route element={<SellersListing />} path="/admin/seller-list" />
+          <Route element={<AdminHomePage />}>
+            <Route element={<ProductListing />} path="/admin/product-list" />
+            <Route
+              element={<AdminAddProducts />}
+              path="/admin/create-product"
+            />
+            <Route element={<SellersListing />} path="/admin/seller-list" />
+            <Route
+              element={<AdminUpdateProduct />}
+              path="/admin/update-product/:productId"
+            />
+          </Route>
         </Route>
 
         {/* <Route element={<AllProducts />} path="/products" /> */}

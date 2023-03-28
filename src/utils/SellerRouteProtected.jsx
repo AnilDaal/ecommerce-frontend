@@ -2,10 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const AdminRouteProtected = () => {
+const SellerRouteProtected = () => {
   const { token } = useSelector((state) => state.auth);
-
-  // const x = jwtDecode(token);
 
   if (token) {
     return (
@@ -19,4 +17,4 @@ const AdminRouteProtected = () => {
   }
 };
 
-export default AdminRouteProtected;
+export default SellerRouteProtected;

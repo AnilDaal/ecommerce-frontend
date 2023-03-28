@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import ProductListing from './ProductListing';
-
-import SellersListing from './SellersListing';
+import AdminSidebar from './AdminSidebar';
 
 const AdminHomePage = () => {
   return (
@@ -10,16 +8,16 @@ const AdminHomePage = () => {
       <div>AdminHomePage</div>
       <ul>
         <li>
-          <Link to="">Add Product</Link>
+          <Link to="/admin/create-product">Add Product</Link>
         </li>
         <li>
-          <Link to="">Seller List</Link>
+          <Link to="/admin/seller-list">Seller List</Link>
         </li>
         <li>
-          <Link to="">Product List</Link>
+          <Link to="/admin/product-list">Product List</Link>
         </li>
       </ul>
-      <Outlet />
+      <AdminSidebar />
     </div>
   );
 };

@@ -26,7 +26,7 @@ const responsive = {
   },
 };
 
-const RelatedProduct = ({ value, col }) => {
+const RelatedProduct = ({ value, col = 4 }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
   const handleClick = (product) => {
@@ -36,14 +36,17 @@ const RelatedProduct = ({ value, col }) => {
   const content = data?.data.slice(0, value).map((item) => {
     return (
       // <h1>hello slider</h1>
-      <div class="bg-white shadow rounded overflow-hidden group mr-5">
+      <div
+        class="bg-white shadow rounded overflow-hidden group mr-5"
+        key={item._id}
+      >
         <div class="relative">
           <img src={item.image} alt="product 1" class="w-full" />
           <div
             class="absolute inset-0 bg-black bg-opacity-40 flex items-center
             justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
           >
-            <button
+            {/* <button
               class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
               title="view product"
             >
@@ -54,7 +57,7 @@ const RelatedProduct = ({ value, col }) => {
               title="add to wishlist"
             >
               <i class="fa-solid fa-heart"></i>
-            </button>
+            </button> */}
           </div>
         </div>
         <div class="pt-4 pb-3 px-4">
@@ -69,7 +72,7 @@ const RelatedProduct = ({ value, col }) => {
             </p>
             {/* <p class="text-sm text-gray-400 line-through">$55.90</p> */}
           </div>
-          <div class="flex items-center">
+          {/* <div class="flex items-center">
             <div class="flex gap-1 text-sm text-yellow-400">
               <span>
                 <i class="fa-solid fa-star"></i>
@@ -88,7 +91,7 @@ const RelatedProduct = ({ value, col }) => {
               </span>
             </div>
             <div class="text-xs text-gray-500 ml-3">(150)</div>
-          </div>
+          </div> */}
         </div>
         <button
           onClick={() => handleClick(item)}
@@ -102,7 +105,7 @@ const RelatedProduct = ({ value, col }) => {
   return (
     <>
       {error && <h2>{error.message}</h2>}
-      <div class={`grid grid-cols-${col} gap-6`}>
+      <div class={`grid grid-cols gap-6`}>
         {isLoading ? (
           <>
             <Skeleton height={140} />

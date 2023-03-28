@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
   registerUser,
   loginUser,
@@ -11,6 +12,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     token: localStorage.getItem('token') || null,
+    // role: localStorage.getItem('role') || null,
 
     registerLoading: false,
     registerError: null,
@@ -31,6 +33,7 @@ const authSlice = createSlice({
     logoutUser(state, action) {
       localStorage.removeItem('token');
       state.token = null;
+      localStorage.removeItem('role');
     },
   },
   extraReducers(builder) {
@@ -67,6 +70,7 @@ const authSlice = createSlice({
     builder.addCase(loginAdmin.fulfilled, (state, action) => {
       state.loginAdminLoading = false;
       state.token = action.payload;
+      // state.role = localStorage.getItem('role');
     });
     builder.addCase(loginAdmin.rejected, (state, action) => {
       state.loginAdminLoading = false;
@@ -92,6 +96,7 @@ const authSlice = createSlice({
     builder.addCase(loginSeller.fulfilled, (state, action) => {
       state.loginSellerLoading = false;
       state.token = action.payload;
+      // state.role = localStorage.getItem('role');
     });
     builder.addCase(loginSeller.rejected, (state, action) => {
       state.loginSellerLoading = false;
