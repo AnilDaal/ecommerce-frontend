@@ -9,8 +9,8 @@ const HeroImage = () => {
         alt=""
       /> */}
       <div className="d-hero-content">
-        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex md:flex-col  md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <h1 class="title-font text-sm lg:text-3xl mb-4 font-medium text-gray-900">
             Before they sold out
             <br class="hidden lg:inline-block" />
             get premium furniture
@@ -23,11 +23,11 @@ const HeroImage = () => {
           </p> */}
           <div class="flex justify-center">
             <Link to="/product-list">
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm md:text-lg">
                 Buy Now
               </button>
             </Link>
-            <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+            <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-sm md:text-lg">
               Shop Now
             </button>
           </div>

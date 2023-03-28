@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { arr } from "../../../data/jsonTestData";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { arr } from '../../../data/jsonTestData';
 
-import { addToCart, fetchProducts } from "../../../store";
-import "./products.css";
+import { addToCart, fetchProducts } from '../../../store';
+import './products.css';
 
 const Products = () => {
   // eslint-disable-next-line no-undef
@@ -27,12 +27,10 @@ const Products = () => {
     dispatch(addToCart(product));
   };
   return (
-    <section class="section product" style={{ paddingBottom: "60px" }}>
-      <div class="container" style={{ margin: "0 auto" }}>
-        <h2 class="h2 section-title">Products of the week</h2>
-
-        <div class="container pb-16">
-          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+    <section class="section product">
+      <div class="container" style={{ margin: '0 auto' }}>
+        <div class="container pb-8">
+          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6 text-center">
             recomended for you
           </h2>
           <div class="box-flex">
@@ -49,7 +47,7 @@ const Products = () => {
                       </h4>
                     </a>
                     <div class=" items-baseline mb-1 space-x-2">
-                      <p>&#8377;{item["Regular price"]}</p>
+                      <p>&#8377;{item['Regular price']}</p>
                     </div>
                     <div class="start-chage-size">
                       <div>
@@ -79,12 +77,12 @@ const Products = () => {
       <Link
         to="/product-list"
         style={{
-          display: "inline-block",
-          width: "100%",
-          textAlign: "center",
+          display: 'inline-block',
+          width: '100%',
+          textAlign: 'center',
         }}
       >
-        <button class="btn  ">View All Products</button>
+        <button class="btn  bg-teal-400">View All Products</button>
       </Link>
     </section>
   );

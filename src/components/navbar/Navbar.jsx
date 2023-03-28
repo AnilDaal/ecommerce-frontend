@@ -5,10 +5,12 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store';
+import { useState } from 'react';
+import jwtDecode from 'jwt-decode';
 
 const Navbar = () => {
   // const { role } = useSelector((state) => state.auth);
-  // const [role, setRole] = useState(null);
+  const [role, setRole] = useState(null);
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -25,7 +27,14 @@ const Navbar = () => {
   //   }
   // }, []);
 
-  if (token) return;
+  if (token) {
+    try {
+      setRole(jwtDecode(token).role || '');
+    } catch (error) {
+      setRole(null);
+      return;
+    }
+  }
 
   return (
     <header class="text-gray-600 body-font ">

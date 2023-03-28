@@ -22,7 +22,7 @@ const responsive = {
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 4,
+    items: 2,
   },
 };
 
@@ -37,7 +37,7 @@ const RelatedProduct = ({ value, col = 4 }) => {
     return (
       // <h1>hello slider</h1>
       <div
-        class="bg-white shadow rounded overflow-hidden group mr-5"
+        class="bg-white shadow rounded overflow-hidden group mr-5 mx-2"
         key={item._id}
       >
         <div class="relative">
@@ -63,11 +63,11 @@ const RelatedProduct = ({ value, col = 4 }) => {
         <div class="pt-4 pb-3 px-4">
           <Link to={`/product/${item._id}`}>
             <h4 class="uppercase font-medium text-sm mb-2 text-gray-800 hover:text-primary transition">
-              {item.title}
+              {item.title.substring(0, 20)}...
             </h4>
           </Link>
           <div class="flex items-baseline mb-1 space-x-2">
-            <p class="text-xl text-primary font-semibold">
+            <p class="text-sm text-primary font-semibold">
               &#8377;{item.price}
             </p>
             {/* <p class="text-sm text-gray-400 line-through">$55.90</p> */}

@@ -37,20 +37,20 @@ function Home() {
 
       <FeatureCategory />
 
-      <Category />
       {/* <Services /> */}
       <TopProducts />
 
       {/* add section */}
       <div class="container pb-16" style={{ margin: '0 auto' }}>
         <Link to="/">
-          <img src={offerImg} class="w-full" alt="offer pic" />
+          <img src={offerImg} class="w-full h-full" alt="offer pic" />
         </Link>
       </div>
       <Products />
       {/* <ProductListing /> */}
       {/* <Blog /> */}
-      <HeroImage />
+      <Category />
+      {/* <HeroImage /> */}
       <DummyProducts />
     </main>
   );

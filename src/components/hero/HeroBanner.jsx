@@ -6,12 +6,12 @@ const HeroBanner = () => {
       class="bg-cover bg-no-repeat bg-center py-36 relative"
       style={{ backgroundImage: "url('images/banner-bg.jpg')" }}
     >
-      <div class="container" style={{ margin: '0 auto' }}>
+      <div class="container px-4 " style={{ margin: '0 auto' }}>
         <h1 class="xl:text-6xl md:text-5xl text-4xl text-gray-800 font-medium mb-4">
           Best Collection For <br class="hidden sm:block" /> Home Decoration
         </h1>
         <p class="text-base text-gray-600 leading-6">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa{' '}
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
           <br class="hidden sm:block" />
           assumenda aliquid inventore nihil laboriosam odio
         </p>

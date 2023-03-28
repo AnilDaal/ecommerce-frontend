@@ -4,7 +4,7 @@ import RelatedProduct from '../../related-product/RelatedProduct';
 const TopProducts = () => {
   return (
     <div class="container pb-16 mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
+      <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase my-8 text-center">
         top new arrival
       </h2>
 
