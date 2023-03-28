@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { arr } from "../../../data/jsonTestData";
 
-import { addToCart } from "../../../store";
+import { addToCart, fetchProducts } from "../../../store";
 import "./products.css";
 
 const Products = () => {
+  // eslint-disable-next-line no-undef
   const { allProducts, isLoading, error } = useSelector(
     (state) => state.products
   );
@@ -15,7 +17,9 @@ const Products = () => {
 
   console.log(allProducts);
 
+  // eslint-disable-next-line no-undef
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     dispatch(fetchProducts());
   }, [dispatch]);
 
