@@ -3,7 +3,7 @@ import './feature-category.css';
 const FeatureCategory = () => {
   return (
     <>
-      <h1 className="text-center text-4xl mb-8">Featured Categories</h1>
+      <h1 className="text-center text-4xl mb-16">Featured Categories</h1>
 
       <div
         style={{

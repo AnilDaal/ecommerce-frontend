@@ -19,7 +19,7 @@ const SellerLogin = () => {
     e.preventDefault();
     dispatch(loginSeller(user))
       .unwrap()
-      .then(() => navigate('/seller'))
+      .then(() => navigate('/seller/product-list'))
       .catch((err) => console.log(err));
   };
   console.log(user);
@@ -78,7 +78,6 @@ const SellerLogin = () => {
                 </form>
                 <p
                   style={{
-                    backgroundColor: 'pink',
                     display: 'flex',
                     gap: '2rem',
                   }}

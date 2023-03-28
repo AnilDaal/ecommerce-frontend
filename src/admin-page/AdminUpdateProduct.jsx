@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { addProduct, updateProduct } from '../store';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updateProduct } from '../store';
 import instance from '../utils/api';
 
 const AdminUpdateProduct = () => {

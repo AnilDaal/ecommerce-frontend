@@ -15,6 +15,8 @@ import Slider from './slider/Slider';
 import HeroImage from './hero/HeroImage';
 import HeroBanner from './hero/HeroBanner';
 import TopProducts from './products/products/TopProducts';
+import DummyProducts from '../utils/DummyProducts';
+import { Link } from 'react-router-dom';
 
 function Home() {
   // const { data, error, isLoading } = useGetAllProductsQuery();
@@ -32,21 +34,24 @@ function Home() {
       {/* <Slider /> */}
       <HeroBanner />
       {/* <Hero /> */}
+
       <FeatureCategory />
+
       <Category />
       {/* <Services /> */}
       <TopProducts />
 
       {/* add section */}
       <div class="container pb-16" style={{ margin: '0 auto' }}>
-        <a href="#">
+        <Link to="/">
           <img src="images/offer.jpg" class="w-full" />
-        </a>
+        </Link>
       </div>
       <Products />
       {/* <ProductListing /> */}
       {/* <Blog /> */}
       <HeroImage />
+      <DummyProducts />
     </main>
   );
 }

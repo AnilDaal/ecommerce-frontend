@@ -2,18 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SellerAddProduct from './SellerAddProduct';
 import SellerProductListing from './SellerProductListing';
+import SellerSidebar from './SellerSidebar';
 
 const SellerHomePage = () => {
   return (
-    <div className="container ">
-      <Link to="/seller/create-product">
-        <button className="btn bg-slate-500">Add Product</button>
-      </Link>
+    <div className="container">
+      <h1 className="bg-black w-full text-white text-center text-2xl">
+        SellerHomePage
+      </h1>
 
-      <div className="flex items-center flex-col">
-        <h1>SellerHomepage</h1>
-        <SellerProductListing />
-      </div>
+      <SellerSidebar />
     </div>
   );
 };

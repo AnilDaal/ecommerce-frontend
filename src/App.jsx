@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,6 +31,7 @@ import ProductListing from './admin-page/ProductListing';
 import SellersListing from './admin-page/SellersListing';
 import AdminUpdateProduct from './admin-page/AdminUpdateProduct';
 import SellerRouteProtected from './utils/SellerRouteProtected';
+import SellerProductListing from './seller-page/SellerProductListing';
 
 function App() {
   return (
@@ -52,12 +53,20 @@ function App() {
         <Route path="/checkout-success" element={<CheckoutSuccess />} />
 
         <Route element={<SellerRouteProtected />}>
-          <Route path="/seller" element={<SellerHomePage />} />
-          <Route path="/seller/create-product" element={<SellerAddProduct />} />
-          <Route
-            path="/seller/update-product/:productId"
-            element={<SellerUpdateProduct />}
-          />
+          <Route element={<SellerHomePage />}>
+            <Route
+              path="/seller/create-product"
+              element={<SellerAddProduct />}
+            />
+            <Route
+              path="/seller/product-list"
+              element={<SellerProductListing />}
+            />
+            <Route
+              path="/seller/update-product/:productId"
+              element={<SellerUpdateProduct />}
+            />
+          </Route>
         </Route>
 
         <Route path="/cart" element={<Cart />} />
@@ -95,10 +104,15 @@ function App() {
 
         <Route
           element={
-            <h1>
-              Thanks for submitting the seller for now our team check your
-              credentials and contact you within 5-6 days
-            </h1>
+            <div className="container mx-auto">
+              <h1 className="text-2xl mx-auto  my-4">
+                Thanks for submitting the seller for now our team check your
+                credentials and contact you within 5-6 days
+              </h1>
+              <Link to="/" className="btn bg-yellow-400 ">
+                Back To Homepage
+              </Link>
+            </div>
           }
           path="/dummy-seller"
         />

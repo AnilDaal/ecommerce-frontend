@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 import { logoutUser } from '../store';
 
-const AdminSidebar = () => {
+const SellerSidebar = () => {
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -22,15 +22,13 @@ const AdminSidebar = () => {
         }}
       >
         <h3 className="w3-bar-item">Menu</h3>
-        <Link to="/admin/product-list" className="text-xl text-white">
-          Product List
+        <Link to="/seller/product-list" className="text-xl text-white">
+          Seller Product List
         </Link>
-        <Link to="/admin/create-product" className="text-xl text-white">
+        <Link to="/seller/create-product" className="text-xl text-white">
           Add Product
         </Link>
-        <Link to="admin/seller-list" className="text-xl text-white">
-          Seller List
-        </Link>
+
         <button onClick={handleLogout} className="p-2 btn bg-red-500 w-24 mt-2">
           Logout
         </button>
@@ -43,4 +41,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default AdminSidebar;
+export default SellerSidebar;

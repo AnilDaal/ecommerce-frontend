@@ -171,7 +171,6 @@ const SellerRegister = () => {
                 </form>
                 <p
                   style={{
-                    backgroundColor: 'pink',
                     display: 'flex',
                     gap: '2rem',
                   }}

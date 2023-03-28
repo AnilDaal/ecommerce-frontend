@@ -5,18 +5,10 @@ import AdminSidebar from './AdminSidebar';
 const AdminHomePage = () => {
   return (
     <div className="container">
-      <div>AdminHomePage</div>
-      <ul>
-        <li>
-          <Link to="/admin/create-product">Add Product</Link>
-        </li>
-        <li>
-          <Link to="/admin/seller-list">Seller List</Link>
-        </li>
-        <li>
-          <Link to="/admin/product-list">Product List</Link>
-        </li>
-      </ul>
+      <h1 className="bg-black w-full text-white text-center text-2xl">
+        AdminHomePage
+      </h1>
+
       <AdminSidebar />
     </div>
   );
