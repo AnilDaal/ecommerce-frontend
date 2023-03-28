@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { adminAddProduct } from '../store';
-import { useNavigate } from 'react-router-dom';
-import Loader from '../utils/Loader';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { addProduct, updateProduct } from '../store';
+import instance from '../utils/api';
 
-const AdminAddProducts = () => {
-  const { isLoading, error } = useSelector((state) => state.admin);
-  const dispatch = useDispatch();
-
-  const navigate = useNavigate();
+const AdminUpdateProduct = () => {
+  const { error, isLoading } = useSelector((state) => state.admin);
+  const { productId } = useParams();
 
   const [productData, setProductData] = useState({
     title: '',
@@ -16,14 +14,31 @@ const AdminAddProducts = () => {
     category: '',
     price: '',
     image: '',
+    id: productId,
   });
-  const handleSubmit = async (e) => {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await instance.get(`public/${productId}`);
+      console.log(data.data);
+      setProductData({ ...data.data, id: productId });
+    };
+    fetchData();
+  }, [productId]);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(adminAddProduct(productData))
+    dispatch(updateProduct(productData))
       .unwrap()
-      .then(() => navigate('/admin/product-list'))
-      .catch((err) => console.log(err));
+      .then(() => navigate('/admin/product-list'));
   };
+
+  console.log('productData', productData);
+  console.log('productData.title', productData.title);
+
   return (
     <>
       <div class="login-root">
@@ -40,8 +55,8 @@ const AdminAddProducts = () => {
           </div> */}
             <div class="formbg-outer">
               <div class="formbg">
-                <div class="formbg-inner padding-horizontal--48">
-                  <span class="padding-bottom--15">Add Product</span>
+                <div class="formbg-inner padding-horizontal--48 ">
+                  <span class="padding-bottom--15">Update Product</span>
                   <form id="stripe-login" onSubmit={handleSubmit}>
                     <div class="field padding-bottom--24">
                       <label for="title">Title</label>
@@ -127,7 +142,7 @@ const AdminAddProducts = () => {
                     {error && <p>{error.message}</p>}
                     <div class="field padding-bottom--24">
                       <button disabled={Boolean(isLoading)}>
-                        {isLoading ? <Loader /> : 'Add Product'}
+                        {isLoading ? <Loader /> : 'Update Product'}
                       </button>
                     </div>
                   </form>
@@ -141,4 +156,4 @@ const AdminAddProducts = () => {
   );
 };
 
-export default AdminAddProducts;
+export default AdminUpdateProduct;

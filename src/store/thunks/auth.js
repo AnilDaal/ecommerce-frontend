@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 const instance = axios.create({
   baseURL: 'https://api.furniturelelo.com/api/v1',
@@ -53,6 +54,8 @@ const loginAdmin = createAsyncThunk(
       });
 
       localStorage.setItem('token', response.data.token);
+      // localStorage.setItem('role', jwtDecode(response.data.token).role);
+
       return response.data.token;
     } catch (error) {
       console.log(error.response.data);
@@ -106,6 +109,7 @@ const loginSeller = createAsyncThunk(
       });
 
       localStorage.setItem('token', response.data.token);
+      // localStorage.setItem('role', jwtDecode(response.data.token).role);
       return response.data.token;
     } catch (error) {
       console.log(error.response.data);

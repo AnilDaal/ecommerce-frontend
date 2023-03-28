@@ -1,15 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const instance = axios.create({
-  baseURL: 'http://localhost:5000',
-});
+import instance from '../../utils/api';
 
 const fetchProducts = createAsyncThunk(
   'products/fetch',
   async (id = null, { rejectWithValue }) => {
     try {
-      const response = await instance.get('/products');
+      const response = await instance.get('/public');
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -17,4 +13,16 @@ const fetchProducts = createAsyncThunk(
   }
 );
 
-export { fetchProducts };
+const fetchSingleProduct = createAsyncThunk(
+  'singleproducts/fetch',
+  async (id = null, { rejectWithValue }) => {
+    try {
+      const response = await instance.get(`/public/${id}`);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export { fetchProducts, fetchSingleProduct };

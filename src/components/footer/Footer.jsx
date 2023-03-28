@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+  const { token } = useSelector((state) => state.auth);
+  if (token) return;
   return (
     <footer class="text-gray-600 body-font">
       <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">

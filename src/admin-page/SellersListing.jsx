@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { approveSeller } from '../store/thunks/admin';
 import { sellerListing } from '../store/thunks/auth';
 import Loader from '../utils/Loader';
@@ -22,7 +23,7 @@ const SellersListing = () => {
   console.log(sellerList);
   console.log(error);
   return (
-    <div>
+    <>
       <h1>SellersListing</h1>
 
       <div>
@@ -66,7 +67,7 @@ const SellersListing = () => {
           }
         )}
       </div>
-    </div>
+    </>
   );
 };
 

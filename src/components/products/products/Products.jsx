@@ -8,8 +8,17 @@ import { addToCart } from "../../../store";
 import "./products.css";
 
 const Products = () => {
+  const { allProducts, isLoading, error } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
-  console.log(arr);
+
+  console.log(allProducts);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   const handleClick = (product) => {
     dispatch(addToCart(product));
   };
@@ -18,25 +27,6 @@ const Products = () => {
       <div class="container" style={{ margin: "0 auto" }}>
         <h2 class="h2 section-title">Products of the week</h2>
 
-        {/* <ul class="filter-list">
-          <li>
-            <button class="filter-btn  active">Best Seller</button>
-          </li>
-
-          <li>
-            <button class="filter-btn">Hot Collection</button>
-          </li>
-
-          <li>
-            <button class="filter-btn">Trendy</button>
-          </li>
-
-          <li>
-            <button class="filter-btn">New Arrival</button>
-          </li>
-        </ul> */}
-
-        {/* <div class="product-container"> */}
         <div class="container pb-16">
           <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
             recomended for you
@@ -71,7 +61,7 @@ const Products = () => {
 
                   <a
                     href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition "
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
                   >
                     Add to Cart
                   </a>
@@ -82,10 +72,16 @@ const Products = () => {
         </div>
       </div>
 
-      <Link to="/product-list">
-        <button class="btn bg-black">View All Products</button>
+      <Link
+        to="/product-list"
+        style={{
+          display: "inline-block",
+          width: "100%",
+          textAlign: "center",
+        }}
+      >
+        <button class="btn  ">View All Products</button>
       </Link>
-      {/* </div> */}
     </section>
   );
 };

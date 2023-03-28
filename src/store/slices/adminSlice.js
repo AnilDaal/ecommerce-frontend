@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { adminAddProduct } from '../thunks/admin';
+import { adminAddProduct, adminGetProduct } from '../thunks/admin';
 import { sellerListing } from '../thunks/auth';
 
 const adminSlice = createSlice({
@@ -29,9 +29,21 @@ const adminSlice = createSlice({
     });
     builder.addCase(adminAddProduct.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.adminProductList = action.payload;
+      state.adminProductList.push(action.payload);
     });
     builder.addCase(adminAddProduct.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(adminGetProduct.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(adminGetProduct.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.adminProductList = action.payload;
+    });
+    builder.addCase(adminGetProduct.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
