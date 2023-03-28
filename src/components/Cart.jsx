@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   decrementCart,
   incrementCart,
   resetCart,
   removeCart,
   getTotals,
-} from '../store';
-import PayButton from './stripe/PayButton';
-import './cart.css';
+} from "../store";
+import PayButton from "./stripe/PayButton";
+import "./cart.css";
 
 const Cart = () => {
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
@@ -51,24 +51,24 @@ const Cart = () => {
             <p className="cart-title">{product.title}</p>
             <p>&#8377;{product.price}</p>
 
-            <div style={{ display: 'flex', gap: '4px' }}>
+            <div style={{ display: "flex", gap: "4px" }}>
               <button
                 onClick={() => handleDecrementCart(product)}
                 className="border px-2 "
-                style={{ fontSize: '1.2rem' }}
+                style={{ fontSize: "1.2rem" }}
               >
                 -
               </button>
               <span>{product.cartQuantity}</span>
               <button
                 className="border px-2 "
-                style={{ fontSize: '1.2rem' }}
+                style={{ fontSize: "1.2rem" }}
                 onClick={() => handleIncrementCart(product)}
               >
                 +
               </button>
             </div>
-            <h6 style={{ paddingRight: '1rem' }}>
+            <h6 style={{ paddingRight: "1rem" }}>
               total:&#8377;
               {(product.price * product.cartQuantity).toFixed(2)}
             </h6>
@@ -96,7 +96,7 @@ const Cart = () => {
         )}
 
         {cartItems.length > 0 && (
-          <div className=" flex flex-col items-end py-5 gap-1">
+          <div style={{ textAlign: "end" }}>
             <p>Taxes and shipping charge calculated at checkout page</p>
             {token ? (
               <PayButton cartItems={cartItems} />
@@ -104,7 +104,7 @@ const Cart = () => {
               <button className="btn bg-yellow-300">
                 <Link
                   to="/login"
-                  style={{ color: 'white', fontWeight: 'bold' }}
+                  style={{ color: "white", fontWeight: "bold" }}
                   className="imp-link"
                 >
                   Login To Checkout

@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Cart from './components/Cart';
-import WishList from './pages/wishlist-page/WishList';
+import WishList from './components/Wishlist';
 import Home from './components/Home';
 
 import NavbarComponent from './components/navbar/Navbar';
@@ -39,7 +39,6 @@ function App() {
       <NavbarComponent />
       <ToastContainer />
       <Routes>
-        <Route path="/cart" element={<Cart />} />
         {/* <Route
           path="/customerregister"
           element={token ? <Navigate to="/" /> : <Register />}
