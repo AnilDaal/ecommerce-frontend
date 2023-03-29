@@ -16,19 +16,8 @@ import HeroImage from "./hero/HeroImage";
 import HeroBanner from "./hero/HeroBanner";
 import TopProducts from "./products/products/TopProducts";
 import { Link } from "react-router-dom";
+import DummyProducts from "../utils/DummyProducts.jsx";
 
-import Services from "./services/Services";
-import Blog from "./blog/Blog";
-import Footer from "./footer/Footer";
-import Products from "./products/products/Products";
-import FeatureCategory from "./feature-category/FeatureCategory";
-import Slider from "./slider/Slider";
-import HeroImage from "./hero/HeroImage";
-import HeroBanner from "./hero/HeroBanner";
-import TopProducts from "./products/products/TopProducts";
-import DummyProducts from "../utils/DummyProducts";
-import { Link } from "react-router-dom";
-import offerImg from "../assets/offerpic.png";
 function Home() {
   // const { data, error, isLoading } = useGetAllProductsQuery();
   // const { items, error } = useSelector((state) => state.products);
