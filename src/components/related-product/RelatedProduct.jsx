@@ -1,10 +1,10 @@
-import Skeleton from 'react-loading-skeleton';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { addToCart, useGetAllProductsQuery } from '../../store';
+import Skeleton from "react-loading-skeleton";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { addToCart, useGetAllProductsQuery } from "../../store";
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {

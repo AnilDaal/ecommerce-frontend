@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { arr } from '../../../data/jsonTestData';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { arr } from "../../../data/jsonTestData";
 
-import { addToCart, fetchProducts } from '../../../store';
-import './products.css';
+import { addToCart, fetchProducts } from "../../../store";
+import "./products.css";
 
 const Products = () => {
   // eslint-disable-next-line no-undef
@@ -27,10 +27,12 @@ const Products = () => {
     dispatch(addToCart(product));
   };
   return (
-    <section class="section product">
-      <div class="container" style={{ margin: '0 auto' }}>
-        <div class="container pb-8">
-          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6 text-center">
+    <section class="section product" style={{ paddingBottom: "10px" }}>
+      <div class="container" style={{ margin: "0 auto" }}>
+        <h2 class="h2 section-title">Products of the week</h2>
+
+        <div class="container pb-16">
+          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
             recomended for you
           </h2>
           <div class="box-flex">
@@ -40,24 +42,14 @@ const Products = () => {
                   <div>
                     <img src={item.Images} alt={item.Name} />
                   </div>
-                  <div>
+                  <div class="pt-4 pb-3 px-4">
                     <a href="view.html">
                       <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
                         {item.Name}
                       </h4>
                     </a>
                     <div class=" items-baseline mb-1 space-x-2">
-                      <p>&#8377;{item['Regular price']}</p>
-                    </div>
-                    <div class="start-chage-size">
-                      <div>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                      </div>
-                      <p>(150)</p>
+                      <p>&#8377;{item["Regular price"]}</p>
                     </div>
                   </div>
 
@@ -77,9 +69,9 @@ const Products = () => {
       <Link
         to="/product-list"
         style={{
-          display: 'inline-block',
-          width: '100%',
-          textAlign: 'center',
+          display: "inline-block",
+          width: "100%",
+          textAlign: "center",
         }}
       >
         <button class="btn  bg-teal-400">View All Products</button>
