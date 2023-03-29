@@ -26,10 +26,12 @@ const Products = () => {
     dispatch(addToCart(product));
   };
   return (
-    <section class="section product">
+    <section class="section product" style={{ paddingBottom: '10px' }}>
       <div class="container" style={{ margin: '0 auto' }}>
-        <div class="container pb-8">
-          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6 text-center">
+        <h2 class="h2 section-title">Products of the week</h2>
+
+        <div class="container pb-16">
+          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
             recomended for you
           </h2>
           <div class="box-flex">

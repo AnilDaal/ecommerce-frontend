@@ -1,12 +1,12 @@
-import './navbar.css';
-import { BsCart2, BsSearch } from 'react-icons/bs';
-import { AiOutlineHeart } from 'react-icons/ai';
-
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../store';
-import { useState } from 'react';
-import jwtDecode from 'jwt-decode';
+import "./navbar.css";
+import { BsCart2, BsSearch } from "react-icons/bs";
+import { AiOutlineHeart } from "react-icons/ai";
+import { BsBag } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../store";
+import { useState } from "react";
+import jwtDecode from "jwt-decode";
 
 const Navbar = () => {
   // const { role } = useSelector((state) => state.auth);
@@ -29,7 +29,7 @@ const Navbar = () => {
 
   if (token) {
     try {
-      setRole(jwtDecode(token).role || '');
+      setRole(jwtDecode(token).role || "");
     } catch (error) {
       setRole(null);
       return;
@@ -99,11 +99,11 @@ const Navbar = () => {
                 className="header-action-btn"
                 to="/cart"
               >
-                <BsCart2 className="text-2xl" />
-                <p className="header-action-label">Cart</p>
+                {/* <p className="header-action-label">Cart</p> */}
                 <div className="btn-badge bg-teal-600" aria-hidden="true">
                   {cartTotalQuantity}
                 </div>
+                <BsCart2 className="text-2xl" />
               </Link>
               <Link
                 class="mr-5 hover:text-gray-900"
@@ -111,15 +111,17 @@ const Navbar = () => {
               >
                 <AiOutlineHeart className="text-2xl" />
 
-                <p className="header-action-label">Wish</p>
+                {/* <p className="header-action-label">Wish</p> */}
 
-                <div className="btn-badge bg-pink-600" aria-hidden="true">
-                  2
+                <div className="btn-badge bg-teal-600" aria-hidden="true">
+                  0
                 </div>
               </Link>
+
               <Link class="mr-5 hover:text-gray-900" to="/product-list">
-                Products
+                <BsBag className="text-2xl" />
               </Link>
+
               {/* <Link class="mr-5 hover:text-gray-900">Fourth Link</Link> */}
             </nav>
           )}

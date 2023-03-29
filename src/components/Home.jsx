@@ -6,6 +6,18 @@ import { fetchProducts, useGetAllProductsQuery } from '../store';
 import Hero from './hero/Hero';
 import Category from './category/Category';
 
+// import Services from "./services/Services";
+// import Blog from "./blog/Blog";
+// import Footer from "./footer/Footer";
+// import Products from "./products/products/Products";
+// import FeatureCategory from "./feature-category/FeatureCategory";
+// import Slider from "./slider/Slider";
+// import HeroImage from "./hero/HeroImage";
+// import HeroBanner from "./hero/HeroBanner";
+// import TopProducts from "./products/products/TopProducts";
+// import { Link } from "react-router-dom";
+// import DummyProducts from "../utils/DummyProducts.jsx";
+
 import Services from './services/Services';
 import Blog from './blog/Blog';
 import Footer from './footer/Footer';
@@ -90,9 +102,9 @@ function Home() {
       <TopProducts />
 
       {/* add section */}
-      <div class="container pb-16" style={{ margin: '0 auto' }}>
-        <Link to="/">
-          <img src={offerImg} class="w-full h-full" alt="offer pic" />
+      <div class="container m-auto">
+        <Link to="/product-list">
+          <img className="home-flex-img" src="/offer pic.png" />
         </Link>
       </div>
       <Products />

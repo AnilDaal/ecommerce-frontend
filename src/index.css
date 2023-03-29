@@ -16,7 +16,3 @@
 .react-multiple-carousel__arrow--right {
   background-color: black;
 }
-
-body {
-  transition: all 0.3s ease-in-out;
-}
