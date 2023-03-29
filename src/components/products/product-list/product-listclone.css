@@ -1,0 +1,33 @@
+.d-product-list-left {
+}
+
+.d-filter-overlay {
+  display: none !important;
+}
+@media screen and (width<576px) {
+  .d-product-list-left {
+    display: none;
+  }
+  .d-product-list-right {
+    width: 100vw;
+
+    padding: 1rem;
+  }
+  .d-product-list {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+  .d-product-list-content {
+    flex: 1 1 120px;
+  }
+  .d-product-list-content h4 {
+    font-size: 10px;
+  }
+  .d-product-list-content p {
+    font-size: 12px;
+  }
+  .d-filter-overlay {
+    display: flex !important;
+    padding: 0 20px;
+  }
+}

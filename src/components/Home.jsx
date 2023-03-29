@@ -18,6 +18,7 @@ import TopProducts from './products/products/TopProducts';
 import DummyProducts from '../utils/DummyProducts';
 import { Link } from 'react-router-dom';
 import offerImg from '../assets/offerpic.png';
+import CategoryNavbar from './category-navbar/CategoryNavbar';
 function Home() {
   // const { data, error, isLoading } = useGetAllProductsQuery();
   // const { items, error } = useSelector((state) => state.products);
@@ -32,6 +33,54 @@ function Home() {
   return (
     <main>
       {/* <Slider /> */}
+      <div
+        className="flex items-center justify-center gap-2 md:gap-24 "
+        style={{
+          backgroundColor: '#eeeeee',
+          height: '60px',
+        }}
+      >
+        <CategoryNavbar
+          title="Office furniture"
+          links={[
+            'Office Chair',
+            'Office Table',
+            'Computer Table',
+            'Mesh Chair',
+            'Resturant Chair',
+          ]}
+        />
+        <CategoryNavbar
+          title="Bedroom"
+          links={[
+            'Office Chair',
+            'Office Table',
+            'Computer Table',
+            'Mesh Chair',
+            'Resturant Chair',
+          ]}
+        />
+        <CategoryNavbar
+          title="Living Room"
+          links={[
+            'Office Chair',
+            'Office Table',
+            'Computer Table',
+            'Mesh Chair',
+            'Resturant Chair',
+          ]}
+        />
+        <CategoryNavbar
+          title="Dinning Room"
+          links={[
+            'Office Chair',
+            'Office Table',
+            'Computer Table',
+            'Mesh Chair',
+            'Resturant Chair',
+          ]}
+        />
+      </div>
       <HeroBanner />
       {/* <Hero /> */}
 

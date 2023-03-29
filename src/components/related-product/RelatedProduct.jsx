@@ -5,6 +5,7 @@ import { addToCart, useGetAllProductsQuery } from '../../store';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { useEffect, useLayoutEffect } from 'react';
 
 const responsive = {
   superLargeDesktop: {
@@ -18,7 +19,7 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 4,
+    items: 3,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -32,6 +33,9 @@ const RelatedProduct = ({ value, col = 4 }) => {
   const handleClick = (product) => {
     dispatch(addToCart(product));
   };
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const content = data?.data.slice(0, value).map((item) => {
     return (
@@ -41,12 +45,14 @@ const RelatedProduct = ({ value, col = 4 }) => {
         key={item._id}
       >
         <div class="relative">
-          <img src={item.image} alt="product 1" class="w-full" />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-40 flex items-center
+          <Link to={`/product/${item._id}`}>
+            <img src={item.image} alt="product 1" class="w-full" />
+
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex items-center
             justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
-          >
-            {/* <button
+            >
+              {/* <button
               class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
               title="view product"
             >
@@ -58,7 +64,8 @@ const RelatedProduct = ({ value, col = 4 }) => {
             >
               <i class="fa-solid fa-heart"></i>
             </button> */}
-          </div>
+            </div>
+          </Link>
         </div>
         <div class="pt-4 pb-3 px-4">
           <Link to={`/product/${item._id}`}>
@@ -107,15 +114,14 @@ const RelatedProduct = ({ value, col = 4 }) => {
       {error && <h2>{error.message}</h2>}
       <div class={`grid grid-cols gap-6`}>
         {isLoading ? (
-          <>
-            <Skeleton height={140} />
-            <Skeleton height={140} />
-            <Skeleton height={140} />
-            <Skeleton height={140} />
-            <Skeleton height={140} />
-            <Skeleton height={140} />
-            <Skeleton height={140} />
-          </>
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            <Skeleton height={140} width={140} />
+            <Skeleton height={140} width={140} />
+            <Skeleton height={140} width={140} />
+            <Skeleton height={140} width={140} />
+            <Skeleton height={140} width={140} />
+            <Skeleton height={140} width={140} />
+          </div>
         ) : (
           <Carousel responsive={responsive}>{content}</Carousel>
         )}

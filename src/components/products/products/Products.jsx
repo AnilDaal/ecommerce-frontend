@@ -3,7 +3,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { arr } from '../../../data/jsonTestData';
 
 import { addToCart, fetchProducts } from '../../../store';
 import './products.css';
@@ -34,39 +33,29 @@ const Products = () => {
             recomended for you
           </h2>
           <div class="box-flex">
-            {arr.slice(0, 10).map((item) => {
+            {allProducts.map((item) => {
               return (
-                <div class="box-flex-middle">
+                <div class="box-flex-middle" key={item._id}>
+                  <Link to={`/product/${item._id}`}>
+                    <img src={item.image} alt={item.title} />
+                  </Link>
                   <div>
-                    <img src={item.Images} alt={item.Name} />
-                  </div>
-                  <div>
-                    <a href="view.html">
+                    <Link to={`/product/${item._id}`}>
                       <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                        {item.Name}
+                        {item.title}
                       </h4>
-                    </a>
+                    </Link>
                     <div class=" items-baseline mb-1 space-x-2">
-                      <p>&#8377;{item['Regular price']}</p>
-                    </div>
-                    <div class="start-chage-size">
-                      <div>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                        <span>⭐</span>
-                      </div>
-                      <p>(150)</p>
+                      <p>&#8377;{item.price}</p>
                     </div>
                   </div>
 
-                  <a
-                    href="#"
+                  <button
+                    onClick={() => handleClick(item)}
                     class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
                   >
                     Add to Cart
-                  </a>
+                  </button>
                 </div>
               );
             })}
