@@ -16,3 +16,10 @@
 .react-multiple-carousel__arrow--right {
   background-color: black;
 }
+@media screen and (max-width: 480px) {
+  .home-flex-img {
+    /* margin: auto; */
+    /* height: 100px; */
+    /* width: 80%; */
+  }
+}

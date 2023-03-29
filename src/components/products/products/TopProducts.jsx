@@ -1,5 +1,5 @@
-import React from 'react';
-import RelatedProduct from '../../related-product/RelatedProduct';
+import React from "react";
+import RelatedProduct from "../../related-product/RelatedProduct";
 
 const TopProducts = () => {
   return (
