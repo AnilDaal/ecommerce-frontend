@@ -90,7 +90,10 @@ export function DummyProducts2() {
 
   const content = data?.data.map((p) => {
     return (
-      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+      <div
+        class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow "
+        key={p._id}
+      >
         <Link to={`/product/${p._id}`}>
           <img
             class="p-8 rounded-t-lg"

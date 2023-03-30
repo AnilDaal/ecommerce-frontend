@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -67,6 +67,7 @@ function App() {
         <h1>Hello admin</h1>
         <Routes>
           <Route element={<AdminHomePageMat />}>
+            <Route path="/" element={<Navigate to="/admin/dashboard" />} />
             <Route element={<AdminDashboard />} path="/admin/dashboard" />
             <Route element={<ProductListing />} path="/admin/product-list" />
             <Route
@@ -197,6 +198,8 @@ function App() {
             }
             path="/dummy-seller"
           />
+
+          <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
         {/* <div class="bg-gray-800 py-4 w-full">

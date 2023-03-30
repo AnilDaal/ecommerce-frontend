@@ -13,8 +13,8 @@ const AdminSidebarMat = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = () => {
-    dispatch(logoutUser());
-    navigate('/');
+    dispatch(logoutUser()).unwrap(() => navigate('/'));
+    console.log('logout');
   };
   return (
     <div className="sidebar">
