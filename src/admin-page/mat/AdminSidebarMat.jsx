@@ -5,14 +5,16 @@ import {
 } from '@mui/icons-material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import './admin-styles/admin-sidebar.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../store';
 // import { logout } from '../../store';
 const AdminSidebarMat = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const logoutHandler = () => {
     dispatch(logoutUser());
+    navigate('/');
   };
   return (
     <div className="sidebar">

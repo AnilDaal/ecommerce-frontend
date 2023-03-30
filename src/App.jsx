@@ -42,17 +42,24 @@ import AdminSingleProduct from './admin-page/AdminSingleProduct';
 import SellerDashboard from './seller-page/util/SellerDashboard';
 
 function App() {
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState(null);
   const { token } = useSelector((state) => state.auth);
   console.log(role);
+  console.log(token);
   useEffect(() => {
+    console.log('inside useeffect');
     console.log(token);
     if (token) {
       const { role } = jwtDecode(token);
       console.log(role);
       setRole(role);
+    } else {
+      setRole('');
     }
   }, [token]);
+  useEffect(() => {
+    console.log('hello useeffect');
+  }, []);
 
   if (role === 'admin') {
     return (
@@ -106,10 +113,9 @@ function App() {
       </BrowserRouter>
     );
   }
-  // if (role === 'customer' || role === '') {
-  //   return <h2>normal customer</h2>;
-  // }
+
   if (role === 'customer' || role === '') {
+    console.log('customer or public ');
     return (
       <BrowserRouter>
         <NavbarComponent />
@@ -127,22 +133,22 @@ function App() {
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
 
-          <Route element={<SellerRouteProtected />}>
-            <Route element={<SellerHomePage />}>
-              <Route
-                path="/seller/create-product"
-                element={<SellerAddProduct />}
-              />
-              <Route
-                path="/seller/product-list"
-                element={<SellerProductListing />}
-              />
-              <Route
-                path="/seller/update-product/:productId"
-                element={<SellerUpdateProduct />}
-              />
-            </Route>
+          {/* <Route elemen<Route path="/" element={<Home />} />t={<SellerRouteProtected />}>
+          <Route element={<SellerHomePage />}>
+            <Route
+              path="/seller/create-product"
+              element={<SellerAddProduct />}
+            />
+            <Route
+              path="/seller/product-list"
+              element={<SellerProductListing />}
+            />
+            <Route
+              path="/seller/update-product/:productId"
+              element={<SellerUpdateProduct />}
+            />
           </Route>
+        </Route> */}
 
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<WishList />} />
@@ -157,20 +163,20 @@ function App() {
             <Route element={<SellerRegister />} path="/seller-register" />
           </Route>
 
-          <Route element={<AdminRouteProtected />}>
-            <Route element={<AdminHomePage />}>
-              <Route element={<ProductListing />} path="/admin/product-list" />
-              <Route
-                element={<AdminAddProducts />}
-                path="/admin/create-product"
-              />
-              <Route element={<SellersListing />} path="/admin/seller-list" />
-              <Route
-                element={<AdminUpdateProduct />}
-                path="/admin/update-product/:productId"
-              />
-            </Route>
+          {/* <Route element={<AdminRouteProtected />}>
+          <Route element={<AdminHomePage />}>
+            <Route element={<ProductListing />} path="/admin/product-list" />
+            <Route
+              element={<AdminAddProducts />}
+              path="/admin/create-product"
+            />
+            <Route element={<SellersListing />} path="/admin/seller-list" />
+            <Route
+              element={<AdminUpdateProduct />}
+              path="/admin/update-product/:productId"
+            />
           </Route>
+        </Route> */}
 
           {/* <Route element={<AllProducts />} path="/products" /> */}
           <Route element={<SingleProduct />} path="/product/:id" />
@@ -204,6 +210,9 @@ function App() {
       </BrowserRouter>
     );
   }
+
+  if (role === null) return 'loading..';
 }
+// }
 
 export default App;

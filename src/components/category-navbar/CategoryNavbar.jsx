@@ -21,7 +21,7 @@ const CategoryNavbar = ({ title, links }) => {
 
         <div className="dropdown-content">
           {links?.map((item) => (
-            <Link to="/product-list">
+            <Link to="/product-list" key={item}>
               <p>{item}</p>
             </Link>
           ))}

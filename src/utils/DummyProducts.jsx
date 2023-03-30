@@ -29,7 +29,7 @@ const DummyProducts = () => {
 
   const content = data?.data.map((p) => {
     return (
-      <div className="border mr-4 p-2">
+      <div className="border mr-4 p-2" key={p._id}>
         <Link
           to={`/product/${p._id}`}
           class="block relative h-48 rounded overflow-hidden"
