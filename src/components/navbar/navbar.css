@@ -26,25 +26,27 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin:0 10%; */
 }
+.nav-res span{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
 .nav-res-icon {
   display: flex;
 }
 
 .nav-res-icon a{
-  margin:0 4px;
+  margin:0 2px;
 }
 
 .nav-res-show{
   display: flex;
   gap: 2rem;
-  /* margin: 0 4px; */
 }
 
 @media screen and (max-width:480px) {
   .nav-res{
-    /* margin: 0 30px !important; */
     align-items: center;
     padding: .8rem 0;
 

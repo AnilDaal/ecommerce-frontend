@@ -93,63 +93,42 @@ const Navbar = () => {
         )} */}
         <div className="nav-res-show">
           <div>
-            {!token && (
-              <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 nav-res-icon">
-                <Link
-                  class="mr-5 hover:text-gray-900"
-                  className="header-action-btn"
-                  to="/cart"
-                >
-                  {/* <p className="header-action-label">Cart</p> */}
-                  <div className="btn-badge bg-teal-600" aria-hidden="true">
-                    {cartTotalQuantity}
-                  </div>
-                  <BsCart2 className="text-2xl" />
-                </Link>
-                <Link
-                  class="mr-5 hover:text-gray-900"
-                  className="header-action-btn"
-                >
-                  <AiOutlineHeart className="text-2xl" />
-
-                  {/* <p className="header-action-label">Wish</p> */}
-
-                  <div className="btn-badge bg-teal-600" aria-hidden="true">
-                    0
-                  </div>
-                </Link>
-                <Link class="mr-5 hover:text-gray-900" to="/product-list">
-                  <BsBag className="text-2xl" />
-                </Link>
-
-                {/* <Link class="mr-5 hover:text-gray-900">Fourth Link</Link> */}
-              </nav>
-            )}
-          </div>
-          <div>
-            {!token ? (
-              <Link to="/customer-login">
-                <button class="inline-flex items-center bg-teal-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base  md:mt-0">
-                  Login
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="w-4 h-4 ml-1"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-              </Link>
-            ) : (
-              <button
-                onClick={() => dispatch(logoutUser())}
-                class="inline-flex items-center bg-red-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 nav-res-icon">
+              <Link
+                class="mr-5 hover:text-gray-900"
+                className="header-action-btn"
+                to="/cart"
               >
-                Logout
+                {/* <p className="header-action-label">Cart</p> */}
+                <div className="btn-badge bg-teal-600" aria-hidden="true">
+                  {cartTotalQuantity}
+                </div>
+                <BsCart2 className="text-2xl" />
+              </Link>
+              <Link
+                class="mr-5 hover:text-gray-900"
+                className="header-action-btn"
+              >
+                <AiOutlineHeart className="text-2xl" />
+
+                {/* <p className="header-action-label">Wish</p> */}
+
+                <div className="btn-badge bg-teal-600" aria-hidden="true">
+                  0
+                </div>
+              </Link>
+              <Link class="mr-5 hover:text-gray-900" to="/product-list">
+                <BsBag className="text-2xl" />
+              </Link>
+
+              {/* <Link class="mr-5 hover:text-gray-900">Fourth Link</Link> */}
+            </nav>
+          </div>
+
+          <div>
+            <Link to="/customer-login">
+              <button class="inline-flex items-center bg-teal-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base  md:mt-0">
+                Login
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -162,7 +141,7 @@ const Navbar = () => {
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
               </button>
-            )}
+            </Link>
           </div>
         </div>
       </div>
