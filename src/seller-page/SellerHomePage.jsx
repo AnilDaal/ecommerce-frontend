@@ -1,17 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import SellerAddProduct from './SellerAddProduct';
-import SellerProductListing from './SellerProductListing';
-import SellerSidebar from './SellerSidebar';
+import { Outlet } from 'react-router-dom';
+
+import SellerSidebar from './util/SellerSidebar';
+import SellerNavbar from './util/SellerNavbar';
 
 const SellerHomePage = () => {
   return (
-    <div className="container">
-      <h1 className="bg-black w-full text-white text-center text-2xl">
-        SellerHomePage
-      </h1>
-
+    <div className="home">
       <SellerSidebar />
+
+      <div className="home-container">
+        <SellerNavbar />
+
+        <Outlet />
+      </div>
     </div>
   );
 };

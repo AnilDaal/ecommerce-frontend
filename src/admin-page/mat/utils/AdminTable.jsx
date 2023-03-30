@@ -1,3 +1,4 @@
+import './admin-table.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -5,43 +6,46 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import React, { useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { adminGetProduct, deleteProduct } from '../store';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { adminGetProduct } from '../../../store';
 
-const ProductListing = () => {
-  const { adminProductList, isLoading } = useSelector((state) => state.admin);
-
-  console.log(adminProductList);
+const AdminTable = () => {
   const dispatch = useDispatch();
+  const { adminProductList } = useSelector((state) => state.admin);
+  console.log(adminProductList);
   useEffect(() => {
     dispatch(adminGetProduct());
   }, [dispatch]);
-
-  const handleDelete = (id) => {
-    if (window.confirm('Do you really want to delete this item permanently?')) {
-      dispatch(deleteProduct(id))
-        .unwrap()
-        .then(() => dispatch(adminGetProduct()))
-        .catch((err) => console.log(err));
-    }
-  };
-  if (isLoading) {
-    return (
-      <>
-        <Skeleton height={120} />
-        <Skeleton height={120} />
-        <Skeleton height={120} />
-        <Skeleton height={120} />
-        <Skeleton height={120} />
-      </>
-    );
-  }
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        {/* <TableHead>
+          <TableRow>
+            <TableCell className="tableCell x">
+              <label
+                htmlFor="filter"
+                style={{
+                  color: 'gray',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                }}
+              >
+                Filter via name
+              </label>
+              <input
+                id="filter"
+                type="text"
+                onChange={handleChange}
+                name="name"
+                value={user.name}
+              />
+            </TableCell>
+          </TableRow>
+        </TableHead> */}
+
         <TableHead>
           <TableRow>
             {/* <TableCell className="tableCell x">ID</TableCell> */}
@@ -79,10 +83,10 @@ const ProductListing = () => {
                     <button className="view">View</button>
                   </Link>
                   <Link to={`/admin/update-product/${product._id}`}>
-                    <button className="update">Update</button>
+                    <button className="view">Update</button>
                   </Link>
                   <button
-                    onClick={() => handleDelete(product._id)}
+                    // onClick={() => handleDelete(row._id)}
                     className="delete"
                   >
                     Delete
@@ -97,4 +101,4 @@ const ProductListing = () => {
   );
 };
 
-export default ProductListing;
+export default AdminTable;

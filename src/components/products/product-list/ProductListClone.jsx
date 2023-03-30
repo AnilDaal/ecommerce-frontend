@@ -1,64 +1,55 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { addToCart, useGetAllProductsQuery } from '../../../store';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
+import { handleFilter } from '../../../store/slices/productSlice';
+import { fetchProducts } from '../../../store';
 
+import './product-listclone.css';
 const ProductListClone = () => {
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useGetAllProductsQuery();
-  const [sortData, setSortData] = useState([]);
+  const { allProducts, filterProducts, error, isLoading } = useSelector(
+    (state) => state.products
+  );
+  // const { data, error, isLoading } = useGetAllProductsQuery();
+  console.log(allProducts);
+  const [isChair, setIsChair] = useState(false);
 
   const handleClick = (product) => {
     dispatch(addToCart(product));
   };
 
-  // const handleLowToHigh = () => {
-  //   console.log(data?.data.slice().sort((a, b) => a.price - b.price));
-  //   setSortData(data?.data.slice().sort((a, b) => a.price - b.price));
-  // };
-  // const handleHighToLow = () => {
-  //   console.log(data?.data.slice().sort((a, b) => b.price - a.price));
-  //   setSortData(data?.data.slice().sort((a, b) => b.price - a.price));
-  // };
+  const handleFilterData = (product) => {
+    dispatch(handleFilter(product));
+  };
 
-  // const filterProduct = (filterKey) => {
-  //   const filteredArray = data?.data.category.includes(filterKey);
-  //   console.log(filteredArray);
-  // };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
-  console.log(sortData);
-
-  const content = data?.data.map((item) => {
+  const content = (
+    filterProducts.length === 0 ? allProducts : filterProducts
+  ).map((item) => {
     return (
-      <div class="bg-white shadow rounded overflow-hidden group">
+      <div class="bg-white shadow rounded overflow-hidden group d-product-list-content">
         <div class="relative">
-          <img src={item.image} alt="product 1" class="w-full" />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+          <Link to={`/product/${item._id}`}>
+            <img src={item.image} alt="product 1" class="w-full" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
             justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
-          >
-            {/* <a
-              href="#"
-              class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-              title="view product"
-            >
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-            <a
-              href="#"
-              class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-              title="add to wishlist"
-            >
-              <i class="fa-solid fa-heart"></i>
-            </a> */}
-          </div>
+            ></div>
+          </Link>
         </div>
         <div class="pt-4 pb-3 px-4">
           <Link to={`/product/${item._id}`}>
             <h4 class="uppercase font-medium text-sm mb-2 text-gray-800 hover:text-primary transition">
-              {item.title}
+              {item.title.substring(0, 20)}...
             </h4>
           </Link>
           <div class="flex items-baseline mb-1 space-x-2">
@@ -99,18 +90,29 @@ const ProductListClone = () => {
   });
   return (
     <div>
-      <div class="container py-4 flex items-center gap-3">
-        <a href="../index.html" class="text-primary text-base">
-          <i class="fa-solid fa-house"></i>
-        </a>
-        <span class="text-sm text-gray-400">
-          <i class="fa-solid fa-chevron-right"></i>
-        </span>
-        <p class="text-gray-600 font-medium">Shop</p>
+      <div class="container py-4 flex items-center gap-3 d-filter-overlay">
+        <button
+          class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          onClick={() => handleFilterData('')}
+        >
+          All
+        </button>
+        <button
+          class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          onClick={() => handleFilterData('chairs')}
+        >
+          Chair
+        </button>
+        <button
+          class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          onClick={() => handleFilterData('tables')}
+        >
+          Table
+        </button>
       </div>
 
       <div class="container grid grid-cols-4 gap-6 pt-4 pb-16 items-start mx-auto">
-        <div class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden">
+        <div class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden d-product-list-left">
           <div class="divide-y divide-gray-200 space-y-5">
             <div>
               <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
@@ -118,19 +120,27 @@ const ProductListClone = () => {
               </h3>
               <div class="space-y-2">
                 <div class="flex items-center ">
-                  <input
+                  {/* <input
                     type="checkbox"
                     name="cat-1"
                     id="cat-1"
+                    checked={isChair}
                     class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
-                  />
-                  <label for="cat-1" class="text-gray-600 ml-3 cusror-pointer">
-                    Bedroom
-                  </label>
+                    onChange={(event) => setIsChair(event.target.checked)}
+                  /> */}
+                  {/* <label for="cat-1" class="text-gray-600 ml-3 cusror-pointer">
+                    Chair
+                  </label> */}
+                  <button
+                    className="p-2 bg-slate-500 text-xl rounded-sm text-white"
+                    onClick={() => handleFilterData('chairs')}
+                  >
+                    Chair
+                  </button>
                   <div class="ml-auto text-gray-600 text-sm">(15)</div>
                 </div>
                 <div class="flex items-center">
-                  <input
+                  {/* <input
                     type="checkbox"
                     name="cat-2"
                     id="cat-2"
@@ -138,7 +148,13 @@ const ProductListClone = () => {
                   />
                   <label for="cat-2" class="text-gray-600 ml-3 cusror-pointer">
                     Sofa
-                  </label>
+                  </label> */}
+                  <button
+                    className="p-2 bg-slate-500 text-xl rounded-sm text-white"
+                    onClick={() => handleFilterData('tables')}
+                  >
+                    Table
+                  </button>
                   <div class="ml-auto text-gray-600 text-sm">(9)</div>
                 </div>
                 <div class="flex items-center">
@@ -361,7 +377,7 @@ const ProductListClone = () => {
           </div>
         </div>
 
-        <div class="col-span-3">
+        <div class="col-span-3 d-product-list-right">
           <div class="flex items-center mb-4">
             {/* <select
               name="sort"
@@ -398,7 +414,7 @@ const ProductListClone = () => {
           </div>
 
           {error && <h2>{error.message}</h2>}
-          <div class="grid grid-cols-4 gap-6">
+          <div class="grid grid-cols-4 gap-6 d-product-list">
             {isLoading ? (
               <>
                 <Skeleton height={140} />

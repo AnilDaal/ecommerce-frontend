@@ -20,7 +20,10 @@ const AdminLogin = () => {
     e.preventDefault();
     dispatch(loginAdmin(user))
       .unwrap()
-      .then(() => navigate('/admin/product-list'))
+      .then(() => {
+        // window.location.reload();
+        return navigate('/admin/product-list');
+      })
       .catch((err) => console.log(err));
   };
   console.log(user);
