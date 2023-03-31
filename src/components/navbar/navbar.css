@@ -21,3 +21,48 @@ header {
   color: var(--white);
   border-radius: 50%;
 }
+.nav-res{
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-res span{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-res-icon {
+  display: flex;
+}
+
+.nav-res-icon a{
+  margin:0 2px;
+}
+
+.nav-res-show{
+  display: flex;
+  gap: 2rem;
+}
+
+@media screen and (max-width:480px) {
+  .nav-res{
+    align-items: center;
+    padding: .8rem 0;
+
+  }
+  
+  .nav-res span{
+    font-size: 14px;
+  }
+  .nav-res-icon {
+    padding-top:7px ;
+    /* padding: 7px; */
+  }
+  .nav-res-icon a{
+    margin:0 3px;
+  }
+  .nav-res-show{
+    gap: 0.7rem;
+  }
+}
