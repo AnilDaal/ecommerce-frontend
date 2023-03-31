@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 
 import { addToCart, fetchProducts } from '../../../store';
 import './products.css';
+import { toast } from 'react-toastify';
 
 const Products = () => {
-  // eslint-disable-next-line no-undef
+  const { token } = useSelector((state) => state.auth);
   const { allProducts, isLoading, error } = useSelector(
     (state) => state.products
   );
@@ -23,7 +24,13 @@ const Products = () => {
   }, [dispatch]);
 
   const handleClick = (product) => {
-    dispatch(addToCart(product));
+    if (token) {
+      dispatch(addToCart(product));
+    } else {
+      toast.error(`plz login first `, {
+        position: 'top-right',
+      });
+    }
   };
   return (
     <section class="section product" style={{ paddingBottom: '10px' }}>

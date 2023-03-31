@@ -1,18 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-  registerUser,
-  loginUser,
   loginAdmin,
   registerSeller,
   loginSeller,
+  registerCustomer,
+  loginCustomer,
 } from '../thunks/auth';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     token: localStorage.getItem('token') || null,
-    // role: localStorage.getItem('role') || null,
 
     registerLoading: false,
     registerError: null,
@@ -36,28 +35,28 @@ const authSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(registerUser.pending, (state, action) => {
+    builder.addCase(registerCustomer.pending, (state, action) => {
       state.registerLoading = true;
       state.registerError = null;
     });
-    builder.addCase(registerUser.fulfilled, (state, action) => {
+    builder.addCase(registerCustomer.fulfilled, (state, action) => {
       state.registerLoading = false;
       state.token = action.payload;
     });
-    builder.addCase(registerUser.rejected, (state, action) => {
+    builder.addCase(registerCustomer.rejected, (state, action) => {
       state.registerLoading = false;
       state.registerError = action.payload;
     });
 
-    builder.addCase(loginUser.pending, (state, action) => {
+    builder.addCase(loginCustomer.pending, (state, action) => {
       state.loginLoading = true;
       state.loginError = null;
     });
-    builder.addCase(loginUser.fulfilled, (state, action) => {
+    builder.addCase(loginCustomer.fulfilled, (state, action) => {
       state.loginLoading = false;
       state.token = action.payload;
     });
-    builder.addCase(loginUser.rejected, (state, action) => {
+    builder.addCase(loginCustomer.rejected, (state, action) => {
       state.loginLoading = false;
       state.loginError = action.payload;
     });

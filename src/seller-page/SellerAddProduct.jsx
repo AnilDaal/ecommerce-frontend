@@ -41,7 +41,9 @@ const SellerAddProduct = () => {
                   <span class="padding-bottom--15">Add Product</span>
                   <form id="stripe-login" onSubmit={handleSubmit}>
                     <div class="field padding-bottom--24">
-                      <label for="title">Title</label>
+                      <label for="title" className="text-left ">
+                        Title
+                      </label>
                       <input
                         type="text"
                         id="title"
@@ -57,7 +59,9 @@ const SellerAddProduct = () => {
 
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="desc">Description</label>
+                        <label for="desc" className="text-left ">
+                          Description
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -73,7 +77,9 @@ const SellerAddProduct = () => {
                     </div>
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="category">Category</label>
+                        <label for="category" className="text-left ">
+                          Category
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -90,7 +96,9 @@ const SellerAddProduct = () => {
 
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="price">Price</label>
+                        <label for="price" className="text-left ">
+                          Price
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -107,7 +115,9 @@ const SellerAddProduct = () => {
 
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="image">Image</label>
+                        <label for="image" className="text-left ">
+                          Image
+                        </label>
                       </div>
                       <input
                         type="text"

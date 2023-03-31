@@ -94,20 +94,24 @@ function App() {
         <h1>Hello Seller</h1>
         <Routes>
           <Route element={<SellerHomePage />}>
+            <Route path="/" element={<Navigate to="/seller/dashboard" />} />
             <Route element={<SellerDashboard />} path="/seller/dashboard" />
-            <Route element={<AdminTable />} path="/admin/product-list" />
             <Route
-              element={<AdminAddProducts />}
-              path="/admin/create-product"
+              element={<SellerProductListing />}
+              path="/seller/product-list"
+            />
+            <Route
+              element={<SellerAddProduct />}
+              path="/seller/create-product"
             />
             {/* <Route element={<SellersListing />} path="/admin/seller-list" /> */}
             <Route
-              element={<AdminUpdateProduct />}
-              path="/admin/update-product/:productId"
+              element={<SellerUpdateProduct />}
+              path="/seller/update-product/:productId"
             />
             <Route
               element={<AdminSingleProduct />}
-              path="/admin/single-product/:id"
+              path="/seller/single-product/:id"
             />
           </Route>
         </Routes>
@@ -120,7 +124,7 @@ function App() {
     return (
       <BrowserRouter>
         <NavbarComponent />
-        <ToastContainer />
+        <ToastContainer autoClose={1000} closeOnClick />
         <Routes>
           {/* <Route
           path="/customerregister"

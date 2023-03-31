@@ -14,7 +14,6 @@ const SellerSidebar = () => {
   const logoutHandler = () => {
     dispatch(logoutUser());
     window.location.reload();
-    console.log('logout');
   };
   return (
     <div className="sidebar">
@@ -27,7 +26,7 @@ const SellerSidebar = () => {
         <ul>
           <NavLink to="/seller/dashboard" className="nav-container">
             <DashboardIcon />
-            <span>Dashboard</span>
+            <span className="text-lg">Dashboard</span>
           </NavLink>
 
           <NavLink
@@ -37,7 +36,7 @@ const SellerSidebar = () => {
             }
           >
             <ProductionQuantityLimits />
-            <span>Product Listing</span>
+            <span className="text-lg">Product Listing</span>
           </NavLink>
           <NavLink
             to="/seller/create-product"
@@ -46,7 +45,7 @@ const SellerSidebar = () => {
             }
           >
             <SupervisedUserCircleOutlined />
-            <span>Add Product</span>
+            <span className="text-lg">Add Product</span>
           </NavLink>
 
           {/* <li><DeliveryDining /><span>Delivery</span></li>

@@ -9,6 +9,8 @@ const SellerProductListing = () => {
     dispatch(getProduct());
   }, [dispatch]);
 
+  console.log(sellerList);
+
   const handleDelete = (id) => {
     if (window.confirm('Do you really want to delete this item permanently?')) {
       dispatch(deleteProduct(id))

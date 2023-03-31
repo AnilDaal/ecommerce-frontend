@@ -8,17 +8,26 @@ import { handleFilter } from '../../../store/slices/productSlice';
 import { fetchProducts } from '../../../store';
 
 import './product-listclone.css';
+import { toast } from 'react-toastify';
 const ProductListClone = () => {
+  const [count, setCount] = useState(1);
   const dispatch = useDispatch();
   const { allProducts, filterProducts, error, isLoading } = useSelector(
     (state) => state.products
   );
+  const { token } = useSelector((state) => state.auth);
   // const { data, error, isLoading } = useGetAllProductsQuery();
   console.log(allProducts);
   const [isChair, setIsChair] = useState(false);
 
   const handleClick = (product) => {
-    dispatch(addToCart(product));
+    if (token) {
+      dispatch(addToCart(product));
+    } else {
+      toast.error(`plz login first `, {
+        position: 'top-right',
+      });
+    }
   };
 
   const handleFilterData = (product) => {
@@ -29,14 +38,23 @@ const ProductListClone = () => {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
-    dispatch(fetchProducts());
+    console.log('use effect hook...');
+    dispatch(fetchProducts(1));
   }, [dispatch]);
+
+  const handleLoadMore = () => {
+    setCount((prev) => prev + 1);
+    dispatch(fetchProducts(count));
+  };
 
   const content = (
     filterProducts.length === 0 ? allProducts : filterProducts
   ).map((item) => {
     return (
-      <div class="bg-white shadow rounded overflow-hidden group d-product-list-content">
+      <div
+        class="bg-white shadow rounded overflow-hidden group d-product-list-content"
+        key={item._id}
+      >
         <div class="relative">
           <Link to={`/product/${item._id}`}>
             <img src={item.image} alt="product 1" class="w-full" />
@@ -49,7 +67,7 @@ const ProductListClone = () => {
         <div class="pt-4 pb-3 px-4">
           <Link to={`/product/${item._id}`}>
             <h4 class="uppercase font-medium text-sm mb-2 text-gray-800 hover:text-primary transition">
-              {item.title.substring(0, 20)}...
+              {item.title?.substring(0, 20)}...
             </h4>
           </Link>
           <div class="flex items-baseline mb-1 space-x-2">
@@ -426,7 +444,13 @@ const ProductListClone = () => {
                 <Skeleton height={140} />
               </>
             ) : (
-              content
+              <>
+                {content}
+                <br />
+                <button className="btn bg-teal-500" onClick={handleLoadMore}>
+                  Load More
+                </button>
+              </>
             )}
           </div>
         </div>

@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../../store';
+import { loginCustomer } from '../../store';
 import Loader from '../../utils/Loader';
 import './auth.css';
 const CustomerLogin = () => {
   const {
     token,
-    name,
-    email,
-    _id,
-    registerLoading,
-    registerError,
+
     loginLoading,
     loginError,
   } = useSelector((state) => state.auth);
@@ -24,9 +20,9 @@ const CustomerLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(user));
+    dispatch(loginCustomer(user));
   };
-  console.log(user);
+  console.log(token);
   return (
     <div class="login-root">
       <div

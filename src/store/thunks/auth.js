@@ -1,24 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import instance from '../../utils/api';
 
-const instance = axios.create({
-  baseURL: 'https://api.furniturelelo.com/api/v1',
-});
-
-const registerUser = createAsyncThunk(
-  'user/register',
+const registerCustomer = createAsyncThunk(
+  'customer/register',
   async (values, { rejectWithValue }) => {
     try {
-      console.log(values);
-      const response = await instance.post('/signup', {
-        name: values.name,
-        email: values.email,
-        password: values.password,
-        number: values.number,
+      const response = await instance.post('/customer/signup', {
+        ...values,
       });
-      console.log(response);
-      // localStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.token);
       return response.data.token;
     } catch (error) {
       console.log(error.response.data);
@@ -27,11 +19,11 @@ const registerUser = createAsyncThunk(
   }
 );
 
-const loginUser = createAsyncThunk(
-  'user/login',
+const loginCustomer = createAsyncThunk(
+  'customer/login',
   async (values, { rejectWithValue }) => {
     try {
-      const response = await instance.post('/login', {
+      const response = await instance.post('/customer/login', {
         email: values.email,
         password: values.password,
       });
@@ -119,8 +111,8 @@ const loginSeller = createAsyncThunk(
 );
 
 export {
-  registerUser,
-  loginUser,
+  registerCustomer,
+  loginCustomer,
   loginAdmin,
   registerSeller,
   sellerListing,

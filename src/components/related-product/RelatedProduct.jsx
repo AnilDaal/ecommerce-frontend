@@ -1,12 +1,15 @@
 import Skeleton from 'react-loading-skeleton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, useGetAllProductsQuery } from '../../store';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useEffect, useLayoutEffect } from 'react';
-
+import { toast } from 'react-toastify';
+import { productAddToCart } from '../../store/thunks/cart';
+import Loader from '../../utils/Loader';
+import Spinner from '../../utils/Spinner';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -29,13 +32,25 @@ const responsive = {
 
 const RelatedProduct = ({ value, col = 4 }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
+  const { token } = useSelector((state) => state.auth);
+  const { isLoading: productAddToCartLoading } = useSelector(
+    (state) => state.productCart
+  );
   const dispatch = useDispatch();
+
   const handleClick = (product) => {
-    dispatch(addToCart(product));
+    if (token) {
+      // dispatch(addToCart(product));
+      dispatch(productAddToCart(product._id));
+    } else {
+      toast.error(`plz login first `, {
+        position: 'top-right',
+      });
+    }
   };
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   const content = data?.data.slice(0, value).map((item) => {
     return (
@@ -101,10 +116,12 @@ const RelatedProduct = ({ value, col = 4 }) => {
           </div> */}
         </div>
         <button
+          disabled={productAddToCartLoading}
           onClick={() => handleClick(item)}
           class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
         >
-          Add to cart
+          {/* {productAddToCartLoading ? <Loader /> : 'Add To Cart'} */}
+          Add To Cart
         </button>
       </div>
     );

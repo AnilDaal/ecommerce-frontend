@@ -104,7 +104,7 @@ function Home() {
       {/* add section */}
       <div class="container m-auto">
         <Link to="/product-list">
-          <img className="home-flex-img" src="/offer pic.png" />
+          <img className="home-flex-img" src="/offer pic.png" alt="home-flex" />
         </Link>
       </div>
       <Products />

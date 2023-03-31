@@ -1,19 +1,51 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   decrementCart,
   incrementCart,
   resetCart,
   removeCart,
   getTotals,
-} from "../store";
-import PayButton from "./stripe/PayButton";
-import "./cart.css";
+} from '../store';
+import PayButton from './stripe/PayButton';
+import './cart.css';
+import { useEffect, useState } from 'react';
+import { productCartList, productDeleteToCart } from '../store/thunks/cart';
+import instance from '../utils/api';
 
 const Cart = () => {
+  const { productCartItems } = useSelector((state) => state.productCart);
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [dItems, setDItems] = useState([]);
+
+  // console.log(productCartItems);
+
+  useEffect(() => {
+    dispatch(productCartList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+    if (productCartItems.length > 0) {
+      Promise.all(
+        productCartItems.map((item) => instance.get('/public/' + item))
+      )
+        .then((products) => setDItems(products))
+        .catch((error) => {
+          if (!signal.aborted) {
+            console.log(error);
+          }
+        });
+    }
+
+    return () => {
+      controller.abort();
+    };
+  }, [productCartItems]);
+
   const handleReset = () => {
     dispatch(resetCart());
   };
@@ -24,7 +56,19 @@ const Cart = () => {
     dispatch(decrementCart(product));
   };
   const handleCartRemove = (product) => {
-    dispatch(removeCart(product));
+    // dispatch(removeCart(product));
+    dispatch(productDeleteToCart(product._id))
+      .unwrap()
+      .then(() => {
+        console.log(productCartItems);
+        dispatch(productCartList());
+        console.log(productCartItems);
+      })
+      .catch((err) => console.log(err));
+
+    // .unwrap()
+    // .then(() => window.location.reload())
+    // .catch((err) => console.log(err));
   };
 
   // dispatch(getTotals());
@@ -32,54 +76,58 @@ const Cart = () => {
   //   dispatch(getTotals());
   // }, [dispatch]);
 
-  dispatch(getTotals());
+  // console.log(dItems);
   return (
     <div className="container mx-auto">
       <h1>Shopping Cart</h1>
-      {cartItems.length === 0 && (
+      {/* {cartItems?.length === 0 && (
         <p>
           Your cart is empty click <Link to="/">Here</Link>
         </p>
-      )}
+      )} */}
       <div>
         <Link to="/">&#x2190; Continue Shopping</Link>
       </div>
       <div>
-        {cartItems.map((product) => (
-          <div key={product._id} className="cart_single">
-            <img src={product.image} alt={product.title} />
-            <p className="cart-title">{product.title}</p>
-            <p>&#8377;{product.price}</p>
+        {dItems?.map((product) => {
+          // console.log(product);
+          const xproduct = product.data.data;
+          return (
+            <div key={xproduct._id} className="cart_single">
+              <img src={xproduct.image} alt={xproduct.title} />
+              <p className="cart-title">{xproduct.title}</p>
+              <p>&#8377;{xproduct.price}</p>
 
-            <div style={{ display: "flex", gap: "4px" }}>
+              <div style={{ display: 'flex', gap: '4px' }}>
+                <button
+                  onClick={() => handleDecrementCart(xproduct)}
+                  className="border px-2 "
+                  style={{ fontSize: '1.2rem' }}
+                >
+                  -
+                </button>
+                <span>{xproduct.cartQuantity}</span>
+                <button
+                  className="border px-2 "
+                  style={{ fontSize: '1.2rem' }}
+                  onClick={() => handleIncrementCart(xproduct)}
+                >
+                  +
+                </button>
+              </div>
+              <h6 style={{ paddingRight: '1rem' }}>
+                total:&#8377;
+                {(product.price * product.cartQuantity).toFixed(2)}
+              </h6>
               <button
-                onClick={() => handleDecrementCart(product)}
-                className="border px-2 "
-                style={{ fontSize: "1.2rem" }}
+                className="btn btn-danger bg-red-600 border-none"
+                onClick={() => handleCartRemove(xproduct)}
               >
-                -
-              </button>
-              <span>{product.cartQuantity}</span>
-              <button
-                className="border px-2 "
-                style={{ fontSize: "1.2rem" }}
-                onClick={() => handleIncrementCart(product)}
-              >
-                +
+                Remove
               </button>
             </div>
-            <h6 style={{ paddingRight: "1rem" }}>
-              total:&#8377;
-              {(product.price * product.cartQuantity).toFixed(2)}
-            </h6>
-            <button
-              className="btn btn-danger bg-red-600 border-none"
-              onClick={() => handleCartRemove(product)}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
+          );
+        })}
 
         {cartItems.length > 0 && (
           <>
@@ -96,7 +144,7 @@ const Cart = () => {
         )}
 
         {cartItems.length > 0 && (
-          <div style={{ textAlign: "end" }}>
+          <div style={{ textAlign: 'end' }}>
             <p>Taxes and shipping charge calculated at checkout page</p>
             {token ? (
               <PayButton cartItems={cartItems} />
@@ -104,7 +152,7 @@ const Cart = () => {
               <button className="btn bg-yellow-300">
                 <Link
                   to="/login"
-                  style={{ color: "white", fontWeight: "bold" }}
+                  style={{ color: 'white', fontWeight: 'bold' }}
                   className="imp-link"
                 >
                   Login To Checkout

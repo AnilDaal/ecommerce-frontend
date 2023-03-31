@@ -5,6 +5,7 @@ import { cartReducer } from './slices/cartSlice';
 import { authReducer } from './slices/authSlice';
 import { adminReducer } from './slices/adminSlice';
 import { sellerReducer } from './slices/sellerSlice';
+import { productCartReducer } from './slices/productCartSlice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     auth: authReducer,
     admin: adminReducer,
     seller: sellerReducer,
+    productCart: productCartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {

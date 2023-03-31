@@ -3,9 +3,10 @@ import instance from '../../utils/api';
 
 const fetchProducts = createAsyncThunk(
   'products/fetch',
-  async (id = null, { rejectWithValue }) => {
+  async (number = 1, { rejectWithValue }) => {
     try {
-      const response = await instance.get('/public');
+      const response = await instance.get(`/public?page=${number}`);
+      console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

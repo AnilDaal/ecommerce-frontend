@@ -1,17 +1,24 @@
 import { Link } from 'react-router-dom';
 import { arr } from '../../../data/jsonTestData';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../../store';
 import './product-list.css';
 import Footer from '../../footer/Footer';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const catArray = ['Mesh', 'Visitors', 'Restaurant', 'Student'];
 const ProductList = () => {
+  const { token } = useSelector((state) => state.auth);
   const [filterArr, setFilterArr] = useState([]);
   const dispatch = useDispatch();
   const handleClick = (product) => {
-    dispatch(addToCart(product));
+    if (token) {
+      dispatch(addToCart(product));
+    }
+    toast.info(`plz login first `, {
+      position: 'top-right',
+    });
   };
 
   const handleFilter = (f) => {
