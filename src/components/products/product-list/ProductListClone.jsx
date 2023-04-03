@@ -486,7 +486,6 @@ const ProductListClone = () => {
                 <div
                   class="pagination flex  w-full"
                   style={{
-                    width: '100%',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     width: '500px',
