@@ -40,6 +40,7 @@ import AdminTable from './admin-page/mat/utils/AdminTable';
 import AdminDashboard from './admin-page/mat/utils/Dashboard';
 import AdminSingleProduct from './admin-page/AdminSingleProduct';
 import SellerDashboard from './seller-page/util/SellerDashboard';
+import NewNavbar from './components/navbar/NewNavbar';
 
 function App() {
   const [role, setRole] = useState(null);
@@ -123,7 +124,8 @@ function App() {
     console.log('customer or public ');
     return (
       <BrowserRouter>
-        <NavbarComponent />
+        {/* <NavbarComponent /> */}
+        <NewNavbar />
         <ToastContainer autoClose={1000} closeOnClick />
         <Routes>
           {/* <Route
@@ -205,7 +207,8 @@ function App() {
 
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
+        <h1 className="bg-blue-400">hello footer</h1>
         {/* <div class="bg-gray-800 py-4 w-full">
         <div class="container flex items-center justify-between">
           <p class="text-white">&copy; FurnitureLelo - All Right Reserved</p>

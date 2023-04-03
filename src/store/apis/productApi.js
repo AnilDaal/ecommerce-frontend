@@ -8,9 +8,9 @@ export const productsApi = createApi({
   endpoints(builder) {
     return {
       getAllProducts: builder.query({
-        query: () => {
+        query: (page) => {
           return {
-            url: `/public`,
+            url: `/public?page=${page}`,
             method: 'GET',
           };
         },

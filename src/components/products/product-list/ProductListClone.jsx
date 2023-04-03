@@ -1,14 +1,24 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 
 import { addToCart, useGetAllProductsQuery } from '../../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { handleFilter } from '../../../store/slices/productSlice';
 import { fetchProducts } from '../../../store';
 
 import './product-listclone.css';
 import { toast } from 'react-toastify';
+
+const activeStyle = {
+  backgroundColor: 'teal',
+};
+
 const ProductListClone = () => {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
@@ -37,6 +47,11 @@ const ProductListClone = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   useEffect(() => {
     console.log('use effect hook...');
     dispatch(fetchProducts(1));
@@ -45,6 +60,20 @@ const ProductListClone = () => {
   const handleLoadMore = () => {
     setCount((prev) => prev + 1);
     dispatch(fetchProducts(count));
+  };
+
+  const handlePreviousCount = () => {
+    if (count > 1) {
+      setCount((prev) => prev - 1);
+      dispatch(fetchProducts(count));
+    }
+  };
+
+  const handleNextCount = () => {
+    if (count < 20) {
+      setCount((prev) => prev + 1);
+      dispatch(fetchProducts(count));
+    }
   };
 
   const content = (
@@ -56,7 +85,7 @@ const ProductListClone = () => {
         key={item._id}
       >
         <div class="relative">
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item._id}`} state={{ count: count }}>
             <img src={item.image} alt="product 1" class="w-full" />
             <div
               class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
@@ -65,7 +94,7 @@ const ProductListClone = () => {
           </Link>
         </div>
         <div class="pt-4 pb-3 px-4">
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item._id}`} state={{ count: count }}>
             <h4 class="uppercase font-medium text-sm mb-2 text-gray-800 hover:text-primary transition">
               {item.title?.substring(0, 20)}...
             </h4>
@@ -130,7 +159,10 @@ const ProductListClone = () => {
       </div>
 
       <div class="container grid grid-cols-4 gap-6 pt-4 pb-16 items-start mx-auto">
-        <div class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden d-product-list-left">
+        <div
+          class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden d-product-list-left"
+          style={{ position: 'sticky', left: 0, top: '100px' }}
+        >
           <div class="divide-y divide-gray-200 space-y-5">
             <div>
               <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
@@ -149,12 +181,12 @@ const ProductListClone = () => {
                   {/* <label for="cat-1" class="text-gray-600 ml-3 cusror-pointer">
                     Chair
                   </label> */}
-                  <button
+                  {/* <button
                     className="p-2 bg-slate-500 text-xl rounded-sm text-white"
                     onClick={() => handleFilterData('chairs')}
                   >
                     Chair
-                  </button>
+                  </button> */}
                   <div class="ml-auto text-gray-600 text-sm">(15)</div>
                 </div>
                 <div class="flex items-center">
@@ -167,12 +199,12 @@ const ProductListClone = () => {
                   <label for="cat-2" class="text-gray-600 ml-3 cusror-pointer">
                     Sofa
                   </label> */}
-                  <button
+                  {/* <button
                     className="p-2 bg-slate-500 text-xl rounded-sm text-white"
                     onClick={() => handleFilterData('tables')}
                   >
                     Table
-                  </button>
+                  </button> */}
                   <div class="ml-auto text-gray-600 text-sm">(9)</div>
                 </div>
                 <div class="flex items-center">
@@ -395,7 +427,7 @@ const ProductListClone = () => {
           </div>
         </div>
 
-        <div class="col-span-3 d-product-list-right">
+        <div class="col-span-3 d-product-list-right ">
           <div class="flex items-center mb-4">
             {/* <select
               name="sort"
@@ -447,9 +479,49 @@ const ProductListClone = () => {
               <>
                 {content}
                 <br />
-                <button className="btn bg-teal-500" onClick={handleLoadMore}>
+                {/* <hr /> */}
+                {/* <button className="btn bg-teal-500" onClick={handleLoadMore}>
                   Load More
-                </button>
+                </button> */}
+                <div
+                  class="pagination flex  w-full"
+                  style={{
+                    width: '100%',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '500px',
+                  }}
+                >
+                  <div className="text-xl text-gray-300">
+                    page of {count} of 10
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handlePreviousCount}
+                      className="p-2 border text-xl w-32 hover:border-cyan-900"
+                      disabled={count === 1}
+                    >
+                      &laquo; Previous
+                    </button>
+                    {/* <NavLink
+                      className="btn bg-slate-400 "
+                      style={({ isActive }) => (isActive ? activeStyle : null)}
+                    >
+                      1
+                    </NavLink>
+                    <NavLink className="border p-2 ">2</NavLink>
+                    <NavLink className="border p-2 ">3</NavLink>
+                    <NavLink className="border p-2 ">4</NavLink>
+                    <NavLink className="border p-2 ">5</NavLink>
+                    <NavLink className="border p-2 ">6</NavLink> */}
+                    <button
+                      onClick={handleNextCount}
+                      className="p-2 border text-xl hover:border-cyan-900 w-32"
+                    >
+                      &raquo; Next
+                    </button>
+                  </div>
+                </div>
               </>
             )}
           </div>

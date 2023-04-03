@@ -29,16 +29,16 @@ const productSlice = createSlice({
       // const filteredProducts = state.allProducts.filter(
       //   (item, index) => state.allProducts.indexOf(item) === index
       // );
-      state.allProducts.push(...action.payload.data);
+      // state.allProducts.push(...action.payload.data);
 
-      const filteredProducts = state.allProducts.filter(
-        (value, index, self) => {
-          return index === self.findIndex((t) => t._id === value._id);
-        }
-      );
+      // const filteredProducts = state.allProducts.filter(
+      //   (value, index, self) => {
+      //     return index === self.findIndex((t) => t._id === value._id);
+      //   }
+      // );
 
-      console.log();
-      state.allProducts = filteredProducts;
+      // console.log();
+      state.allProducts = action.payload.data;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.isLoading = false;

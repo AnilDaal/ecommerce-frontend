@@ -16,3 +16,10 @@
 .react-multiple-carousel__arrow--right {
   background-color: black;
 }
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #e5e5e5;
+  color: #666666;
+}

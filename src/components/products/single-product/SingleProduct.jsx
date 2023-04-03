@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import './single-product.css';
 import { addToCart } from '../../../store';
@@ -14,10 +14,13 @@ const SingleProduct = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  useEffect(() => {
+  console.log(location);
+
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   useEffect(() => {
     dispatch(fetchSingleProduct(id));

@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { addToCart, useGetAllProductsQuery } from '../../store';
 
 import Carousel from 'react-multi-carousel';
@@ -31,7 +31,11 @@ const responsive = {
 };
 
 const RelatedProduct = ({ value, col = 4 }) => {
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  const location = useLocation();
+
+  const { data, error, isLoading } = useGetAllProductsQuery(
+    location.state ? location.state.count : 1
+  );
   const { token } = useSelector((state) => state.auth);
   const { isLoading: productAddToCartLoading } = useSelector(
     (state) => state.productCart
