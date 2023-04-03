@@ -6,7 +6,7 @@ import Cart from './components/Cart';
 import WishList from './components/Wishlist';
 import Home from './components/Home';
 
-import NavbarComponent from './components/navbar/Navbar';
+// import NavbarComponent from './components/navbar/Navbar';
 import CheckoutSuccess from './components/stripe/CheckoutSuccess';
 import SingleProduct from './components/products/single-product/SingleProduct';
 
@@ -18,9 +18,9 @@ import SellerLogin from './components/auth/SellerLogin';
 import CustomerRegister from './components/auth/CustomerRegister';
 
 import AuthProtected from './utils/AuthProtected';
-import AdminHomePage from './admin-page/mat/AdminHomePageMat';
+// import AdminHomePage from './admin-page/mat/AdminHomePageMat';
 import AdminAddProducts from './admin-page/AdminAddProducts';
-import AdminRouteProtected from './utils/AdminRouteProtected';
+// import AdminRouteProtected from './utils/AdminRouteProtected';
 
 import Footer from './components/footer/Footer';
 import SellerRegister from './components/auth/SellerRegister';
@@ -206,7 +206,7 @@ function App() {
 
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
         <h1 className="bg-blue-400">hello footer</h1>
         {/* <div class="bg-gray-800 py-4 w-full">
         <div class="container flex items-center justify-between">
