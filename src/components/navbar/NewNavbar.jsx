@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SiFuraffinity } from 'react-icons/si';
-import './Navbar.css';
+
 import { Link, NavLink } from 'react-router-dom';
 import { BsBag, BsCart2 } from 'react-icons/bs';
 import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
