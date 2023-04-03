@@ -6,6 +6,8 @@ import FullscreenExitOutlinedIcon from '@mui/icons-material/FullscreenExitOutlin
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
+import { Link } from 'react-router-dom';
+import { SiFuraffinity } from 'react-icons/si';
 // import { DarkModeContext } from "../../context/darkModeContext";
 // import { useContext } from "react";
 
@@ -13,13 +15,16 @@ const AdminNavbarMat = () => {
   // const { dispatch } = useContext(DarkModeContext);
 
   return (
-    <div className="navbar">
-      <div className="wrapper">
-        <div className="left">
-          <img
-            src="https://pacifencesolutions.com/wp-content/uploads/2021/11/300x300-px.png"
-            alt=""
-          />
+    <div className="navbar p-10  shadow-sm">
+      <div className="wrapper ">
+        <div className="left  ">
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <SiFuraffinity className="text-6xl text-primary" />
+              <h1 className="text-2xl font-bold header-logo">FurniutreLelo</h1>
+              {/* <img src="" alt="" /> */}
+            </div>
+          </Link>
         </div>
         <div className="items">
           <a

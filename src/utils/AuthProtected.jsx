@@ -13,7 +13,6 @@ const AuthProtected = () => {
   }
   return (
     <>
-      <h1>hello auth Middleware</h1>
       <div
         style={{
           display: 'flex',

@@ -65,7 +65,6 @@ function App() {
   if (role === 'admin') {
     return (
       <BrowserRouter>
-        <h1>Hello admin</h1>
         <Routes>
           <Route element={<AdminHomePageMat />}>
             <Route path="/" element={<Navigate to="/admin/dashboard" />} />

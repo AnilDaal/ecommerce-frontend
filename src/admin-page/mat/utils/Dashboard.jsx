@@ -1,19 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { sellerListing, useGetAllProductsQuery } from '../../../store';
+import {
+  adminGetProduct,
+  sellerListing,
+  useGetAllProductsQuery,
+} from '../../../store';
 import { DummyProducts2 } from '../../../utils/DummyProducts';
 
 const Dashboard = () => {
-  const { sellerList } = useSelector((state) => state.admin);
+  const { sellerList, adminProductList } = useSelector((state) => state.admin);
   const { data, isLoading, error } = useGetAllProductsQuery();
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(sellerListing());
+
+    dispatch(adminGetProduct());
   }, [dispatch]);
 
-  console.log(sellerList);
+  console.log(adminProductList);
   return (
     <div className="w-full  " style={{ width: '80vw' }}>
       <h1>latest products</h1>
@@ -25,7 +31,7 @@ const Dashboard = () => {
               Total Sellers
             </h5>
             <p class="mb-4 text-base text-neutral-600 font-bold">
-              {/* {sellerList?.data?.length} */}3
+              {sellerList ? sellerList.data.length : 3}
             </p>
             <Link to={'/admin/seller-list'}>
               <button
