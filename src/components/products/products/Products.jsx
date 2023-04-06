@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { addToCart, fetchProducts } from '../../../store';
+import { addToCart, fetchProducts, productCartList } from '../../../store';
 import './products.css';
 import { toast } from 'react-toastify';
+import { productAddToCart } from '../../../store';
 
 const Products = () => {
   const { token } = useSelector((state) => state.auth);
@@ -17,17 +18,23 @@ const Products = () => {
 
   console.log(allProducts);
 
-  // eslint-disable-next-line no-undef
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    dispatch(fetchProducts());
+    dispatch(fetchProducts({ number: 4, limit: 12 }));
   }, [dispatch]);
 
   const handleClick = (product) => {
     if (token) {
-      dispatch(addToCart(product));
+      dispatch(productAddToCart(product._id))
+        .unwrap()
+        .then(() => dispatch(productCartList()))
+        .catch((err) => {
+          if (err.status === 'fail')
+            return toast.info(`Product Already In Cart`, {
+              position: 'top-right',
+            });
+        });
     } else {
-      toast.error(`plz login first `, {
+      toast.error(`Please Login First `, {
         position: 'top-right',
       });
     }

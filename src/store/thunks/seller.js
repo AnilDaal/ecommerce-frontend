@@ -84,7 +84,7 @@ const updateProduct = createAsyncThunk(
     const state = getState();
 
     try {
-      const response = await instance.put(
+      const response = await instance.patch(
         `/seller/product/${values.id}`,
         { ...values },
         {

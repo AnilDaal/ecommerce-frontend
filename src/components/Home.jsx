@@ -65,31 +65,34 @@ function Home() {
         <CategoryNavbar
           title="Bedroom"
           links={[
-            'Office Chair',
-            'Office Table',
-            'Computer Table',
-            'Mesh Chair',
-            'Resturant Chair',
+            'Beds',
+            'Chest Of Drawers',
+            'Mattresses',
+            'Wardrobes',
+            'Bedside Tables',
+            'Dressing Tables',
           ]}
         />
         <CategoryNavbar
           title="Living Room"
           links={[
-            'Office Chair',
-            'Office Table',
-            'Computer Table',
-            'Mesh Chair',
-            'Resturant Chair',
+            'Pouffes & Ottomans',
+            'Sofas & Couches',
+            'Bean Bags',
+            'Bookshelves',
+            'Sofa Sets',
+            'Tables',
+            'Cabinets',
           ]}
         />
         <CategoryNavbar
           title="Dinning Room"
           links={[
-            'Office Chair',
-            'Office Table',
-            'Computer Table',
-            'Mesh Chair',
-            'Resturant Chair',
+            'Dinning Sets',
+            'Dinning Tables',
+            'Dinning Chairs',
+            'Bar Stools',
+            'Bar cabinets',
           ]}
         />
       </div>

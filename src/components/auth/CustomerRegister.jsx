@@ -16,6 +16,8 @@ const CustomerRegister = () => {
   });
   const dispatch = useDispatch();
 
+  console.log(user);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerCustomer(user));

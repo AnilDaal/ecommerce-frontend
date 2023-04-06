@@ -3,11 +3,13 @@ import instance from '../../utils/api';
 
 const fetchProducts = createAsyncThunk(
   'products/fetch',
-  async (number = 1, { rejectWithValue }) => {
+  async ({ searchTerm = '', number = 1, limit = 10 }, { rejectWithValue }) => {
     try {
-      const response = await instance.get(`/public?page=${number}`);
+      const response = await instance.get(
+        `/public?search=${searchTerm}&page=${number}&limit=${limit}`
+      );
       console.log(response.data);
-      return response.data;
+      return response.data.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }

@@ -16,7 +16,11 @@ const AdminAddProducts = () => {
     category: '',
     price: '',
     image: '',
+    totalQuantity: 1,
   });
+
+  console.log(typeof productData.totalQuantity);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(adminAddProduct(productData))
@@ -111,6 +115,25 @@ const AdminAddProducts = () => {
                           setProductData((prev) => ({
                             ...prev,
                             price: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+
+                    <div class="field padding-bottom--24">
+                      <div class="grid--50-50">
+                        <label for="price" className="text-left ">
+                          Stock Quantity
+                        </label>
+                      </div>
+                      <input
+                        type="number"
+                        id="price"
+                        value={productData.totalQuantity}
+                        onChange={(e) =>
+                          setProductData((prev) => ({
+                            ...prev,
+                            totalQuantity: e.target.value,
                           }))
                         }
                       />

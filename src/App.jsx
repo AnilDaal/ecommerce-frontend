@@ -41,6 +41,7 @@ import AdminDashboard from './admin-page/mat/utils/Dashboard';
 import AdminSingleProduct from './admin-page/AdminSingleProduct';
 import SellerDashboard from './seller-page/util/SellerDashboard';
 import NewNavbar from './components/navbar/NewNavbar';
+import SellerSingleProduct from './seller-page/SellerSingleProduct';
 
 function App() {
   const [role, setRole] = useState(null);
@@ -91,7 +92,6 @@ function App() {
   if (role === 'seller') {
     return (
       <BrowserRouter>
-        <h1>Hello Seller</h1>
         <Routes>
           <Route element={<SellerHomePage />}>
             <Route path="/" element={<Navigate to="/seller/dashboard" />} />
@@ -110,7 +110,7 @@ function App() {
               path="/seller/update-product/:productId"
             />
             <Route
-              element={<AdminSingleProduct />}
+              element={<SellerSingleProduct />}
               path="/seller/single-product/:id"
             />
           </Route>

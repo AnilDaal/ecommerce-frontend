@@ -48,7 +48,7 @@ const ProductListing = () => {
             <TableCell className="tableCell x">Image</TableCell>
             <TableCell className="tableCell x">Title</TableCell>
             <TableCell className="tableCell x">Price</TableCell>
-            {/* <TableCell className="tableCell">Age</TableCell> */}
+            <TableCell className="tableCell x">Stock Quantity</TableCell>
             {/* <TableCell className="tableCell x">Country</TableCell> */}
             <TableCell className="tableCell x">Action</TableCell>
           </TableRow>
@@ -72,6 +72,10 @@ const ProductListing = () => {
                 <TableCell className="tableCell">{product.title}</TableCell>
                 <TableCell className="tableCell">
                   &#8377;{product.price}
+                </TableCell>
+
+                <TableCell className="tableCell">
+                  {product.totalQuantity}
                 </TableCell>
 
                 <TableCell className="tableCell">

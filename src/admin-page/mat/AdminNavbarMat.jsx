@@ -28,7 +28,7 @@ const AdminNavbarMat = () => {
         </div>
         <div className="items">
           <a
-            href="https://pacifencesolutions.com/"
+            href="https://interiorkarwalo.com/"
             target="_blank"
             rel="noreferrer"
             style={{ color: 'inherit' }}
@@ -38,13 +38,13 @@ const AdminNavbarMat = () => {
               style={{ fontWeight: 'bold', cursor: 'pointer' }}
             >
               <LanguageOutlinedIcon className="icon" />
-              Pacifence Solutions
+              Interior Karwalo
             </div>{' '}
           </a>
 
           <div className="item">
             <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9kZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
               alt=""
               className="avatar"
             />

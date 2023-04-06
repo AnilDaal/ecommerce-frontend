@@ -15,6 +15,7 @@ const AdminUpdateProduct = () => {
     category: '',
     price: '',
     image: '',
+    totalQuantity: 1,
     id: productId,
   });
 
@@ -27,6 +28,8 @@ const AdminUpdateProduct = () => {
     fetchData();
   }, [productId]);
 
+  console.log(productData);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,7 +37,8 @@ const AdminUpdateProduct = () => {
     e.preventDefault();
     dispatch(updateProduct(productData))
       .unwrap()
-      .then(() => navigate('/admin/product-list'));
+      .then(() => navigate('/admin/product-list'))
+      .catch((err) => console.log(err));
   };
 
   console.log('productData', productData);
@@ -60,7 +64,9 @@ const AdminUpdateProduct = () => {
                   <span class="padding-bottom--15">Update Product</span>
                   <form id="stripe-login" onSubmit={handleSubmit}>
                     <div class="field padding-bottom--24">
-                      <label for="title">Title</label>
+                      <label for="title" className="text-left ">
+                        Title
+                      </label>
                       <input
                         type="text"
                         id="title"
@@ -76,7 +82,9 @@ const AdminUpdateProduct = () => {
 
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="desc">Description</label>
+                        <label for="desc" className="text-left ">
+                          Description
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -92,7 +100,9 @@ const AdminUpdateProduct = () => {
                     </div>
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="category">Category</label>
+                        <label for="category" className="text-left ">
+                          Category
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -109,7 +119,9 @@ const AdminUpdateProduct = () => {
 
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="price">Price</label>
+                        <label for="price" className="text-left ">
+                          Price
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -126,7 +138,28 @@ const AdminUpdateProduct = () => {
 
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="image">Image</label>
+                        <label for="price" className="text-left ">
+                          Stock Quantity
+                        </label>
+                      </div>
+                      <input
+                        type="number"
+                        id="price"
+                        value={productData.totalQuantity}
+                        onChange={(e) =>
+                          setProductData((prev) => ({
+                            ...prev,
+                            totalQuantity: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+
+                    <div class="field padding-bottom--24">
+                      <div class="grid--50-50">
+                        <label for="image" className="text-left ">
+                          Image
+                        </label>
                       </div>
                       <input
                         type="text"
@@ -140,7 +173,7 @@ const AdminUpdateProduct = () => {
                         }
                       />
                     </div>
-                    {error && <p>{error.message}</p>}
+                    {error && <p className="text-red-400">{error.message}</p>}
                     <div class="field padding-bottom--24">
                       <button disabled={Boolean(isLoading)}>
                         {isLoading ? <Loader /> : 'Update Product'}

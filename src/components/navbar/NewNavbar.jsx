@@ -1,18 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { SiFuraffinity } from 'react-icons/si';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import { SiFuraffinity } from 'react-icons/si';
 import { Link, NavLink } from 'react-router-dom';
 import { BsBag, BsCart2 } from 'react-icons/bs';
 import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
-import './new-navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store';
+import { handleSearchTerm } from '../../store';
+import './new-navbar.css';
+import { productCartList } from '../../store/thunks/cart';
 
 export default function NewNavbar() {
+  const [searchTerm, setSearchTerm] = useState('');
   const { token } = useSelector((state) => state.auth);
+  const { cartProductQty } = useSelector((state) => state.productCart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(productCartList());
+  }, [dispatch]);
+
+  // console.log(
+  //   productCartItems.reduce((acc, curr) => {
+  //     return acc + curr.productQuantity;
+  //   }, 0)
+
+  // const sumWithInitial = array1.reduce(
+  //   (accumulator, currentValue) => accumulator + currentValue,
+  //   initialValue
+  // );
+  // );
+
   const handleLogout = () => {
     dispatch(logoutUser());
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchTerm);
+    dispatch(handleSearchTerm(searchTerm));
+    navigate('/product-list');
   };
   // const [toggleMenu, setToggleMenu] = useState(false);
   // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -55,7 +83,11 @@ export default function NewNavbar() {
           {/* <img src="" alt="" /> */}
         </div>
       </Link>
-      <div style={{ position: 'relative' }} className="input-toggle">
+      <form
+        style={{ position: 'relative' }}
+        className="input-toggle"
+        onSubmit={handleSubmit}
+      >
         <AiOutlineSearch
           style={{
             position: 'absolute',
@@ -66,6 +98,8 @@ export default function NewNavbar() {
           }}
         />
         <input
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className=" p-3 header-nav-input"
           type="text"
           placeholder="Search for furnitures"
@@ -75,7 +109,7 @@ export default function NewNavbar() {
             paddingLeft: '36px',
           }}
         />
-      </div>
+      </form>
       <nav className="flex">
         <ul className="list flex items-center gap-6">
           <li className="items">
@@ -85,7 +119,12 @@ export default function NewNavbar() {
             >
               <BsCart2 className="text-2xl " />
               <span className="text-sm font-bold menu-name">Cart</span>
-              <span className="count bg-teal-500">4</span>
+              <span className="count bg-teal-500">
+                {/* {productCartItems.reduce((acc, curr) => {
+                  return acc + curr.productQuantity;
+                }, 0)} */}
+                {cartProductQty}
+              </span>
             </NavLink>
           </li>
           <li className="items">

@@ -8,7 +8,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import { adminGetProduct, deleteProduct, fetchSingleProduct } from '../store';
 
-const AdminSingleProduct = () => {
+const SellerSingleProduct = () => {
   const { singleProduct } = useSelector((state) => state.products);
 
   const { id } = useParams();
@@ -190,7 +190,7 @@ const AdminSingleProduct = () => {
                   &#8377;{price}
                 </span>
                 <Link
-                  to={`/admin/update-product/${_id}`}
+                  to={`/seller/update-product/${_id}`}
                   class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-400 rounded"
                   // onClick={() => dispatch(addToCart(singleProduct))}
                 >
@@ -211,4 +211,4 @@ const AdminSingleProduct = () => {
   );
 };
 
-export default AdminSingleProduct;
+export default SellerSingleProduct;

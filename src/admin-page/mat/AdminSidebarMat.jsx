@@ -9,6 +9,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../store';
 // import { logout } from '../../store';
+
+const activeStyle = {
+  border: 'none',
+  borderRadius: '10px',
+  fontWeight: 'bold',
+  background: 'rgb(254,60,87)',
+};
+
 const AdminSidebarMat = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,16 +33,19 @@ const AdminSidebarMat = () => {
       <hr />
       <div className="center">
         <ul>
-          <NavLink to="/admin/dashboard" className="nav-container">
+          <NavLink
+            to="/admin/dashboard"
+            className="nav-container"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
+          >
             <DashboardIcon />
             <span>Dashboard</span>
           </NavLink>
 
           <NavLink
             to="/admin/product-list"
-            className={({ isActive }) =>
-              isActive ? 'active nav-container' : 'inactive nav-container'
-            }
+            className="nav-container"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
           >
             {' '}
             <ProductionQuantityLimits />
@@ -42,18 +53,16 @@ const AdminSidebarMat = () => {
           </NavLink>
           <NavLink
             to="/admin/create-product"
-            className={({ isActive }) =>
-              isActive ? 'active nav-container' : 'inactive nav-container'
-            }
+            className="nav-container"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
           >
             <SupervisedUserCircleOutlined />
             <span>Add Product</span>
           </NavLink>
           <NavLink
             to="/admin/seller-list"
-            className={({ isActive }) =>
-              isActive ? 'active nav-container' : 'inactive nav-container'
-            }
+            className="nav-container"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
           >
             <MoneyOffCsredRounded />
             <span>Seller Listing</span>

@@ -7,8 +7,12 @@ const productCartSlice = createSlice({
     productCartItems: [],
     isLoading: null,
     error: null,
+    cartProductQty: null,
   },
-  reducers: {},
+  reducers: {
+    // handleCartProductQty(state,action){
+    // }
+  },
   extraReducers(builder) {
     // builder.addCase(productAddToCart.pending, (state, action) => {
     //   state.isLoading = true;
@@ -17,6 +21,8 @@ const productCartSlice = createSlice({
     // builder.addCase(productAddToCart.fulfilled, (state, action) => {
     //   state.isLoading = false;
     //   // state.productCartItems = action.payload;
+    //   state.cartProductQty = action.payload;
+    //   console.log(state.cartProductQty);
     // });
     // builder.addCase(productAddToCart.rejected, (state, action) => {
     //   state.isLoading = false;
@@ -29,7 +35,12 @@ const productCartSlice = createSlice({
     });
     builder.addCase(productCartList.fulfilled, (state, action) => {
       state.isLoading = false;
+      console.log(state.productCartItems);
       state.productCartItems = action.payload;
+      state.cartProductQty = action.payload.reduce(
+        (acc, curr) => acc + curr.productQuantity,
+        0
+      );
     });
     builder.addCase(productCartList.rejected, (state, action) => {
       state.isLoading = false;

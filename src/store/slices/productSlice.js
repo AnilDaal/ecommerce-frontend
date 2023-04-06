@@ -9,6 +9,7 @@ const productSlice = createSlice({
     singleProduct: {},
     isLoading: false,
     error: null,
+    searchTerm: '',
   },
   reducers: {
     handleFilter(state, action) {
@@ -16,6 +17,9 @@ const productSlice = createSlice({
         p.category.toLowerCase().includes(action.payload)
       );
       state.filterProducts = filteredData;
+    },
+    handleSearchTerm(state, action) {
+      state.searchTerm = action.payload;
     },
   },
   extraReducers(builder) {
@@ -38,7 +42,7 @@ const productSlice = createSlice({
       // );
 
       // console.log();
-      state.allProducts = action.payload.data;
+      state.allProducts = action.payload;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.isLoading = false;
@@ -61,4 +65,4 @@ const productSlice = createSlice({
 });
 
 export const productReducer = productSlice.reducer;
-export const { handleFilter } = productSlice.actions;
+export const { handleFilter, handleSearchTerm } = productSlice.actions;

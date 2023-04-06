@@ -11,6 +11,7 @@ const registerCustomer = createAsyncThunk(
         ...values,
       });
       localStorage.setItem('token', response.data.token);
+      console.log(response);
       return response.data.token;
     } catch (error) {
       console.log(error.response.data);

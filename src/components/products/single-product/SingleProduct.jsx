@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import './single-product.css';
-import { addToCart } from '../../../store';
+import { addToCart, productAddToCart, productCartList } from '../../../store';
 
-import { fetchSingleProduct } from '../../../store/thunks/products';
+import { fetchSingleProduct } from '../../../store';
 import RelatedProduct from '../../related-product/RelatedProduct';
 
 const SingleProduct = () => {
   const { singleProduct } = useSelector((state) => state.products);
-
+  const { token } = useSelector((state) => state.auth);
   const { id } = useParams();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -26,14 +26,25 @@ const SingleProduct = () => {
     dispatch(fetchSingleProduct(id));
   }, [dispatch, id]);
 
-  const { title, price, category, description, image } = singleProduct;
+  const { title, price, category, description, image, _id } = singleProduct;
 
-  const notify = () => toast('Added To Cart!');
-  const handleCart = (product) => {
-    notify();
+  const handleToCart = async (productId) => {
+    if (token) {
+      dispatch(productAddToCart(productId))
+        .unwrap()
+        .then(() => dispatch(productCartList()))
+        .catch((err) => {
+          if (err.status === 'fail')
+            return toast.info(`Product Already In Cart`, {
+              position: 'top-right',
+            });
+        });
+    } else {
+      toast.error(`Please Login First `, {
+        position: 'top-right',
+      });
+    }
   };
-
-  console.log(singleProduct);
 
   return (
     <>
@@ -47,7 +58,7 @@ const SingleProduct = () => {
             />
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 class="text-sm title-font text-gray-500 tracking-widest">
-                BRAND NAME
+                {category}
               </h2>
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
                 {title}
@@ -194,7 +205,7 @@ const SingleProduct = () => {
                 </span>
                 <button
                   class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                  onClick={() => dispatch(addToCart(singleProduct))}
+                  onClick={() => handleToCart(_id)}
                 >
                   Add To Cart
                 </button>

@@ -1,15 +1,14 @@
 import Skeleton from 'react-loading-skeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { addToCart, useGetAllProductsQuery } from '../../store';
+import { useGetAllProductsQuery } from '../../store';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useEffect, useLayoutEffect } from 'react';
+
 import { toast } from 'react-toastify';
-import { productAddToCart } from '../../store/thunks/cart';
-import Loader from '../../utils/Loader';
-import Spinner from '../../utils/Spinner';
+import { productAddToCart, productCartList } from '../../store/thunks/cart';
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -34,20 +33,23 @@ const RelatedProduct = ({ value, col = 4 }) => {
   const location = useLocation();
 
   const { data, error, isLoading } = useGetAllProductsQuery(
-    location.state ? location.state.count : 1
+    location.state ? location.state.count : 3
   );
   const { token } = useSelector((state) => state.auth);
-  const { isLoading: productAddToCartLoading } = useSelector(
-    (state) => state.productCart
-  );
+  // const { isLoading: productAddToCartLoading } = useSelector(
+  //   (state) => state.productCart
+  // );
   const dispatch = useDispatch();
 
   const handleClick = (product) => {
     if (token) {
       // dispatch(addToCart(product));
-      dispatch(productAddToCart(product._id));
+      dispatch(productAddToCart(product._id))
+        .unwrap()
+        .then(() => dispatch(productCartList()))
+        .catch((err) => console.log(err));
     } else {
-      toast.error(`plz login first `, {
+      toast.error(`Please Login First `, {
         position: 'top-right',
       });
     }
@@ -58,7 +60,6 @@ const RelatedProduct = ({ value, col = 4 }) => {
 
   const content = data?.data.slice(0, value).map((item) => {
     return (
-      // <h1>hello slider</h1>
       <div
         class="bg-white shadow rounded overflow-hidden group mr-5 mx-2"
         key={item._id}
@@ -120,7 +121,7 @@ const RelatedProduct = ({ value, col = 4 }) => {
           </div> */}
         </div>
         <button
-          disabled={productAddToCartLoading}
+          disabled={isLoading}
           onClick={() => handleClick(item)}
           class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
         >
