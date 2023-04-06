@@ -64,16 +64,16 @@ const ProductListClone = () => {
 
   const handlePreviousCount = () => {
     if (count > 1) {
-      setCount((prev) => prev - 1);
       console.log(count);
-      dispatch(fetchProducts({ number: count, searchTerm }));
+      dispatch(fetchProducts({ number: count - 1, searchTerm }));
+      setCount((prev) => prev - 1);
     }
   };
 
   const handleNextCount = () => {
     if (count < 20) {
+      dispatch(fetchProducts({ number: count + 1, searchTerm }));
       setCount((prev) => prev + 1);
-      dispatch(fetchProducts({ number: count, searchTerm }));
     }
   };
 
