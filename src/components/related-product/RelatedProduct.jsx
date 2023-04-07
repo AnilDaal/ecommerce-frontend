@@ -46,8 +46,19 @@ const RelatedProduct = ({ value, col = 4 }) => {
       // dispatch(addToCart(product));
       dispatch(productAddToCart(product._id))
         .unwrap()
-        .then(() => dispatch(productCartList()))
-        .catch((err) => console.log(err));
+        .then(() => {
+          toast.success(`Product Added To Cart `, {
+            position: 'top-right',
+          });
+          dispatch(productCartList());
+        })
+        .catch((err) => {
+          if (err.status === 'fail') {
+            toast.info(`Product Already Added To Cart `, {
+              position: 'top-right',
+            });
+          }
+        });
     } else {
       toast.error(`Please Login First `, {
         position: 'top-right',

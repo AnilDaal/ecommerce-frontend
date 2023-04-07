@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { productAddToCart, productCartList } from '../thunks/cart';
+import {
+  productAddToCart,
+  productCartList,
+  productCartWishlist,
+} from '../thunks/cart';
 
 const productCartSlice = createSlice({
   name: 'productCart',
@@ -8,6 +12,7 @@ const productCartSlice = createSlice({
     isLoading: null,
     error: null,
     cartProductQty: null,
+    productWishlistItems: [],
   },
   reducers: {
     // handleCartProductQty(state,action){
@@ -43,6 +48,20 @@ const productCartSlice = createSlice({
       );
     });
     builder.addCase(productCartList.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(productCartWishlist.pending, (state, action) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(productCartWishlist.fulfilled, (state, action) => {
+      state.isLoading = false;
+      console.log(state.productCartItems);
+      state.productWishlistItems = action.payload;
+    });
+    builder.addCase(productCartWishlist.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

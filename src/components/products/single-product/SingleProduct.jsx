@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import './single-product.css';
-import { addToCart, productAddToCart, productCartList } from '../../../store';
+import {
+  addToCart,
+  productAddToCart,
+  productAddToWishlist,
+  productCartList,
+} from '../../../store';
 
 import { fetchSingleProduct } from '../../../store';
 import RelatedProduct from '../../related-product/RelatedProduct';
@@ -44,6 +49,10 @@ const SingleProduct = () => {
         position: 'top-right',
       });
     }
+  };
+
+  const handleWishlist = (productId) => {
+    dispatch(productAddToWishlist(productId));
   };
 
   return (
@@ -209,7 +218,10 @@ const SingleProduct = () => {
                 >
                   Add To Cart
                 </button>
-                <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                <button
+                  onClick={() => handleWishlist(_id)}
+                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                >
                   <svg
                     fill="currentColor"
                     stroke-linecap="round"

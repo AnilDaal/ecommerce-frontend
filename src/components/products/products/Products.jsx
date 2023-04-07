@@ -11,12 +11,8 @@ import { productAddToCart } from '../../../store';
 
 const Products = () => {
   const { token } = useSelector((state) => state.auth);
-  const { allProducts, isLoading, error } = useSelector(
-    (state) => state.products
-  );
+  const { allProducts } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
-  console.log(allProducts);
 
   useEffect(() => {
     dispatch(fetchProducts({ number: 4, limit: 12 }));
@@ -26,7 +22,12 @@ const Products = () => {
     if (token) {
       dispatch(productAddToCart(product._id))
         .unwrap()
-        .then(() => dispatch(productCartList()))
+        .then(() => {
+          toast.success(`Product Added To Cart `, {
+            position: 'top-right',
+          });
+          dispatch(productCartList());
+        })
         .catch((err) => {
           if (err.status === 'fail')
             return toast.info(`Product Already In Cart`, {

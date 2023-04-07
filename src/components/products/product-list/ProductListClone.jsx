@@ -23,8 +23,18 @@ const ProductListClone = () => {
   const [count, setCount] = useState(1);
   console.log(count);
   const dispatch = useDispatch();
-  const { allProducts, filterProducts, searchTerm, error, isLoading } =
-    useSelector((state) => state.products);
+  const {
+    allProducts,
+    filterProducts,
+    searchTerm,
+    error,
+    isLoading,
+    totalProduct,
+    paginateProduct,
+  } = useSelector((state) => state.products);
+
+  console.log(paginateProduct);
+
   const { token } = useSelector((state) => state.auth);
 
   const handleClick = (product) => {
@@ -64,15 +74,15 @@ const ProductListClone = () => {
 
   const handlePreviousCount = () => {
     if (count > 1) {
-      console.log(count);
-      dispatch(fetchProducts({ number: count - 1, searchTerm }));
+      // console.log(count);
+      // dispatch(fetchProducts({ number: count - 1, searchTerm }));
       setCount((prev) => prev - 1);
     }
   };
 
   const handleNextCount = () => {
     if (count < 20) {
-      dispatch(fetchProducts({ number: count + 1, searchTerm }));
+      // dispatch(fetchProducts({ number: count + 1, searchTerm }));
       setCount((prev) => prev + 1);
     }
   };
@@ -424,7 +434,7 @@ const ProductListClone = () => {
               <Skeleton height={140} />
               <Skeleton height={140} />
             </div>
-          ) : (
+          ) : paginateProduct > 0 ? (
             <>
               <div class="grid grid-cols-4 gap-6 d-product-list">{content}</div>
               <br />
@@ -441,7 +451,7 @@ const ProductListClone = () => {
                 }}
               >
                 <div className="text-xl text-gray-300">
-                  page of {count} of 20
+                  page of {count} of {Math.ceil(totalProduct / 10)}
                 </div>
                 <div className="flex gap-2">
                   <button
@@ -463,6 +473,7 @@ const ProductListClone = () => {
                     <NavLink className="border p-2 ">5</NavLink>
                     <NavLink className="border p-2 ">6</NavLink> */}
                   <button
+                    // disabled={Math.ceil(totalProduct / 10)}
                     onClick={handleNextCount}
                     className="p-2 border text-xl hover:border-cyan-900 w-32"
                   >
@@ -471,6 +482,17 @@ const ProductListClone = () => {
                 </div>
               </div>
             </>
+          ) : (
+            <p>
+              There Are No More Product Go Back{' '}
+              <button
+                onClick={handlePreviousCount}
+                className="p-2 border text-xl w-32 hover:border-cyan-900"
+                disabled={count === 1}
+              >
+                &laquo; Previous
+              </button>
+            </p>
           )}
           {/* </div> */}
         </div>

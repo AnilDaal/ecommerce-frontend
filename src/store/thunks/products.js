@@ -9,7 +9,7 @@ const fetchProducts = createAsyncThunk(
         `/public?search=${searchTerm}&page=${number}&limit=${limit}`
       );
       console.log(response.data);
-      return response.data.data;
+      return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }

@@ -21,7 +21,7 @@ const AuthProtected = () => {
           gap: '2rem',
         }}
       >
-        <NavLink to="/admin-login">
+        {/* <NavLink to="/admin-login">
           <button
             className={({ isActive }) =>
               isActive ? ` ${comStyle} bg-blue-400` : `${comStyle}`
@@ -65,7 +65,7 @@ const AuthProtected = () => {
           >
             customer register
           </button>
-        </NavLink>
+        </NavLink> */}
       </div>
       <Outlet />
     </>

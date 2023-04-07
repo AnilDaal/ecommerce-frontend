@@ -1,125 +1,153 @@
-// /* eslint-disable react-hooks/rules-of-hooks */
-// import Button from "react-bootstrap/Button";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Link } from "react-router-dom";
-// import {
-//   decrementwishlist,
-//   incrementwishlist,
-//   resetwishlist,
-//   removewishlist,
-//   getTotals,
-// } from "../store";
-// import PayButton from "./stripe/PayButton";
-// import "./wishlist.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-// const wishlist = () => {
-//   const { wishlistItems, wishlistTotalAmount } = useSelector(
-//     (state) => state.wishlist
-//   );
-//   const { token } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const handleReset = () => {
-//     dispatch(resetwishlist());
-//   };
-//   const handleIncrementwishlist = (product) => {
-//     dispatch(incrementwishlist(product));
-//   };
-//   const handleDecrementwishlist = (product) => {
-//     dispatch(decrementwishlist(product));
-//   };
-//   const handlewishlistRemove = (product) => {
-//     dispatch(removewishlist(product));
-//   };
+import './cart.css';
+import { useEffect } from 'react';
+import {
+  productCartList,
+  productDeleteToCart,
+  productCartIncrement,
+  productCartWishlist,
+  productDeleteToWishlist,
+} from '../store/thunks/cart';
+import { toast } from 'react-toastify';
 
-//   // dispatch(getTotals());
-//   // useEffect(() => {
-//   //   dispatch(getTotals());
-//   // }, [dispatch]);
+const Wishlist = () => {
+  const { productWishlistItems } = useSelector((state) => state.productCart);
+  console.log(productWishlistItems);
+  const dispatch = useDispatch();
 
-//   dispatch(getTotals());
-//   return (
-//     <div className="container">
-//       <h1>Shopping wishlist</h1>
-//       {wishlistItems.length === 0 && (
-//         <p>
-//           Your wishlist is empty click <Link to="/">Here</Link>
-//         </p>
-//       )}
-//       <div>
-//         <Link to="/">&#x2190; Continue Shopping</Link>
-//       </div>
-//       <div>
-//         {wishlistItems.map((product) => (
-//           <div key={product.ID} className="wishlist_single">
-//             <img src={product.Images} alt={product.Name} />
-//             <p className="wishlist-title">{product.Name}</p>
-//             <p>&#8377;{product["Regular price"]}</p>
-//             <button
-//               className="btn btn-danger"
-//               onClick={() => handlewishlistRemove(product)}
-//             >
-//               Remove
-//             </button>
-//             <div>
-//               <button onClick={() => handleDecrementwishlist(product)}>
-//                 -
-//               </button>
-//               <span>{product.wishlistQuantity}</span>
-//               <button onClick={() => handleIncrementwishlist(product)}>
-//                 +
-//               </button>
-//             </div>
-//             <h6 style={{ paddingRight: "1rem" }}>
-//               total:&#8377;
-//               {(product["Regular price"] * product.wishlistQuantity).toFixed(2)}
-//             </h6>
-//           </div>
-//         ))}
+  useEffect(() => {
+    dispatch(productCartWishlist());
+  }, [dispatch]);
 
-//         {wishlistItems.length > 0 && (
-//           <>
-//             <div className="wishlist-total">
-//               <button onClick={handleReset}>Clear wishlist</button>
-//               <div>
-//                 <span>Subtotal</span>
-//                 <strong>&#8377;{wishlistTotalAmount.toFixed(2)}</strong>
-//               </div>
-//             </div>
-//           </>
-//         )}
+  const handleWishlistRemove = (product) => {
+    // dispatch(removeCart(product));
+    dispatch(productDeleteToWishlist(product._id))
+      .unwrap()
+      .then(() => {
+        dispatch(productCartWishlist());
+      })
+      .catch((err) => console.log(err));
 
-//         {wishlistItems.length > 0 && (
-//           <div style={{ textAlign: "end" }}>
-//             <p>Taxes and shipping charge calculated at checkout page</p>
-//             {token ? (
-//               <PayButton wishlistItems={wishlistItems} />
-//             ) : (
-//               <Button variant="warning">
-//                 <Link
-//                   to="/login"
-//                   style={{ color: "white", fontWeight: "bold" }}
-//                   className="imp-link"
-//                 >
-//                   Login To Checkout
-//                 </Link>
-//               </Button>
-//             )}
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
+    // .unwrap()
+    // .then(() => window.location.reload())
+    // .catch((err) => console.log(err));
+  };
 
-// const Wishlist = () => {
-//   return <div>{wishlist}</div>;
-// };
+  return (
+    <div className="container mx-auto">
+      <h1>Shopping WishList</h1>
+      {/* {cartItems?.length === 0 && (
+        <p>
+          Your cart is empty click <Link to="/">Here</Link>
+        </p>
+      )} */}
+      <div>
+        <Link to="/">&#x2190; Continue Shopping</Link>
+      </div>
 
-// export default Wishlist;
-import React from "react";
+      <div>
+        {productWishlistItems?.map((product) => {
+          // console.log(product);
+          // const xproduct = product.data.data;
+          console.log(product);
+          return (
+            <div key={product._id} className="cart_single">
+              <img src={product.image} alt={product.title} />
+              <p className="cart-title">{product.title}</p>
+              <p>&#8377;{product.price}</p>
 
-function Wishlist() {
-  return <div>Wishlist</div>;
-}
+              {/* <div style={{ display: 'flex', gap: '4px' }}>
+                <button
+                  disabled={productQuantity < 2}
+                  onClick={() =>
+                    handleDecrementCart({
+                      productQuantity,
+                      productId: product._id,
+                    })
+                  }
+                  className="border px-2 "
+                  style={{ fontSize: '1.2rem' }}
+                >
+                  -
+                </button>
+                <span>{productQuantity}</span>
+                <button
+                  // disabled={productQuantity === product.totalQuantity}
+                  className="border px-2 "
+                  style={{ fontSize: '1.2rem' }}
+                  onClick={() =>
+                    handleIncrementCart({
+                      productQuantity,
+                      productId: product._id,
+                      totalQuantity: product.totalQuantity,
+                    })
+                  }
+                >
+                  +
+                </button>
+              </div> */}
+              {/* <h6 style={{ paddingRight: '1rem' }}>
+                total:&#8377;
+                {(product.price * productQuantity).toFixed(2)}
+              </h6> */}
+              <button
+                className="btn btn-danger bg-red-600 border-none"
+                onClick={() => handleWishlistRemove(product)}
+              >
+                Remove
+              </button>
+            </div>
+          );
+        })}
+
+        {/* {cartItems.length > 0 && (
+          <>
+            <div className="flex justify-between mt-10">
+              <button
+                onClick={() => dispatch(resetCart())}
+                className="btn bg-red-400"
+              >
+                Clear Cart
+              </button>
+              <div>
+                <span>Subtotal</span>
+                <strong>&#8377;{cartTotalAmount}</strong>
+              </div>
+            </div>
+          </>
+        )} */}
+
+        {/* {cartItems.length > 0 && (
+          <div style={{ textAlign: 'end' }}>
+            <p>Taxes and shipping charge calculated at checkout page</p>
+            {token ? (
+              <PayButton cartItems={cartItems} />
+            ) : (
+              <button className="btn bg-yellow-300">
+                <Link
+                  to="/login"
+                  style={{ color: 'white', fontWeight: 'bold' }}
+                  className="imp-link"
+                >
+                  Login To Checkout
+                </Link>
+              </button>
+            )}
+          </div>
+        )} */}
+      </div>
+
+      <hr />
+      {/* <button
+        className="btn bg-teal-600"
+        onClick={() => handleSubmitToDatabases()}
+      >
+        Save To The Database
+      </button> */}
+    </div>
+  );
+};
 
 export default Wishlist;

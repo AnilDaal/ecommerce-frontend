@@ -10,7 +10,7 @@ const approveSeller = createAsyncThunk(
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
     try {
-      const response = await instance.put(
+      const response = await instance.patch(
         `/admin/seller/${values.id}`,
         {},
         {
@@ -67,6 +67,28 @@ const adminGetProduct = createAsyncThunk(
         }
       );
       return response.data.data;
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+const deleteSeller = createAsyncThunk(
+  'seller/delete',
+  async (values, { rejectWithValue, getState }) => {
+    const state = getState();
+    try {
+      const response = await instance.patch(
+        `/admin/seller/${values.id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+        }
+      );
+      return response.data;
     } catch (err) {
       console.log(err);
       return rejectWithValue(err.response.data);
