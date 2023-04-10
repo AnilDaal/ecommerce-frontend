@@ -52,9 +52,18 @@ const Products = () => {
           <div class="box-flex">
             {allProducts.map((item) => {
               return (
-                <div class="box-flex-middle" key={item._id}>
+                <div
+                  class="box-flex-middle "
+                  key={item._id}
+                  style={{ borderRadius: '5px' }}
+                >
                   <Link to={`/product/${item._id}`}>
-                    <img src={item.image} alt={item.title} />
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full"
+                      style={{ height: '200px' }}
+                    />
                   </Link>
                   <div>
                     <Link to={`/product/${item._id}`}>
@@ -67,12 +76,15 @@ const Products = () => {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => handleClick(item)}
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
-                  >
-                    Add to Cart
-                  </button>
+                  <div style={{ textAlign: 'center' }}>
+                    <button
+                      onClick={() => handleClick(item)}
+                      class="block w-24 py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+                      style={{ display: 'inline-block' }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               );
             })}

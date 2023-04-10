@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import 'react-color-palette/lib/css/styles.css';
 import { SiFuraffinity } from 'react-icons/si';
 import { Link, NavLink } from 'react-router-dom';
-import { BsBag, BsCart2 } from 'react-icons/bs';
+import { BsBag, BsCart2, BsMoonStars } from 'react-icons/bs';
+import { MdCancel } from 'react-icons/md';
 import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../store';
+import { changeColor, logoutUser } from '../../store';
 import { handleSearchTerm } from '../../store';
 import './new-navbar.css';
 import { productCartList } from '../../store/thunks/cart';
+import { ColorPicker, useColor } from 'react-color-palette';
 
 export default function NewNavbar() {
+  const [color, setColor] = useColor('hex', '#121212');
   const [show, setShow] = useState(false);
+  const [colorShow, setColorShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const { token } = useSelector((state) => state.auth);
   const { cartProductQty, wishlistProductQty } = useSelector(
@@ -20,6 +25,10 @@ export default function NewNavbar() {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(changeColor(color.hex));
+  }, [dispatch, color]);
 
   useEffect(() => {
     dispatch(productCartList());
@@ -85,7 +94,53 @@ export default function NewNavbar() {
           }}
         />
       </form>
+
       <nav className="flex">
+        <div className="moon-sun-mode">
+          {colorShow ? (
+            <div
+              style={{
+                borderRadius: '100%',
+                textAlign: 'center',
+                position: 'absolute',
+                top: '100px',
+              }}
+            >
+              <ColorPicker
+                width={200}
+                height={100}
+                color={color}
+                onChange={setColor}
+                hideHSV
+                hideRGB
+                hideHEX
+                light
+              />
+              <button
+                onClick={() => setColorShow((prev) => !prev)}
+                style={{
+                  position: 'absolute',
+                  top: '-10px',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                }}
+              >
+                <MdCancel />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setColorShow((prev) => !prev)}
+              style={{
+                marginRight: '40px',
+                fontSize: '18px',
+                color: `${color}`,
+              }}
+            >
+              <BsMoonStars />
+            </button>
+          )}
+        </div>
         <ul className="list flex items-center gap-6">
           <li className="items">
             <NavLink

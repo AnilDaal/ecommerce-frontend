@@ -1,31 +1,65 @@
-import Carousel from 'react-bootstrap/Carousel';
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-function Slider() {
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 1000,
+  loop: true,
+  // responsive: [
+  //   {
+  //     breakpoint: 1024,
+  //     settings: {
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1,
+  //       infinite: true,
+  //       dots: true,
+  //     },
+  //   },
+  //   {
+  //     breakpoint: 600,
+  //     settings: {
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1,
+  //       initialSlide: 1,
+  //     },
+  //   },
+  // ],
+};
+
+const SliderPage = () => {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://www.furnituredekho.com/uploads/banners/1659723276_635398.jpg"
-          alt="First slide"
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://www.furnituredekho.com/uploads/banners/1659723299_714523.jpg"
-          alt="Second slide"
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://www.furnituredekho.com/uploads/banners/1659723288_125960.jpg"
-          alt="Third slide"
-        />
-      </Carousel.Item>
-    </Carousel>
+    <div
+      style={{
+        width: '80%',
+        margin: '0 auto',
+        // display: 'flex',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+      }}
+    >
+      <Slider {...settings}>
+        <div>
+          <img src="/sofa1.png" alt="" />
+        </div>
+        <div>
+          <img src="/sofa4.png" alt="" />
+        </div>
+        <div>
+          <img src="/sofa5.png" alt="" />
+        </div>
+        <div>
+          <img src="/sofa6.png" alt="" />
+        </div>
+      </Slider>
+    </div>
   );
-}
+};
 
-export default Slider;
+export default SliderPage;

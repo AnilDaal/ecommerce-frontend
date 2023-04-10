@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+
 module.exports = {
   content: [
     "./index.html",
@@ -8,7 +10,7 @@ module.exports = {
 
     extend: {
       colors: {
-        'primary': 'rgb(254,60,87)',
+        "primary": "var(--bg-nav)"
       }
     },
 

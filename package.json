@@ -20,15 +20,18 @@
     "mdb-react-ui-kit": "^5.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
+    "react-color-palette": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-loading-skeleton": "^3.2.0",
     "react-multi-carousel": "^2.8.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
+    "react-slick": "^0.29.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.1",
     "sass": "^1.60.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {

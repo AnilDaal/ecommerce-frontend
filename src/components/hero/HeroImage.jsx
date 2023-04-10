@@ -15,12 +15,7 @@ const HeroImage = () => {
             <br class="hidden lg:inline-block" />
             get premium furniture
           </h1>
-          {/* <p class="mb-8 leading-relaxed">
-            Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-            plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-            mlkshk tote bag selvage hot chicken authentic tumeric truffaut
-            hexagon try-hard chambray.
-          </p> */}
+
           <div class="flex justify-center">
             <Link to="/product-list">
               <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm md:text-lg">

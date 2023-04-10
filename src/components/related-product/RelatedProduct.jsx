@@ -65,37 +65,26 @@ const RelatedProduct = ({ value, col = 4 }) => {
       });
     }
   };
-  // useLayoutEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
 
   const content = data?.data.slice(0, value).map((item) => {
     return (
       <div
-        class="bg-white shadow rounded overflow-hidden group mr-5 mx-2"
+        class="bg-white shadow rounded overflow-hidden group mr-5 mx-2 "
         key={item._id}
       >
-        <div class="relative">
+        <div class="relative ">
           <Link to={`/product/${item._id}`}>
-            <img src={item.image} alt="product 1" class="w-full" />
+            <img
+              src={item.image}
+              alt="product 1"
+              class="w-full"
+              style={{ height: '200px' }}
+            />
 
             <div
               class="absolute inset-0 bg-black bg-opacity-40 flex items-center
             justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
-            >
-              {/* <button
-              class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-              title="view product"
-            >
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button
-              class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-              title="add to wishlist"
-            >
-              <i class="fa-solid fa-heart"></i>
-            </button> */}
-            </div>
+            ></div>
           </Link>
         </div>
         <div class="pt-4 pb-3 px-4">
@@ -108,37 +97,20 @@ const RelatedProduct = ({ value, col = 4 }) => {
             <p class="text-sm text-primary font-semibold">
               &#8377;{item.price}
             </p>
-            {/* <p class="text-sm text-gray-400 line-through">$55.90</p> */}
           </div>
-          {/* <div class="flex items-center">
-            <div class="flex gap-1 text-sm text-yellow-400">
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <span>
-                <i class="fa-solid fa-star"></i>
-              </span>
-            </div>
-            <div class="text-xs text-gray-500 ml-3">(150)</div>
-          </div> */}
         </div>
-        <button
-          disabled={isLoading}
-          onClick={() => handleClick(item)}
-          class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
-        >
-          {/* {productAddToCartLoading ? <Loader /> : 'Add To Cart'} */}
-          Add To Cart
-        </button>
+
+        <div style={{ textAlign: 'center' }}>
+          <button
+            disabled={isLoading}
+            onClick={() => handleClick(item)}
+            class="block w-24 py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+            style={{ display: 'inline-block' }}
+          >
+            {/* {productAddToCartLoading ? <Loader /> : 'Add To Cart'} */}
+            Add To Cart
+          </button>
+        </div>
       </div>
     );
   });

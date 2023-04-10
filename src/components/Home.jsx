@@ -9,6 +9,8 @@ import DummyProducts from '../utils/DummyProducts';
 import { Link } from 'react-router-dom';
 
 import CategoryNavbar from './category-navbar/CategoryNavbar';
+import SliderPage from './slider/Slider';
+
 function Home() {
   return (
     <main>
@@ -54,9 +56,14 @@ function Home() {
           ]}
         />
       </div>
-      <HeroBanner />
+
+      {/* <HeroBanner /> */}
+
+      <SliderPage />
       {/* <Hero /> */}
 
+      {/* <Product />
+      <ProductListDummy1 /> */}
       <FeatureCategory />
 
       {/* <Services /> */}
@@ -65,7 +72,7 @@ function Home() {
       {/* add section */}
       <div class="container m-auto">
         <Link to="/product-list">
-          <img className="home-flex-img" src="/offer pic.png" alt="home-flex" />
+          <img className="home-flex-img" src="/slider1.png" alt="home-flex" />
         </Link>
       </div>
       <Products />

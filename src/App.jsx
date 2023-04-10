@@ -46,6 +46,9 @@ import SellerSingleProduct from './seller-page/SellerSingleProduct';
 function App() {
   const [role, setRole] = useState(null);
   const { token } = useSelector((state) => state.auth);
+  const { color } = useSelector((state) => state.color);
+
+  console.log(color);
   console.log(role);
   console.log(token);
   useEffect(() => {
@@ -124,6 +127,18 @@ function App() {
     return (
       <BrowserRouter>
         {/* <NavbarComponent /> */}
+
+        <section>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: ` :root {
+                             --bg-nav: ${color};
+                             
+                           }`,
+            }}
+          />
+        </section>
+
         <NewNavbar />
         <ToastContainer autoClose={1000} closeOnClick />
         <Routes>

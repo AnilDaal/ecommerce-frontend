@@ -49,4 +49,7 @@ input {
   .menu-name {
     display: none;
   }
+  .moon-sun-mode {
+    display: none;
+  }
 }
