@@ -4,6 +4,7 @@
 .d-filter-overlay {
   display: none !important;
 }
+
 @media screen and (width<576px) {
   .d-product-list-left {
     display: none;
@@ -29,5 +30,14 @@
   .d-filter-overlay {
     display: flex !important;
     padding: 0 20px;
+  }
+  .pagination {
+    width: 340px !important;
+  }
+  .pagination button {
+    font-size: 16px;
+    padding: 0;
+
+    width: 120px;
   }
 }

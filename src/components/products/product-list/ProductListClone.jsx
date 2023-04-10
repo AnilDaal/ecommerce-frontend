@@ -442,12 +442,9 @@ const ProductListClone = () => {
             <>
               <div class="grid grid-cols-4 gap-6 d-product-list">{content}</div>
               <br />
-              {/* <hr /> */}
-              {/* <button className="btn bg-teal-500" onClick={handleLoadMore}>
-                  Load More
-                </button> */}
+
               <div
-                class="pagination flex  w-full"
+                className="pagination flex  "
                 style={{
                   justifyContent: 'space-between',
                   alignItems: 'center',
@@ -463,19 +460,8 @@ const ProductListClone = () => {
                   >
                     &laquo; Previous
                   </button>
-                  {/* <NavLink
-                      className="btn bg-slate-400 "
-                      style={({ isActive }) => (isActive ? activeStyle : null)}
-                    >
-                      1
-                    </NavLink>
-                    <NavLink className="border p-2 ">2</NavLink>
-                    <NavLink className="border p-2 ">3</NavLink>
-                    <NavLink className="border p-2 ">4</NavLink>
-                    <NavLink className="border p-2 ">5</NavLink>
-                    <NavLink className="border p-2 ">6</NavLink> */}
+
                   <button
-                    // disabled={Math.ceil(totalProduct / 10)}
                     onClick={handleNextCount}
                     className="p-2 border text-xl hover:border-cyan-900 w-32"
                   >
