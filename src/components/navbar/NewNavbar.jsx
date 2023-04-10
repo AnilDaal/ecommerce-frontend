@@ -15,24 +15,15 @@ export default function NewNavbar() {
   const [show, setShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const { token } = useSelector((state) => state.auth);
-  const { cartProductQty } = useSelector((state) => state.productCart);
+  const { cartProductQty, wishlistProductQty } = useSelector(
+    (state) => state.productCart
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(productCartList());
   }, [dispatch]);
-
-  // console.log(
-  //   productCartItems.reduce((acc, curr) => {
-  //     return acc + curr.productQuantity;
-  //   }, 0)
-
-  // const sumWithInitial = array1.reduce(
-  //   (accumulator, currentValue) => accumulator + currentValue,
-  //   initialValue
-  // );
-  // );
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -44,24 +35,6 @@ export default function NewNavbar() {
     dispatch(handleSearchTerm(searchTerm));
     navigate('/product-list');
   };
-  // const [toggleMenu, setToggleMenu] = useState(false);
-  // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  // const toggleNav = () => {
-  //   setToggleMenu((prev) => !prev);
-  // };
-
-  // useEffect(() => {
-  //   const changeWidth = () => {
-  //     setScreenWidth(window.innerWidth);
-  //   };
-
-  //   window.addEventListener('resize', changeWidth);
-
-  //   return () => {
-  //     window.removeEventListener('resize', changeWidth);
-  //   };
-  // }, []);
 
   return (
     <header
@@ -82,7 +55,6 @@ export default function NewNavbar() {
         <div className="flex items-center gap-2">
           <SiFuraffinity className="text-6xl text-primary" />
           <h1 className="text-2xl font-bold header-logo">FurniutreLelo</h1>
-          {/* <img src="" alt="" /> */}
         </div>
       </Link>
       <form
@@ -109,6 +81,7 @@ export default function NewNavbar() {
             backgroundColor: '#f5f5f6',
             borderColor: '#f5f5f6',
             paddingLeft: '36px',
+            width: '400px',
           }}
         />
       </form>
@@ -121,12 +94,7 @@ export default function NewNavbar() {
             >
               <BsCart2 className="text-2xl " />
               <span className="text-sm font-bold menu-name">Cart</span>
-              <span className="count bg-teal-500">
-                {/* {productCartItems.reduce((acc, curr) => {
-                  return acc + curr.productQuantity;
-                }, 0)} */}
-                {cartProductQty}
-              </span>
+              <span className="count bg-teal-500">{cartProductQty}</span>
             </NavLink>
           </li>
           <li className="items">
@@ -136,7 +104,7 @@ export default function NewNavbar() {
             >
               <AiOutlineHeart className="text-2xl" />
               <span className="text-sm font-bold menu-name">Wishlist</span>
-              <span className="count bg-pink-500">6</span>
+              <span className="count bg-pink-500">{wishlistProductQty}</span>
             </NavLink>
           </li>
           <li className="items ">

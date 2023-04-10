@@ -11,7 +11,8 @@ const productCartSlice = createSlice({
     productCartItems: [],
     isLoading: null,
     error: null,
-    cartProductQty: null,
+    cartProductQty: 0,
+    wishlistProductQty: 0,
     productWishlistItems: [],
     productAddToCartLoading: false,
     productAddToCartError: null,
@@ -60,6 +61,11 @@ const productCartSlice = createSlice({
       state.isLoading = false;
       console.log(state.productCartItems);
       state.productWishlistItems = action.payload;
+
+      state.wishlistProductQty = action.payload.reduce(
+        (acc, curr) => acc + curr.productQuantity,
+        0
+      );
     });
     builder.addCase(productCartWishlist.rejected, (state, action) => {
       state.isLoading = false;

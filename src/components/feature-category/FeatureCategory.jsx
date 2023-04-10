@@ -1,6 +1,15 @@
 import React from 'react';
 import './feature-category.css';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { handleFilterCat } from '../../store';
 const FeatureCategory = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleClick = (product) => {
+    dispatch(handleFilterCat(product.toLowerCase()));
+    navigate('/product-list');
+  };
   return (
     <>
       <h1 className="text-center text-4xl my-8">Featured Categories</h1>
@@ -24,7 +33,7 @@ const FeatureCategory = () => {
           <div className="d-cat-content">
             <h1>Office Furniture</h1>
             <p>Available for quick shipping</p>
-            <button>Show now</button>
+            <button onClick={() => handleClick('office')}>Show now</button>
           </div>
         </div>
         <div className="d-feature-cat-div">
@@ -36,7 +45,7 @@ const FeatureCategory = () => {
           <div className="d-cat-content">
             <h1>Resturant Furniture</h1>
             <p>Top picks for your desire</p>
-            <button>Show now</button>
+            <button onClick={() => handleClick('table')}>Show now</button>
           </div>
         </div>
         <div className="d-feature-cat-div">
@@ -46,9 +55,9 @@ const FeatureCategory = () => {
             alt=""
           />
           <div className="d-cat-content">
-            <h1>Mesh Furniture</h1>
+            <h1>Sofa</h1>
             <p>Top picks for your desire</p>
-            <button>Show now</button>
+            <button onClick={() => handleClick('sofa')}>Show now</button>
           </div>
         </div>
       </div>

@@ -132,7 +132,7 @@ const ProductListClone = () => {
   });
   return (
     <div>
-      <div class="container py-4 flex items-center gap-3 d-filter-overlay">
+      {/* <div class="container py-4 flex items-center gap-3 d-filter-overlay">
         <button
           class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
           onClick={() => handleFilterData('')}
@@ -151,7 +151,7 @@ const ProductListClone = () => {
         >
           Table
         </button>
-      </div>
+      </div> */}
 
       <div class="container grid grid-cols-4 gap-6 pt-4 pb-16 items-start mx-auto">
         <div
@@ -197,7 +197,7 @@ const ProductListClone = () => {
               </div>
             </div>
 
-            <div class="pt-4">
+            {/* <div class="pt-4">
               <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
                 Brands
               </h3>
@@ -278,10 +278,10 @@ const ProductListClone = () => {
                   <div class="ml-auto text-gray-600 text-sm">(10)</div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div class="pt-4">
-              <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
+              {/* <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
                 Price
               </h3>
               <div class="mt-4 flex items-center">
@@ -300,10 +300,10 @@ const ProductListClone = () => {
                   class="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
                   placeholder="max"
                 />
-              </div>
+              </div> */}
             </div>
 
-            <div class="pt-4">
+            {/* <div class="pt-4">
               <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
                 size
               </h3>
@@ -354,9 +354,9 @@ const ProductListClone = () => {
                   </label>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div class="pt-4">
+            {/* <div class="pt-4">
               <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
                 Color
               </h3>
@@ -386,7 +386,7 @@ const ProductListClone = () => {
                   ></label>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
