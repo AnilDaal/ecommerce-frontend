@@ -1,11 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-
-import {
-  addToCart,
-  productAddToCart,
-  productCartList,
-  useGetAllProductsQuery,
-} from '../../../store';
+import Spinner from '../../../utils/Spinner';
+import { productAddToCart, productCartList } from '../../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
@@ -15,12 +10,9 @@ import { fetchProducts } from '../../../store';
 import './product-listclone.css';
 import { toast } from 'react-toastify';
 
-const activeStyle = {
-  backgroundColor: 'teal',
-};
-
 const ProductListClone = () => {
   const [count, setCount] = useState(1);
+  const [cartLoading, setCartLoading] = useState(false);
   console.log(count);
   const dispatch = useDispatch();
   const {
@@ -31,7 +23,11 @@ const ProductListClone = () => {
     isLoading,
     totalProduct,
     paginateProduct,
+    filterCat,
   } = useSelector((state) => state.products);
+  const { productAddToCartLoading, productAddToCartError } = useSelector(
+    (state) => state.productCart
+  );
 
   console.log(paginateProduct);
 
@@ -39,12 +35,20 @@ const ProductListClone = () => {
 
   const handleClick = (product) => {
     if (token) {
+      setCartLoading(true);
       dispatch(productAddToCart(product._id))
         .unwrap()
-        .then(() => dispatch(productCartList()))
+        .then(() => {
+          setCartLoading(false);
+          toast.success(`Product Added To Cart`, {
+            position: 'top-right',
+          });
+          dispatch(productCartList());
+        })
         .catch((err) => {
+          setCartLoading(false);
           if (err.status === 'fail')
-            return toast.info(`Product Already In Cart`, {
+            toast.info(`Product Already In Cart`, {
               position: 'top-right',
             });
         });
@@ -64,8 +68,8 @@ const ProductListClone = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchProducts({ searchTerm, number: count }));
-  }, [dispatch, searchTerm, count]);
+    dispatch(fetchProducts({ searchTerm, filterCat, number: count }));
+  }, [dispatch, searchTerm, count, filterCat]);
 
   // const handleLoadMore = () => {
   //   setCount((prev) => prev + 1);
@@ -450,9 +454,7 @@ const ProductListClone = () => {
                   width: '500px',
                 }}
               >
-                <div className="text-xl text-gray-300">
-                  page of {count} of {Math.ceil(totalProduct / 10)}
-                </div>
+                <div className="text-xl text-gray-300">page {count}</div>
                 <div className="flex gap-2">
                   <button
                     onClick={handlePreviousCount}

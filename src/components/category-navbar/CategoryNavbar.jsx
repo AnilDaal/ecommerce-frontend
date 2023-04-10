@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import './category-navbar.css';
+import { useDispatch } from 'react-redux';
+import { fetchProducts, handleFilterCat } from '../../store';
 const CategoryNavbar = ({ title, links }) => {
-  const [show, setShow] = useState(false);
-  console.log(links);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleClick = (product) => {
+    dispatch(handleFilterCat(product.toLowerCase()));
+    navigate('/product-list');
+  };
   return (
     <>
       <div className="dropdown">
-        <div
-          onClick={() => setShow((prev) => !prev)}
-          style={{ display: 'flex', alignItems: 'center' }}
-        >
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <span className="font-semibold hover:text-primary ">{title}</span>
           <span>
             {/* &#8964; */}
@@ -21,9 +24,9 @@ const CategoryNavbar = ({ title, links }) => {
 
         <div className="dropdown-content">
           {links?.map((item) => (
-            <Link to="/product-list" key={item}>
+            <div onClick={() => handleClick(item)} key={item}>
               <p>{item}</p>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

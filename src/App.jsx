@@ -207,7 +207,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
-        <h1 className="bg-blue-400">hello footer</h1>
+        {/* <h1 className="bg-blue-400">hello footer</h1> */}
         {/* <div class="bg-gray-800 py-4 w-full">
         <div class="container flex items-center justify-between">
           <p class="text-white">&copy; FurnitureLelo - All Right Reserved</p>

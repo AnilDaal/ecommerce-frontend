@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { decrementCart, getTotals } from '../store';
+import { getTotals } from '../store';
 
 import './cart.css';
 import { useEffect } from 'react';
@@ -28,6 +28,8 @@ const Cart = () => {
   //   dispatch(productAddToCart(filterItems));
   // };
   // console.log(dItems);
+
+  console.log(productCartItems);
   useEffect(() => {
     dispatch(productCartList());
   }, [dispatch]);
@@ -101,9 +103,13 @@ const Cart = () => {
   };
   const handleCartRemove = (product) => {
     // dispatch(removeCart(product));
+    console.log(product);
     dispatch(productDeleteToCart(product._id))
       .unwrap()
       .then(() => {
+        toast.error(`Product remove from Cart`, {
+          position: 'top-right',
+        });
         dispatch(productCartList());
       })
       .catch((err) => console.log(err));

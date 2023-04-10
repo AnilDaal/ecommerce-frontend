@@ -33,7 +33,7 @@ const RelatedProduct = ({ value, col = 4 }) => {
   const location = useLocation();
 
   const { data, error, isLoading } = useGetAllProductsQuery(
-    location.state ? location.state.count : 3
+    location.state ? location.state.count : 2
   );
   const { token } = useSelector((state) => state.auth);
   // const { isLoading: productAddToCartLoading } = useSelector(

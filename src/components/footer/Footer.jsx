@@ -1,28 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { SiFuraffinity } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const { token } = useSelector((state) => state.auth);
-  if (token) return;
   return (
     <footer class="text-gray-600 body-font">
       <div class="container px-5 py-4 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
+          <Link
+            to="/"
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+          >
+            <SiFuraffinity className="text-6xl text-primary" />
             <span class="ml-3 text-xl">FurnitureLelo</span>
-          </a>
+          </Link>
           <p class="mt-2 text-sm text-gray-500">
             A unique place to get your dream furniture
           </p>

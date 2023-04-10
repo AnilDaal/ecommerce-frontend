@@ -12,6 +12,7 @@ const productSlice = createSlice({
     searchTerm: '',
     totalProduct: null,
     paginateProduct: [],
+    filterCat: '',
   },
   reducers: {
     handleFilter(state, action) {
@@ -22,6 +23,9 @@ const productSlice = createSlice({
     },
     handleSearchTerm(state, action) {
       state.searchTerm = action.payload;
+    },
+    handleFilterCat(state, action) {
+      state.filterCat = action.payload;
     },
   },
   extraReducers(builder) {
@@ -56,4 +60,5 @@ const productSlice = createSlice({
 });
 
 export const productReducer = productSlice.reducer;
-export const { handleFilter, handleSearchTerm } = productSlice.actions;
+export const { handleFilter, handleSearchTerm, handleFilterCat } =
+  productSlice.actions;

@@ -37,7 +37,12 @@ const SingleProduct = () => {
     if (token) {
       dispatch(productAddToCart(productId))
         .unwrap()
-        .then(() => dispatch(productCartList()))
+        .then(() => {
+          toast.success(`Product Added To Cart`, {
+            position: 'top-right',
+          });
+          dispatch(productCartList());
+        })
         .catch((err) => {
           if (err.status === 'fail')
             return toast.info(`Product Already In Cart`, {
@@ -52,7 +57,24 @@ const SingleProduct = () => {
   };
 
   const handleWishlist = (productId) => {
-    dispatch(productAddToWishlist(productId));
+    if (token) {
+      dispatch(productAddToWishlist(productId))
+        .unwrap()
+        .then(() => {
+          toast.success(`Product Added To Wishlist`, {
+            position: 'top-right',
+          });
+        })
+        .catch((err) => {
+          toast.info(`Product Already In Cart`, {
+            position: 'top-right',
+          });
+        });
+    } else {
+      toast.error(`Please Login First `, {
+        position: 'top-right',
+      });
+    }
   };
 
   return (
@@ -63,6 +85,7 @@ const SingleProduct = () => {
             <img
               alt="ecommerce"
               class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+              style={{ width: '400px', objectFit: 'cover' }}
               src={image}
             />
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -176,7 +199,7 @@ const SingleProduct = () => {
                   __html: description?.substring(0, 150),
                 }}
               />
-              <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+              {/* <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div class="flex">
                   <span class="mr-3">Color</span>
                   <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
@@ -207,7 +230,7 @@ const SingleProduct = () => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div class="flex">
                 <span class="title-font font-medium text-2xl text-gray-900">
                   &#8377;{price}
@@ -220,7 +243,7 @@ const SingleProduct = () => {
                 </button>
                 <button
                   onClick={() => handleWishlist(_id)}
-                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 "
                 >
                   <svg
                     fill="currentColor"

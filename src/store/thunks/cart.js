@@ -31,6 +31,7 @@ const productAddToCart = createAsyncThunk(
 const productDeleteToCart = createAsyncThunk(
   'product/deleteToCart',
   async (productId, { rejectWithValue, getState }) => {
+    console.log(productId);
     const state = getState();
     try {
       const { data } = await instance.patch(
@@ -45,6 +46,7 @@ const productDeleteToCart = createAsyncThunk(
         }
       );
       // localStorage.setItem('token', response.data.token);
+      console.log(productId);
       console.log(data);
       return data.data;
     } catch (error) {
