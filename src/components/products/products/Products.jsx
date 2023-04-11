@@ -100,7 +100,7 @@ const Products = () => {
           textAlign: 'center',
         }}
       >
-        <button class="btn  bg-teal-400">View All Products</button>
+        <button class="btn  bg-primary">View All Products</button>
       </Link>
     </section>
   );

@@ -53,12 +53,12 @@ const adminAddProduct = createAsyncThunk(
 
 const adminGetProduct = createAsyncThunk(
   'getproduct/admin',
-  async (values, { rejectWithValue, getState }) => {
+  async ({ page = 1, limit = 20 }, { rejectWithValue, getState }) => {
     const state = getState();
 
     try {
       const response = await instance.get(
-        `/seller/products`,
+        `/seller/products?page=${page}&limit=${limit}`,
 
         {
           headers: {

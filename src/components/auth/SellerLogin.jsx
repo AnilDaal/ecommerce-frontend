@@ -69,7 +69,9 @@ const SellerLogin = () => {
                       }
                     />
                   </div>
-                  {loginSellerError && <p>{loginSellerError.message}</p>}
+                  {loginSellerError && (
+                    <p className="text-red-500">{loginSellerError.message}</p>
+                  )}
                   <div class="field padding-bottom--24">
                     <button>
                       {loginSellerLoading ? <Loader /> : 'Submit'}
@@ -81,6 +83,7 @@ const SellerLogin = () => {
                     display: 'flex',
                     gap: '2rem',
                   }}
+                  className="text-blue-600 text-xl"
                 >
                   don't have an account{' '}
                   <Link to="/seller-register">Register</Link>

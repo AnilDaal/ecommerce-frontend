@@ -5,8 +5,6 @@ import { Navigate, Outlet } from 'react-router-dom';
 const AdminRouteProtected = () => {
   const { token } = useSelector((state) => state.auth);
 
-  // const x = jwtDecode(token);
-
   if (token) {
     return (
       <>

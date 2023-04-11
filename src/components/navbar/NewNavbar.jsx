@@ -134,8 +134,8 @@ export default function NewNavbar() {
               style={{
                 marginRight: '40px',
                 fontSize: '18px',
-                color: `${color}`,
               }}
+              className="text-primary"
             >
               <BsMoonStars />
             </button>
@@ -186,7 +186,7 @@ export default function NewNavbar() {
               style={{ position: 'relative' }}
             >
               <button
-                class="inline-flex items-center bg-yellow-400 border-0 py-1 px-3 focus:outline-none text-white rounded text-base  md:mt-0"
+                class="inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none text-white rounded text-base  md:mt-0"
                 onClick={() => setShow((prev) => !prev)}
               >
                 Login

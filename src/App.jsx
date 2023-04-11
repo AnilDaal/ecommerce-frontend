@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -5,23 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import Cart from './components/Cart';
 import WishList from './components/Wishlist';
 import Home from './components/Home';
-
-// import NavbarComponent from './components/navbar/Navbar';
 import CheckoutSuccess from './components/stripe/CheckoutSuccess';
 import SingleProduct from './components/products/single-product/SingleProduct';
-
 import SellerHomePage from './seller-page/SellerHomePage';
 import SellerAddProduct from './seller-page/SellerAddProduct';
 import AdminLogin from './components/auth/AdminLogin';
 import CustomerLogin from './components/auth/CustomerLogin';
 import SellerLogin from './components/auth/SellerLogin';
 import CustomerRegister from './components/auth/CustomerRegister';
-
 import AuthProtected from './utils/AuthProtected';
-// import AdminHomePage from './admin-page/mat/AdminHomePageMat';
 import AdminAddProducts from './admin-page/AdminAddProducts';
-// import AdminRouteProtected from './utils/AdminRouteProtected';
-
 import Footer from './components/footer/Footer';
 import SellerRegister from './components/auth/SellerRegister';
 import SellerUpdateProduct from './seller-page/SellerUpdateProduct';
@@ -29,42 +25,30 @@ import ProductListClone from './components/products/product-list/ProductListClon
 import ProductListing from './admin-page/ProductListing';
 import SellersListing from './admin-page/SellersListing';
 import AdminUpdateProduct from './admin-page/AdminUpdateProduct';
-import SellerRouteProtected from './utils/SellerRouteProtected';
 import SellerProductListing from './seller-page/SellerProductListing';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import jwtDecode from 'jwt-decode';
-
 import AdminHomePageMat from './admin-page/mat/AdminHomePageMat';
-import AdminTable from './admin-page/mat/utils/AdminTable';
 import AdminDashboard from './admin-page/mat/utils/Dashboard';
 import AdminSingleProduct from './admin-page/AdminSingleProduct';
 import SellerDashboard from './seller-page/util/SellerDashboard';
 import NewNavbar from './components/navbar/NewNavbar';
 import SellerSingleProduct from './seller-page/SellerSingleProduct';
+import ContactUs from './pages/contact-us/ContactUs';
+import About from './pages/about-us/About';
 
 function App() {
   const [role, setRole] = useState(null);
   const { token } = useSelector((state) => state.auth);
   const { color } = useSelector((state) => state.color);
 
-  console.log(color);
-  console.log(role);
-  console.log(token);
   useEffect(() => {
-    console.log('inside useeffect');
-    console.log(token);
     if (token) {
       const { role } = jwtDecode(token);
-      console.log(role);
+
       setRole(role);
     } else {
       setRole('');
     }
   }, [token]);
-  useEffect(() => {
-    console.log('hello useeffect');
-  }, []);
 
   if (role === 'admin') {
     return (
@@ -107,7 +91,7 @@ function App() {
               element={<SellerAddProduct />}
               path="/seller/create-product"
             />
-            {/* <Route element={<SellersListing />} path="/admin/seller-list" /> */}
+
             <Route
               element={<SellerUpdateProduct />}
               path="/seller/update-product/:productId"
@@ -123,11 +107,8 @@ function App() {
   }
 
   if (role === 'customer' || role === '') {
-    console.log('customer or public ');
     return (
       <BrowserRouter>
-        {/* <NavbarComponent /> */}
-
         <section>
           <style
             dangerouslySetInnerHTML={{
@@ -142,34 +123,12 @@ function App() {
         <NewNavbar />
         <ToastContainer autoClose={1000} closeOnClick />
         <Routes>
-          {/* <Route
-          path="/customerregister"
-          element={token ? <Navigate to="/" /> : <Register />}
-        />
-        <Route
-          path="/login"
-          element={token ? <Navigate to="/cart" /> : <Login />}
-        /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
-
-          {/* <Route elemen<Route path="/" element={<Home />} />t={<SellerRouteProtected />}>
-          <Route element={<SellerHomePage />}>
-            <Route
-              path="/seller/create-product"
-              element={<SellerAddProduct />}
-            />
-            <Route
-              path="/seller/product-list"
-              element={<SellerProductListing />}
-            />
-            <Route
-              path="/seller/update-product/:productId"
-              element={<SellerUpdateProduct />}
-            />
-          </Route>
-        </Route> */}
 
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<WishList />} />
@@ -184,24 +143,8 @@ function App() {
             <Route element={<SellerRegister />} path="/seller-register" />
           </Route>
 
-          {/* <Route element={<AdminRouteProtected />}>
-          <Route element={<AdminHomePage />}>
-            <Route element={<ProductListing />} path="/admin/product-list" />
-            <Route
-              element={<AdminAddProducts />}
-              path="/admin/create-product"
-            />
-            <Route element={<SellersListing />} path="/admin/seller-list" />
-            <Route
-              element={<AdminUpdateProduct />}
-              path="/admin/update-product/:productId"
-            />
-          </Route>
-        </Route> */}
-
-          {/* <Route element={<AllProducts />} path="/products" /> */}
           <Route element={<SingleProduct />} path="/product/:id" />
-          {/* <Route element={<ProductList />} path="/product-list" /> */}
+
           <Route element={<ProductListClone />} path="/product-list" />
 
           <Route
@@ -222,15 +165,6 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
-        {/* <h1 className="bg-blue-400">hello footer</h1> */}
-        {/* <div class="bg-gray-800 py-4 w-full">
-        <div class="container flex items-center justify-between">
-          <p class="text-white">&copy; FurnitureLelo - All Right Reserved</p>
-          <div>
-            <img src="assets/images/methods.png" alt="methods" class="h-5" />
-          </div>
-        </div>
-      </div> */}
       </BrowserRouter>
     );
   }

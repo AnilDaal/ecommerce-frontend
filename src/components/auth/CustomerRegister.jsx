@@ -110,7 +110,9 @@ const CustomerRegister = () => {
                       }
                     />
                   </div>
-                  {registerError && <p>{registerError.message}</p>}
+                  {registerError && (
+                    <p className="text-red-500">{registerError.message}</p>
+                  )}
                   <div className="field padding-bottom--24">
                     <button>{registerLoading ? <Loader /> : 'Submit'}</button>
                   </div>
@@ -120,6 +122,7 @@ const CustomerRegister = () => {
                     display: 'flex',
                     gap: '2rem',
                   }}
+                  className="text-blue-600 text-xl"
                 >
                   already have an account{' '}
                   <Link to="/customer-login">Login</Link>

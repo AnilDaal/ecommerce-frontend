@@ -74,7 +74,9 @@ const AdminLogin = () => {
                       }
                     />
                   </div>
-                  {loginAdminError && <p>{loginAdminError.message}</p>}
+                  {loginAdminError && (
+                    <p className="text-red-500">{loginAdminError.message}</p>
+                  )}
                   <div class="field padding-bottom--24">
                     <button>{loginAdminLoading ? <Loader /> : 'Submit'}</button>
                   </div>

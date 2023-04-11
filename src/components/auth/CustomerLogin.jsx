@@ -69,7 +69,9 @@ const CustomerLogin = () => {
                       }
                     />
                   </div>
-                  {loginError && <p>{loginError.message}</p>}
+                  {loginError && (
+                    <p className="text-red-500">{loginError.message}</p>
+                  )}
                   <div class="field padding-bottom--24">
                     <button>{loginLoading ? <Loader /> : 'Submit'}</button>
                   </div>
@@ -79,6 +81,7 @@ const CustomerLogin = () => {
                     display: 'flex',
                     gap: '2rem',
                   }}
+                  className="text-blue-600 text-xl"
                 >
                   don't have an account{' '}
                   <Link to="/customer-register">Register</Link>

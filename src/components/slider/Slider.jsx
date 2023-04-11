@@ -6,11 +6,11 @@ import 'slick-carousel/slick/slick-theme.css';
 const settings = {
   dots: true,
   infinite: true,
-  speed: 500,
+  speed: 1000,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 1000,
+  autoplaySpeed: 3000,
   loop: true,
   // responsive: [
   //   {
@@ -46,7 +46,7 @@ const SliderPage = () => {
     >
       <Slider {...settings}>
         <div>
-          <img src="/sofa1.png" alt="" />
+          <img src="/sofa6.png" alt="" />
         </div>
         <div>
           <img src="/sofa4.png" alt="" />
@@ -55,7 +55,7 @@ const SliderPage = () => {
           <img src="/sofa5.png" alt="" />
         </div>
         <div>
-          <img src="/sofa6.png" alt="" />
+          <img src="/sofa7.png" alt="" />
         </div>
       </Slider>
     </div>
