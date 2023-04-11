@@ -1,12 +1,10 @@
-import React from "react";
-import RelatedProduct from "../../related-product/RelatedProduct";
+import React from 'react';
+import RelatedProduct from '../../related-product/RelatedProduct';
 
 const TopProducts = () => {
   return (
     <div class="container pb-16 mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase my-8 text-center">
-        top new arrival
-      </h2>
+      <h1 className="text-center text-4xl my-8">Top New Arrival</h1>
 
       <RelatedProduct value={5} />
     </div>

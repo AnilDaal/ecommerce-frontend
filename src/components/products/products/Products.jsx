@@ -15,7 +15,7 @@ const Products = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts({ number: 4, limit: 12 }));
+    dispatch(fetchProducts({ number: 4, limit: 10 }));
   }, [dispatch]);
 
   const handleClick = (product) => {
@@ -43,12 +43,10 @@ const Products = () => {
   return (
     <section class="section product" style={{ paddingBottom: '10px' }}>
       <div class="container" style={{ margin: '0 auto' }}>
-        <h2 class="h2 section-title">Products of the week</h2>
+        {/* <h2 class="h2 section-title">Products of the week</h2> */}
 
         <div class="container pb-16">
-          <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
-            recomended for you
-          </h2>
+          <h1 className="text-center text-4xl my-8">Recomended For You</h1>
           <div class="box-flex">
             {allProducts.map((item) => {
               return (
