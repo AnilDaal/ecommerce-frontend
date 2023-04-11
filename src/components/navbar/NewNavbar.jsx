@@ -133,7 +133,7 @@ export default function NewNavbar() {
               onClick={() => setColorShow((prev) => !prev)}
               style={{
                 marginRight: '40px',
-                fontSize: '18px',
+                fontSize: '24px',
               }}
               className="text-primary"
             >
@@ -149,7 +149,7 @@ export default function NewNavbar() {
             >
               <BsCart2 className="text-2xl " />
               <span className="text-sm font-bold menu-name">Cart</span>
-              <span className="count bg-teal-500">{cartProductQty}</span>
+              <span className="count bg-primary">{cartProductQty}</span>
             </NavLink>
           </li>
           <li className="items">
@@ -159,7 +159,7 @@ export default function NewNavbar() {
             >
               <AiOutlineHeart className="text-2xl" />
               <span className="text-sm font-bold menu-name">Wishlist</span>
-              <span className="count bg-pink-500">{wishlistProductQty}</span>
+              <span className="count bg-primary">{wishlistProductQty}</span>
             </NavLink>
           </li>
           <li className="items ">

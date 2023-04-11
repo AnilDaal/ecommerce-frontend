@@ -55,7 +55,7 @@ const FeatureCategory = () => {
             alt=""
           />
           <div className="d-cat-content">
-            <h1>Sofa</h1>
+            <h1>Home Furniture</h1>
             <p>Top picks for your desire</p>
             <button onClick={() => handleClick('sofa')}>Show now</button>
           </div>
