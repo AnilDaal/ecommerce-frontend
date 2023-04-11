@@ -34,6 +34,7 @@ import NewNavbar from './components/navbar/NewNavbar';
 import SellerSingleProduct from './seller-page/SellerSingleProduct';
 import ContactUs from './pages/contact-us/ContactUs';
 import About from './pages/about-us/About';
+import Payment from './pages/payment/Payment';
 
 function App() {
   const [role, setRole] = useState(null);
@@ -126,6 +127,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<About />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
