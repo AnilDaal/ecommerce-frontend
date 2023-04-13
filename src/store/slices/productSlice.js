@@ -16,9 +16,11 @@ const productSlice = createSlice({
   },
   reducers: {
     handleFilter(state, action) {
+      console.log(state.allProducts);
       const filteredData = state.allProducts.filter((p) =>
         p.category.toLowerCase().includes(action.payload)
       );
+      console.log(filteredData);
       state.filterProducts = filteredData;
     },
     handleSearchTerm(state, action) {

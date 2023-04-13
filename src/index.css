@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .btn {
   padding: 10px;
   border-radius: 5px;
@@ -22,4 +26,19 @@ button[disabled] {
   border: 1px solid #999999;
   background-color: #e5e5e5;
   color: #666666;
+}
+
+.custom-page-container p {
+  line-height: 1.6;
+  color: gray;
+  padding: 10px 0;
+}
+.custom-page-container h2 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 28px;
+}
+
+.selected {
+  background-color: gray;
 }

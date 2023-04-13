@@ -37,7 +37,7 @@ const SliderPage = () => {
   return (
     <div
       style={{
-        width: '80%',
+        width: '90%',
         margin: '0 auto',
         // display: 'flex',
         // justifyContent: 'center',

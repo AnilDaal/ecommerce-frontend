@@ -35,6 +35,12 @@ import SellerSingleProduct from './seller-page/SellerSingleProduct';
 import ContactUs from './pages/contact-us/ContactUs';
 import About from './pages/about-us/About';
 import Payment from './pages/payment/Payment';
+import Shipping from './pages/shipping/Shipping';
+import FAQ from './pages/faq/FAQ';
+import Privacy from './pages/privacy/Privacy';
+import Terms from './pages/terms/Terms';
+import Security from './pages/security/Security';
+import Policy from './pages/policy/Policy';
 
 function App() {
   const [role, setRole] = useState(null);
@@ -128,6 +134,13 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<About />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/security" element={<Security />} />
+          <Route path="/policy" element={<Policy />} />
+
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
@@ -172,6 +185,7 @@ function App() {
   }
 
   if (role === null) return 'loading..';
+  return <h1>you are not a valid user</h1>;
 }
 // }
 

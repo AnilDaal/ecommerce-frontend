@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { SiFuraffinity } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <footer class="text-gray-600 body-font">
       <div class="container px-5 py-4 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
@@ -53,10 +57,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Shipping</a>
+                <Link to="/shipping" class="text-gray-600 hover:text-gray-800">
+                  Shipping
+                </Link>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">FAQ</a>
+                <Link to="/faq" class="text-gray-600 hover:text-gray-800">
+                  FAQ
+                </Link>
               </li>
               <li>
                 <a class="text-gray-600 hover:text-gray-800">Report</a>
@@ -88,16 +96,24 @@ const Footer = () => {
             </h2>
             <nav class="list-none mb-10">
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Return Policy</a>
+                <Link to="/policy" class="text-gray-600 hover:text-gray-800">
+                  Return Policy
+                </Link>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Terms Of Use</a>
+                <Link to="/terms" class="text-gray-600 hover:text-gray-800">
+                  Terms Of Use
+                </Link>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Security</a>
+                <Link to="/security" class="text-gray-600 hover:text-gray-800">
+                  Security
+                </Link>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Privacy</a>
+                <Link to="/privacy" class="text-gray-600 hover:text-gray-800">
+                  Privacy
+                </Link>
               </li>
             </nav>
           </div>

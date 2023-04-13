@@ -1,6 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import Spinner from '../../../utils/Spinner';
-import { productAddToCart, productCartList } from '../../../store';
+import {
+  handleFilterCat,
+  productAddToCart,
+  productCartList,
+} from '../../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
@@ -25,9 +29,6 @@ const ProductListClone = () => {
     paginateProduct,
     filterCat,
   } = useSelector((state) => state.products);
-  const { productAddToCartLoading, productAddToCartError } = useSelector(
-    (state) => state.productCart
-  );
 
   console.log(paginateProduct);
 
@@ -60,7 +61,7 @@ const ProductListClone = () => {
   };
 
   const handleFilterData = (product) => {
-    dispatch(handleFilter(product));
+    dispatch(handleFilterCat(product));
   };
 
   useLayoutEffect(() => {
@@ -82,6 +83,8 @@ const ProductListClone = () => {
       setCount((prev) => prev + 1);
     }
   };
+
+  console.log(filterProducts);
 
   const content = (
     filterProducts.length === 0 ? allProducts : filterProducts
@@ -168,7 +171,7 @@ const ProductListClone = () => {
                 Categories
               </h3>
               <div class="space-y-2">
-                <div class="flex items-center ">
+                {/* <div class="flex items-center ">
                   <div class="ml-auto text-gray-600 text-sm">(15)</div>
                 </div>
                 <div class="flex items-center">
@@ -185,23 +188,55 @@ const ProductListClone = () => {
                     Office
                   </label>
                   <div class="ml-auto text-gray-600 text-sm">(21)</div>
-                </div>
-                <div class="flex items-center">
-                  <input
-                    type="checkbox"
-                    name="cat-4"
-                    id="cat-4"
-                    class="text-primary focus:ring-0 rounded-sm cursor-pointer mb-2"
-                  />
-                  <label for="cat-4" class="text-gray-600 ml-3 cusror-pointer">
-                    Outdoor
-                  </label>
-                  <div class="ml-auto text-gray-600 text-sm">(10)</div>
+                </div> */}
+                <div class="flex flex-col ">
+                  <button
+                    onClick={() => handleFilterData('mesh')}
+                    class={`text-gray-600 ml-3 cusror-pointer border p-2 ${
+                      filterCat === 'mesh' ? 'selected' : null
+                    }`}
+                  >
+                    Mesh Chairs
+                  </button>
+                  <button
+                    onClick={() => handleFilterData('table')}
+                    class={`text-gray-600 ml-3 cusror-pointer border p-2 ${
+                      filterCat === 'table' ? 'selected' : null
+                    }`}
+                  >
+                    Tables
+                  </button>
+                  <button
+                    onClick={() => handleFilterData('sofa')}
+                    class={`text-gray-600 ml-3 cusror-pointer border p-2 ${
+                      filterCat === 'sofa' ? 'selected' : null
+                    }`}
+                  >
+                    Sofa
+                  </button>
+                  <button
+                    onClick={() => handleFilterData('bar')}
+                    class={`text-gray-600 ml-3 cusror-pointer border p-2 ${
+                      filterCat === 'bar' ? 'selected' : null
+                    }`}
+                  >
+                    Bar Stools
+                  </button>
+                  <button
+                    class={`text-gray-600 ml-3 cusror-pointer border p-2 ${
+                      filterCat === 'cabinets' ? 'selected' : null
+                    }`}
+                    onClick={() => handleFilterData('cabinets')}
+                  >
+                    Cabinets
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div class="pt-4"></div>
+            <div class="pt-4">
+              <button onClick={() => handleFilterData('')}>Clear Filter</button>
+            </div>
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import 'react-color-palette/lib/css/styles.css';
 import { SiFuraffinity } from 'react-icons/si';
 import { Link, NavLink } from 'react-router-dom';
 import { BsBag, BsCart2, BsMoonStars } from 'react-icons/bs';
+import { BiUserCircle } from 'react-icons/bi';
 import { MdCancel } from 'react-icons/md';
 import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
@@ -125,7 +126,7 @@ export default function NewNavbar() {
                   fontSize: '16px',
                 }}
               >
-                <MdCancel />
+                <MdCancel style={{ color: 'gray' }} />
               </button>
             </div>
           ) : (
@@ -137,18 +138,18 @@ export default function NewNavbar() {
               }}
               className="text-primary"
             >
-              <BsMoonStars />
+              <BsMoonStars style={{ color: 'gray' }} />
             </button>
           )}
         </div>
-        <ul className="list flex items-center gap-6">
+        <ul className="list flex items-center gap-6  border p-2">
           <li className="items">
             <NavLink
               className="flex flex-col items-center gap-1 navlink-container"
               to="/cart"
             >
-              <BsCart2 className="text-2xl " />
-              <span className="text-sm font-bold menu-name">Cart</span>
+              <BsCart2 className="text-2xl " style={{ color: 'gray' }} />
+              {/* <span className="text-sm font-bold menu-name">Cart</span> */}
               <span className="count bg-primary">{cartProductQty}</span>
             </NavLink>
           </li>
@@ -157,12 +158,12 @@ export default function NewNavbar() {
               to="/wishlist"
               className="flex flex-col items-center gap-1 navlink-container"
             >
-              <AiOutlineHeart className="text-2xl" />
-              <span className="text-sm font-bold menu-name">Wishlist</span>
+              <AiOutlineHeart className="text-2xl " style={{ color: 'gray' }} />
+              {/* <span className="text-sm font-bold menu-name">Wishlist</span> */}
               <span className="count bg-primary">{wishlistProductQty}</span>
             </NavLink>
           </li>
-          <li className="items ">
+          {/* <li className="items ">
             <NavLink
               className="flex flex-col items-center gap-1"
               to="/product-list"
@@ -170,7 +171,7 @@ export default function NewNavbar() {
               <BsBag className="text-2xl" />
               <span className="text-sm font-bold menu-name">Products</span>
             </NavLink>
-          </li>
+          </li> */}
 
           {token ? (
             <button
@@ -186,10 +187,13 @@ export default function NewNavbar() {
               style={{ position: 'relative' }}
             >
               <button
-                class="inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none text-white rounded text-base  md:mt-0"
+                // class="inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none text-white rounded text-base  md:mt-0"
                 onClick={() => setShow((prev) => !prev)}
+                // onMouseEnter={() => setShow(true)}
+                // onMouseLeave={() => setShow(false)}
+                style={{ fontSize: '30px', color: 'gray' }}
               >
-                Login
+                <BiUserCircle />
               </button>
               {show && (
                 <div

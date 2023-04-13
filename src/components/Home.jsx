@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 import CategoryNavbar from './category-navbar/CategoryNavbar';
 import SliderPage from './slider/Slider';
+import Testimonials from './testimonials/Testimonials';
 
 function Home() {
   return (
@@ -81,6 +82,7 @@ function Home() {
       <Category />
       {/* <HeroImage /> */}
       <DummyProducts />
+      <Testimonials />
     </main>
   );
 }

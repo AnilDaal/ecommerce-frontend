@@ -158,13 +158,16 @@
 }
 
 .box-flex-middle {
-  width: 15%;
   margin: 10px;
   padding: 10px;
-  /* border: 0.5px solid #666; */
+
   /* border-radius:15px ; */
-  box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
-  flex: 1 1 240px;
+  box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.75);
+  flex: 1 1 200px;
+  transition: all 0.3s ease-in-out;
+}
+.box-flex-middle:hover {
+  border: 0.5px solid #666;
 }
 
 .box-flex-middle div {
