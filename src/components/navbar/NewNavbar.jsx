@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeColor, logoutUser } from '../../store';
 import { handleSearchTerm } from '../../store';
 import './new-navbar.css';
-import { productCartList } from '../../store/thunks/cart';
+import { productCartList, productCartWishlist } from '../../store/thunks/cart';
 import { ColorPicker, useColor } from 'react-color-palette';
 
 export default function NewNavbar() {
@@ -27,12 +27,17 @@ export default function NewNavbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  console.log(wishlistProductQty);
+
   useEffect(() => {
     dispatch(changeColor(color.hex));
   }, [dispatch, color]);
 
   useEffect(() => {
     dispatch(productCartList());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(productCartWishlist());
   }, [dispatch]);
 
   const handleLogout = () => {

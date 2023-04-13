@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import Spinner from '../../../utils/Spinner';
 import {
   handleFilterCat,
+  handleSearchTerm,
   productAddToCart,
   productCartList,
 } from '../../../store';
@@ -61,6 +62,7 @@ const ProductListClone = () => {
   };
 
   const handleFilterData = (product) => {
+    dispatch(handleSearchTerm(''));
     dispatch(handleFilterCat(product));
   };
 

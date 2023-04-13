@@ -63,7 +63,7 @@ const productCartSlice = createSlice({
       state.productWishlistItems = action.payload;
 
       state.wishlistProductQty = action.payload.reduce(
-        (acc, curr) => acc + curr.productQuantity,
+        (acc, curr) => acc + curr.totalQuantity,
         0
       );
     });

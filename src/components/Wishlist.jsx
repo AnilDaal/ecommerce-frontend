@@ -4,13 +4,9 @@ import { Link } from 'react-router-dom';
 import './cart.css';
 import { useEffect } from 'react';
 import {
-  productCartList,
-  productDeleteToCart,
-  productCartIncrement,
   productCartWishlist,
   productDeleteToWishlist,
 } from '../store/thunks/cart';
-import { toast } from 'react-toastify';
 
 const Wishlist = () => {
   const { productWishlistItems } = useSelector((state) => state.productCart);
