@@ -1,13 +1,10 @@
-import Category from './category/Category';
-
-import Products from './products/products/Products';
-import FeatureCategory from './feature-category/FeatureCategory';
-
-import HeroBanner from './hero/HeroBanner';
-import TopProducts from './products/products/TopProducts';
-import DummyProducts from '../utils/DummyProducts';
 import { Link } from 'react-router-dom';
 
+import Category from './category/Category';
+import Products from './products/products/Products';
+import FeatureCategory from './feature-category/FeatureCategory';
+import TopProducts from './products/products/TopProducts';
+import DummyProducts from '../utils/DummyProducts';
 import CategoryNavbar from './category-navbar/CategoryNavbar';
 import SliderPage from './slider/Slider';
 import Testimonials from './testimonials/Testimonials';

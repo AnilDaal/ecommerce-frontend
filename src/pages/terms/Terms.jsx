@@ -6,7 +6,7 @@ const Terms = () => {
       className="container mx-auto custom-page-container"
       style={{ width: '80%', marginTop: '20px', marginBottom: '20px' }}
     >
-      <h2>Flipkart Terms of Use</h2>
+      <h2>Furniturelelo Terms of Use</h2>
 
       <p>
         This document is an electronic record in terms of Information Technology
@@ -22,21 +22,21 @@ const Terms = () => {
         (1) of the Information Technology (Intermediaries guidelines) Rules,
         2011 that require publishing the rules and regulations, privacy policy
         and Terms of Use for access or usage of domain name
-        [www.flipkart.com][www.flipkart.com] (&ldquo;Website&rdquo;), including
-        the related mobile site and mobile application (hereinafter referred to
-        as &ldquo;Platform&rdquo;)
+        [www.Furniturelelo.com][www.Furniturelelo.com] (&ldquo;Website&rdquo;),
+        including the related mobile site and mobile application (hereinafter
+        referred to as &ldquo;Platform&rdquo;)
       </p>
 
       <p>
-        The Platform is owned by Flipkart Internet Private Limited a company
-        incorporated under the Companies Act, 1956 with its registered office at
-        Buildings Alyssa, Begonia &amp; Clover, Embassy Tech Village, Outer Ring
-        Road, Devarabeesanahalli Village, Bengaluru &ndash; 560103, Karnataka,
-        India and its branch offices at 2nd Floor, Block F (Flora), Embassy Tech
-        Village, Outer Ring Road, Devarabeesanahalli Village, Bengaluru-560103,
-        Karnataka, India and; 447/C, 12th Main, 4th Block, Koramangala,
-        Bengaluru-560034, Karnataka, India (hereinafter referred to as
-        &quot;Flipkart&quot;).
+        The Platform is owned by Furniturelelo Internet Private Limited a
+        company incorporated under the Companies Act, 1956 with its registered
+        office at Buildings Alyssa, Begonia &amp; Clover, Embassy Tech Village,
+        Outer Ring Road, Devarabeesanahalli Village, Bengaluru &ndash; 560103,
+        Karnataka, India and its branch offices at 2nd Floor, Block F (Flora),
+        Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village,
+        Bengaluru-560103, Karnataka, India and; 447/C, 12th Main, 4th Block,
+        Koramangala, Bengaluru-560034, Karnataka, India (hereinafter referred to
+        as &quot;Furniturelelo&quot;).
       </p>
 
       <p>
@@ -46,9 +46,9 @@ const Terms = () => {
         herein by way of reference. If You transact on the Platform, You shall
         be subject to the policies that are applicable to the Platform for such
         transaction. By mere use of the Platform, You shall be contracting with
-        Flipkart Internet Private Limited and these terms and conditions
+        Furniturelelo Internet Private Limited and these terms and conditions
         including the policies constitute Your binding obligations, with
-        Flipkart.
+        Furniturelelo.
       </p>
 
       <p>
@@ -56,10 +56,10 @@ const Terms = () => {
         &quot;You&quot; or &quot;User&quot; shall mean any natural or legal
         person who has agreed to become a buyer on the Platform by providing
         Registration Data while registering on the Platform as Registered User
-        using the computer systems. Flipkart allows the User to surf the
+        using the computer systems. Furniturelelo allows the User to surf the
         Platform or making purchases without registering on the Platform. The
-        term &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot; shall mean Flipkart
-        Internet Private Limited.
+        term &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot; shall mean
+        Furniturelelo Internet Private Limited.
       </p>
 
       <p>
@@ -84,7 +84,7 @@ const Terms = () => {
         TO ALL THE TERMS AND CONDITIONS UNDER THESE TERMS OF USE, SO PLEASE READ
         THE TERMS OF USE CAREFULLY BEFORE PROCEEDING. By impliedly or expressly
         accepting these Terms of Use, You also accept and agree to be bound by
-        Flipkart Policies ((including but not limited to Privacy Policy
+        Furniturelelo Policies ((including but not limited to Privacy Policy
         available at Privacy) as amended from time to time.
       </p>
 
@@ -103,11 +103,11 @@ const Terms = () => {
 
       <p>
         As a minor if you wish to transact on the Platform, such transaction on
-        the Platform may be made by your legal guardian or parents. Flipkart
-        reserves the right to terminate your membership and / or refuse to
-        provide you with access to the Platform if it is brought to Flipkart's
-        notice or if it is discovered that You are under the age of 18 years and
-        transacting on the Platform.
+        the Platform may be made by your legal guardian or parents.
+        Furniturelelo reserves the right to terminate your membership and / or
+        refuse to provide you with access to the Platform if it is brought to
+        Furniturelelo's notice or if it is discovered that You are under the age
+        of 18 years and transacting on the Platform.
       </p>
 
       <h2>Your Account and Registration Obligations</h2>
@@ -135,7 +135,7 @@ const Terms = () => {
       </p>
 
       <p>
-        You agree that Flipkart shall not be liable or responsible for the
+        You agree that Furniturelelo shall not be liable or responsible for the
         activities or consequences of use or misuse of any information that
         occurs under your Account in cases, including, where You have failed to
         update Your revised mobile phone number and/or e-mail address on the

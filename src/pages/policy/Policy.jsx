@@ -58,8 +58,8 @@ const Policy = () => {
         except for manufacturing defects. In such cases, these category-specific
         replacement/return general conditions will be applicable. Click here to
         know more about Open Box Delivery For products where installation is
-        provided by Flipkart's service partners, do not open the product
-        packaging by yourself. Flipkart authorised personnel shall help in
+        provided by Furniturelelo's service partners, do not open the product
+        packaging by yourself. Furniturelelo authorised personnel shall help in
         unboxing and installation of the product. For Furniture, any
         product-related issues will be checked by authorised service personnel
         (free of cost) and attempted to be resolved by replacing the faulty/

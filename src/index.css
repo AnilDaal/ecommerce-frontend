@@ -8,6 +8,10 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* body {
+  background-color: #333;
+} */
+
 .btn {
   padding: 10px;
   border-radius: 5px;

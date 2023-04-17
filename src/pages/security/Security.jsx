@@ -8,31 +8,34 @@ const Security = () => {
     >
       <h2>
         Safe and Secure Shopping Is it safe to use my credit/debit card on
-        Flipkart?
+        Furniturelelo?
       </h2>
 
       <p>
-        Your online transaction on Flipkart is secure with the highest levels of
-        transaction security currently available on the Internet. Flipkart uses
-        256-bit encryption technology to protect your card information while
-        securely transmitting it to the respective banks for payment processing.
-        All credit card and debit card payments on Flipkart are processed
-        through secure and trusted payment gateways managed by leading banks.
-        Banks now use the 3D Secure password service for online transactions,
-        providing an additional layer of security through identity verification.
+        Your online transaction on Furniturelelo is secure with the highest
+        levels of transaction security currently available on the Internet.
+        Furniturelelo uses 256-bit encryption technology to protect your card
+        information while securely transmitting it to the respective banks for
+        payment processing. All credit card and debit card payments on
+        Furniturelelo are processed through secure and trusted payment gateways
+        managed by leading banks. Banks now use the 3D Secure password service
+        for online transactions, providing an additional layer of security
+        through identity verification.
       </p>
 
-      <h2>Does Flipkart store my credit/debit card infomation?</h2>
+      <h2>Does Furniturelelo store my credit/debit card infomation?</h2>
 
       <p>
-        Flipkart stores the first 6 and last 4 digits of your card number in a
-        secure and encrypted manner. The first 6 digits (also known as the Bank
-        Identification Number) are used to identify the bank name and country
-        where your card was issued. The first 6 and last 4 digits are together
-        used for fraud detection and prevention purposes.
+        Furniturelelo stores the first 6 and last 4 digits of your card number
+        in a secure and encrypted manner. The first 6 digits (also known as the
+        Bank Identification Number) are used to identify the bank name and
+        country where your card was issued. The first 6 and last 4 digits are
+        together used for fraud detection and prevention purposes.
       </p>
 
-      <h2>Payment Options What credit/debit cards are accepted on Flipkart?</h2>
+      <h2>
+        Payment Options What credit/debit cards are accepted on Furniturelelo?
+      </h2>
 
       <p>
         We accept VISA, MasterCard, Maestro, Rupay, American Express, Diner's
@@ -54,7 +57,7 @@ const Security = () => {
         eGV payments/top-ups.
       </p>
 
-      <h2>What other payment options are available on Flipkart?</h2>
+      <h2>What other payment options are available on Furniturelelo?</h2>
 
       <p>
         Apart from Credit and Debit Cards, we accept payments by Internet
@@ -65,8 +68,8 @@ const Security = () => {
       <h2>Privacy Policy</h2>
 
       <p>
-        Flipkart.com respects your privacy and is committed to protecting it.
-        For more details, please see our Privacy Policy
+        Furniturelelo.com respects your privacy and is committed to protecting
+        it. For more details, please see our Privacy Policy
       </p>
 
       <h2>Contact Us</h2>

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IoMdArrowDropdown } from 'react-icons/io';
-import './category-navbar.css';
 import { useDispatch } from 'react-redux';
-import { fetchProducts, handleFilterCat } from '../../store';
+import { handleFilterCat } from '../../store';
+import './category-navbar.css';
+
 const CategoryNavbar = ({ title, links }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

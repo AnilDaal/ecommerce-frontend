@@ -170,6 +170,14 @@
   border: 0.5px solid #666;
 }
 
+.box-flex-middle-icons {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+.box-flex-middle:hover .box-flex-middle-icons {
+  display: block;
+}
+
 .box-flex-middle div {
   /* display: flex; */
   /* justify-content: space-between; */

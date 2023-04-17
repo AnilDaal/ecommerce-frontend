@@ -9,11 +9,12 @@ const Privacy = () => {
       <p>
         PRIVACY POLICY We value the trust you place in us and recognize the
         importance of secure transactions and information privacy. This Privacy
-        Policy describes how Flipkart Internet Private Limited and its
-        affiliates (collectively &ldquo;Flipkart, we, our, us&rdquo;) collect,
-        use, share or otherwise process your personal information through
-        Flipkart website www.flipkart.com, its mobile application, and m-site
-        (hereinafter referred to as the &ldquo;Platform&rdquo;).
+        Policy describes how Furniturelelo Internet Private Limited and its
+        affiliates (collectively &ldquo;Furniturelelo, we, our, us&rdquo;)
+        collect, use, share or otherwise process your personal information
+        through Furniturelelo website www.Furniturelelo.com, its mobile
+        application, and m-site (hereinafter referred to as the
+        &ldquo;Platform&rdquo;).
       </p>
 
       <p>
@@ -86,34 +87,34 @@ const Privacy = () => {
 
       <p>
         If you enrol into our SuperCoins Loyalty Program or similar programs
-        offered by Flipkart, we will collect and store your personal information
-        such as name, contact number, email address, communication address, date
-        of birth, gender, zip code, lifestyle information, demographic and work
-        details which is provided by you to Flipkart or a third-party business
-        partner that operates online/offline establishments or platforms where
-        you can earn SuperCoins for purchase of goods and services, and redeem
-        SuperCoins. We will also collect your information related to your
-        transactions on Flipkart platform and such third-party business partner
-        platforms. When such third-party business partner collects your personal
-        information directly from you, you will be governed by their privacy
-        policies. Flipkart shall not be responsible for the third-party business
-        partner&rsquo;s privacy practices or the content of their privacy
-        policies, and we request you to read their privacy policies prior to
-        disclosing any information.
+        offered by Furniturelelo, we will collect and store your personal
+        information such as name, contact number, email address, communication
+        address, date of birth, gender, zip code, lifestyle information,
+        demographic and work details which is provided by you to Furniturelelo
+        or a third-party business partner that operates online/offline
+        establishments or platforms where you can earn SuperCoins for purchase
+        of goods and services, and redeem SuperCoins. We will also collect your
+        information related to your transactions on Furniturelelo platform and
+        such third-party business partner platforms. When such third-party
+        business partner collects your personal information directly from you,
+        you will be governed by their privacy policies. Furniturelelo shall not
+        be responsible for the third-party business partner&rsquo;s privacy
+        practices or the content of their privacy policies, and we request you
+        to read their privacy policies prior to disclosing any information.
       </p>
 
       <p>
-        Flipkart has onboarded certain third-party business partners on the
+        Furniturelelo has onboarded certain third-party business partners on the
         Platform who specialise in the categories like travel ticket
         reservations, booking online movie tickets, paying online bills and more
         (Ultra-Partners). If you use the services of Ultra-Partners, you will be
         redirected to Ultra-Partners websites/applications and your entry to
-        Ultra-Partners websites/applications will be based on your Flipkart
+        Ultra-Partners websites/applications will be based on your Furniturelelo
         login credentials after seeking your permissions to share the data
-        further. Flipkart shall not be responsible for the Ultra-Partner&rsquo;s
-        privacy practices or the content of their privacy policies, and we
-        request you to read their privacy policies prior to disclosing any
-        information.
+        further. Furniturelelo shall not be responsible for the
+        Ultra-Partner&rsquo;s privacy practices or the content of their privacy
+        policies, and we request you to read their privacy policies prior to
+        disclosing any information.
       </p>
 
       <h2>Use of Demographic / Profile Data / Your Information</h2>
@@ -206,15 +207,15 @@ const Privacy = () => {
       <h2>Sharing of personal information</h2>
 
       <p>
-        We may share personal information internally within Flipkart group
+        We may share personal information internally within Furniturelelo group
         companies, affiliates, related companies and with other third parties
         for purposes of providing products and services offered by them, such
-        as, the deferred payment options Flipkart PayLater offered by Flipkart
-        Advanz Private Limited through its lending partners. These entities and
-        affiliates may share such information with their affiliates, business
-        partners and other third parties for the purpose of providing you their
-        products and services and may market to you as a result of such sharing
-        unless you explicitly opt-out.
+        as, the deferred payment options Furniturelelo PayLater offered by
+        Furniturelelo Advanz Private Limited through its lending partners. These
+        entities and affiliates may share such information with their
+        affiliates, business partners and other third parties for the purpose of
+        providing you their products and services and may market to you as a
+        result of such sharing unless you explicitly opt-out.
       </p>
 
       <p>
@@ -285,7 +286,7 @@ const Privacy = () => {
         setting up an account with us. If you do not wish to receive promotional
         communications from us, then please login into the Notification
         Preference page of Platform
-        [https://www.flipkart.com/communication-preferences/email] to
+        [https://www.Furniturelelo.com/communication-preferences/email] to
         unsubscribe/opt-out.
       </p>
 
@@ -299,8 +300,8 @@ const Privacy = () => {
         services of interest to you.You have an option to opt out from tracking
         of personalized advertising using the &ldquo;Opt out of Ads
         Personalization&rdquo; settings using your device&rsquo;s settings
-        application. Flipkart will have no access to your GAID once you select
-        this feature.
+        application. Furniturelelo will have no access to your GAID once you
+        select this feature.
       </p>
 
       <h2>Children Information</h2>
@@ -322,10 +323,10 @@ const Privacy = () => {
         for a period no longer than is required for the purpose for which it was
         collected or as required under any applicable law. However, we may
         retain data related to you if we believe it may be necessary to prevent
-        fraud or future abuse, to enable Flipkart to exercise its legal rights
-        and/or defend against legal claims or if required by law or for other
-        legitimate purposes. We may continue to retain your data in anonymised
-        form for analytical and research purposes.
+        fraud or future abuse, to enable Furniturelelo to exercise its legal
+        rights and/or defend against legal claims or if required by law or for
+        other legitimate purposes. We may continue to retain your data in
+        anonymised form for analytical and research purposes.
       </p>
 
       <h2>Your Rights</h2>

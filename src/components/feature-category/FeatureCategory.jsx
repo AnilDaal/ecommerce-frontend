@@ -1,8 +1,8 @@
-import React from 'react';
-import './feature-category.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { handleFilterCat } from '../../store';
+import './feature-category.css';
+
 const FeatureCategory = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

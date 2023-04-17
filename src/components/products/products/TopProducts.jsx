@@ -1,4 +1,3 @@
-import React from 'react';
 import RelatedProduct from '../../related-product/RelatedProduct';
 
 const TopProducts = () => {

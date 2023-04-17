@@ -1,18 +1,17 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import { BsCart2 } from 'react-icons/bs';
 import {
   addToCart,
   fetchProducts,
   productAddToWishlist,
   productCartList,
 } from '../../../store';
-import './products.css';
+
 import { toast } from 'react-toastify';
 import { productAddToCart } from '../../../store';
+import './products.css';
 
 const Products = () => {
   const { token } = useSelector((state) => state.auth);
@@ -112,7 +111,12 @@ const Products = () => {
                   </div> */}
 
                   <div
-                    style={{ position: 'absolute', top: '10px', right: '10px' }}
+                    style={{
+                      position: 'absolute',
+                      top: '10px',
+                      right: '5px',
+                    }}
+                    className="box-flex-middle-icons"
                   >
                     <button
                       onClick={() => handleWishlist(item._id)}
@@ -128,6 +132,17 @@ const Products = () => {
                       >
                         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                       </svg>
+                    </button>
+                  </div>
+                  <div
+                    style={{ position: 'absolute', top: '10px', right: '40px' }}
+                    className="box-flex-middle-icons"
+                  >
+                    <button
+                      onClick={() => handleClick(item._id)}
+                      class="rounded-full w-8 h-8 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 "
+                    >
+                      <BsCart2 />
                     </button>
                   </div>
                 </div>

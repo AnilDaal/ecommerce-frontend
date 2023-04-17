@@ -8,10 +8,10 @@ const Payment = () => {
     >
       <h2 className="text-xl font-semibold">Payments</h2>
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
-        Flipkart offers you multiple payment methods. Whatever your online mode
-        of payment, you can rest assured that Flipkart's trusted payment gateway
-        partners use secure encryption technology to keep your transaction
-        details confidential at all times.
+        Furniturelelo offers you multiple payment methods. Whatever your online
+        mode of payment, you can rest assured that Furniturelelo's trusted
+        payment gateway partners use secure encryption technology to keep your
+        transaction details confidential at all times.
       </p>
       <br />
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
@@ -20,17 +20,17 @@ const Payment = () => {
       </p>
       <br />
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
-        Flipkart also accepts payments made using Visa, MasterCard, Maestro and
-        American Express credit/debit cards in India and 21 other countries.
+        Furniturelelo also accepts payments made using Visa, MasterCard, Maestro
+        and American Express credit/debit cards in India and 21 other countries.
       </p>
       <h2 className="text-xl font-semibold">
         Are there any hidden charges (Octroi or Sales Tax) when I make a
-        purchase on Flipkart?
+        purchase on Furniturelelo?
       </h2>
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
-        There are NO hidden charges when you make a purchase on Flipkart. The
-        prices listed for all the items are final and all-inclusive. The price
-        you see on the product page is exactly what you pay.
+        There are NO hidden charges when you make a purchase on Furniturelelo.
+        The prices listed for all the items are final and all-inclusive. The
+        price you see on the product page is exactly what you pay.
       </p>
       <br />
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
@@ -42,11 +42,11 @@ const Payment = () => {
       <h2 className="text-xl font-semibold">What is Cash on Delivery?</h2>
       <br />
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
-        If you are not comfortable making an online payment on Flipkart.com, you
-        can opt for the Cash on Delivery (C-o-D) payment method instead. With
-        C-o-D you can pay in cash at the time of actual delivery of the product
-        at your doorstep, without requiring you to make any advance payment
-        online.
+        If you are not comfortable making an online payment on
+        Furniturelelo.com, you can opt for the Cash on Delivery (C-o-D) payment
+        method instead. With C-o-D you can pay in cash at the time of actual
+        delivery of the product at your doorstep, without requiring you to make
+        any advance payment online.
       </p>
       <br />
       <p style={{ lineHeight: '21px', color: 'gray', margin: '10px 0' }}>
