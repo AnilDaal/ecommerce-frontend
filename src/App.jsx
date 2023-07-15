@@ -119,10 +119,7 @@ function App() {
         <section>
           <style
             dangerouslySetInnerHTML={{
-              __html: ` :root {
-                             --bg-nav: ${color};
-                             
-                           }`,
+              __html: ` :root {--bg-nav: ${color};}`,
             }}
           />
         </section>

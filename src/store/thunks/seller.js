@@ -1,13 +1,13 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import axios from 'axios';
+import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'https://api.furniturelelo.com/api/v1',
+  baseURL: "https://e-book-backend-ok7v.onrender.com/api/v1/",
 });
 
 const addProduct = createAsyncThunk(
-  'product/add',
+  "product/add",
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
 
@@ -31,7 +31,7 @@ const addProduct = createAsyncThunk(
 );
 
 const getProduct = createAsyncThunk(
-  'product/get',
+  "product/get",
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
 
@@ -54,7 +54,7 @@ const getProduct = createAsyncThunk(
 );
 
 const deleteProduct = createAsyncThunk(
-  'product/add',
+  "product/add",
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
 
@@ -79,7 +79,7 @@ const deleteProduct = createAsyncThunk(
 );
 
 const updateProduct = createAsyncThunk(
-  'product/update',
+  "product/update",
   async (values, { rejectWithValue, getState }) => {
     const state = getState();
 

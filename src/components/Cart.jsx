@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getTotals } from '../store';
-import { AiFillDelete } from 'react-icons/ai';
-import './cart.css';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getTotals } from "../store";
+import { AiFillDelete } from "react-icons/ai";
+import "./cart.css";
+// import RazorpayCheckout from 'react-native-razorpay';
+import { useEffect } from "react";
 import {
   productCartList,
   productDeleteToCart,
   productCartIncrement,
-} from '../store/thunks/cart';
-import { toast } from 'react-toastify';
+} from "../store/thunks/cart";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { productCartItems } = useSelector((state) => state.productCart);
@@ -22,7 +23,7 @@ const Cart = () => {
   const handleIncrementCart = async (product) => {
     if (product.productQuantity === product.totalQuantity) {
       return toast.error(`Product Out Of Stock`, {
-        position: 'top-right',
+        position: "top-right",
       });
     }
     try {
@@ -35,9 +36,9 @@ const Cart = () => {
       dispatch(productCartList());
     } catch (err) {
       console.log(err);
-      if ((err.status = 'fail'))
+      if ((err.status = "fail"))
         return toast.error(`Product Out Of Stock`, {
-          position: 'top-right',
+          position: "top-right",
         });
     }
   };
@@ -55,9 +56,9 @@ const Cart = () => {
       dispatch(productCartList());
     } catch (err) {
       console.log(err);
-      if ((err.status = 'fail'))
+      if ((err.status = "fail"))
         return toast.error(`Product Out Of Stock`, {
-          position: 'top-right',
+          position: "top-right",
         });
     }
   };
@@ -68,7 +69,7 @@ const Cart = () => {
       .unwrap()
       .then(() => {
         toast.error(`Product remove from Cart`, {
-          position: 'top-right',
+          position: "top-right",
         });
         dispatch(productCartList());
       })
@@ -100,13 +101,13 @@ const Cart = () => {
                         src={product.image}
                         alt={product.title}
                         style={{
-                          width: '100%',
-                          height: '100px',
-                          objectFit: 'contain',
-                          borderRadius: '10px',
+                          width: "100%",
+                          height: "100px",
+                          objectFit: "contain",
+                          borderRadius: "10px",
                         }}
                       />
-                      <div style={{ display: 'flex', gap: '4px' }}>
+                      <div style={{ display: "flex", gap: "4px" }}>
                         <button
                           disabled={productQuantity < 2}
                           onClick={() =>
@@ -116,7 +117,7 @@ const Cart = () => {
                             })
                           }
                           className="border px-2 "
-                          style={{ fontSize: '1.2rem' }}
+                          style={{ fontSize: "1.2rem" }}
                         >
                           -
                         </button>
@@ -124,7 +125,7 @@ const Cart = () => {
                         <button
                           // disabled={productQuantity === product.totalQuantity}
                           className="border px-2 "
-                          style={{ fontSize: '1.2rem' }}
+                          style={{ fontSize: "1.2rem" }}
                           onClick={() =>
                             handleIncrementCart({
                               productQuantity,
@@ -149,7 +150,7 @@ const Cart = () => {
                       </div>
                       <div className="flex flex-col gap-2">
                         <h6
-                          style={{ paddingRight: '1rem' }}
+                          style={{ paddingRight: "1rem" }}
                           className="font-bold text"
                         >
                           total:&#8377;
@@ -168,9 +169,6 @@ const Cart = () => {
               }
             )}
           </div>
-          <div className="d-con-2">
-            <button className="btn bg-yellow-300">Checkout</button>
-          </div>
         </div>
       ) : (
         <div className="  font-bold text-center py-6">
@@ -184,6 +182,9 @@ const Cart = () => {
           ></img>
         </div>
       )}
+      {/* <div className="d-con-2">
+            <button className="btn bg-gray-300" onClick={}>Proceed to Checkout</button>
+          </div> */}
       <hr />
     </div>
   );

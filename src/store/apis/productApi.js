@@ -1,9 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import instance from '../../utils/api';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import instance from "../../utils/api";
 export const productsApi = createApi({
-  reducerPath: 'productsApi',
+  reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.furniturelelo.com/api/v1',
+    baseUrl: "https://e-book-backend-ok7v.onrender.com/api/v1/",
   }),
   endpoints(builder) {
     return {
@@ -11,7 +11,7 @@ export const productsApi = createApi({
         query: (page) => {
           return {
             url: `/public?page=${page}`,
-            method: 'GET',
+            method: "GET",
           };
         },
       }),
