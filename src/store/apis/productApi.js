@@ -3,7 +3,7 @@ import instance from "../../utils/api";
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://e-book-backend-ok7v.onrender.com/api/v1/",
+    baseUrl: "https://e-book-backend-ok7v.onrender.com/api/v1",
   }),
   endpoints(builder) {
     return {
