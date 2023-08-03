@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import Category from './category/Category';
-import Products from './products/products/Products';
-import FeatureCategory from './feature-category/FeatureCategory';
-import TopProducts from './products/products/TopProducts';
-import DummyProducts from '../utils/DummyProducts';
-import CategoryNavbar from './category-navbar/CategoryNavbar';
-import SliderPage from './slider/Slider';
-import Testimonials from './testimonials/Testimonials';
+import Category from "./category/Category";
+import Products from "./products/products/Products";
+import FeatureCategory from "./feature-category/FeatureCategory";
+import TopProducts from "./products/products/TopProducts";
+import DummyProducts from "../utils/DummyProducts";
+import CategoryNavbar from "./category-navbar/CategoryNavbar";
+import SliderPage from "./slider/Slider";
+import Testimonials from "./testimonials/Testimonials";
 
 function Home() {
   return (
@@ -15,44 +15,48 @@ function Home() {
       <div
         className="flex items-center justify-center gap-2 md:gap-24 "
         style={{
-          backgroundColor: '#eeeeee',
-          height: '60px',
+          backgroundColor: "#eeeeee",
+          height: "60px",
         }}
       >
         <CategoryNavbar
-          title="Office furniture"
+          title="New Books"
           links={[
-            'Office Chair',
-            'Office Table',
-            'Computer Table',
-            'Mesh Chair',
-            'Resturant Chair',
+            "NCERT Books",
+            "RBSE Books",
+            "B-Tech Books",
+            "M-Tech Books",
+            "more category",
           ]}
         />
         <CategoryNavbar
-          title="Bedroom"
+          title="Old Books"
           links={[
-            'Beds',
-            'Chest Of Drawers',
-
-            'Wardrobes',
-            'Bedside Tables',
-            'Dressing Tables',
+            "NCERT Books",
+            "RBSE Books",
+            "B-Tech Books",
+            "M-Tech Books",
+            "more category",
           ]}
         />
         <CategoryNavbar
-          title="Living Room"
-          links={['Sofas & Couches', 'Sofa Sets', 'Tables', 'Cabinets']}
+          title="Customized"
+          links={[
+            "NoteBook Cover",
+            "Custom Size",
+            "A4 Notebook",
+            "Notbook for Gift",
+          ]}
         />
-        <CategoryNavbar
+        {/* <CategoryNavbar
           title="Dinning Room"
           links={[
-            'Dinning Tables',
-            'Dinning Chairs',
-            'Bar Stools',
-            'Bar cabinets',
+            "Dinning Tables",
+            "Dinning Chairs",
+            "Bar Stools",
+            "Bar cabinets",
           ]}
-        />
+        /> */}
       </div>
 
       {/* <HeroBanner /> */}

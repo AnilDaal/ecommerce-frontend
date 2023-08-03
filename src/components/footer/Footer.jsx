@@ -1,6 +1,6 @@
-import React, { useLayoutEffect } from 'react';
-import { SiFuraffinity } from 'react-icons/si';
-import { Link } from 'react-router-dom';
+import React, { useLayoutEffect } from "react";
+import { SiFuraffinity } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   useLayoutEffect(() => {
@@ -16,7 +16,7 @@ const Footer = () => {
             class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
           >
             <SiFuraffinity className="text-6xl text-primary" />
-            <span class="ml-3 text-xl">FurnitureLelo</span>
+            <span class="ml-3 text-xl">AapkiBook</span>
           </Link>
           <p class="mt-2 text-sm text-gray-500">
             A unique place to get your dream furniture

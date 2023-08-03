@@ -1,46 +1,46 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import jwtDecode from 'jwt-decode';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import jwtDecode from "jwt-decode";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import Cart from './components/Cart';
-import WishList from './components/Wishlist';
-import Home from './components/Home';
-import CheckoutSuccess from './components/stripe/CheckoutSuccess';
-import SingleProduct from './components/products/single-product/SingleProduct';
-import SellerHomePage from './seller-page/SellerHomePage';
-import SellerAddProduct from './seller-page/SellerAddProduct';
-import AdminLogin from './components/auth/AdminLogin';
-import CustomerLogin from './components/auth/CustomerLogin';
-import SellerLogin from './components/auth/SellerLogin';
-import CustomerRegister from './components/auth/CustomerRegister';
-import AuthProtected from './utils/AuthProtected';
-import AdminAddProducts from './admin-page/AdminAddProducts';
-import Footer from './components/footer/Footer';
-import SellerRegister from './components/auth/SellerRegister';
-import SellerUpdateProduct from './seller-page/SellerUpdateProduct';
-import ProductListClone from './components/products/product-list/ProductListClone';
-import ProductListing from './admin-page/ProductListing';
-import SellersListing from './admin-page/SellersListing';
-import AdminUpdateProduct from './admin-page/AdminUpdateProduct';
-import SellerProductListing from './seller-page/SellerProductListing';
-import AdminHomePageMat from './admin-page/mat/AdminHomePageMat';
-import AdminDashboard from './admin-page/mat/utils/Dashboard';
-import AdminSingleProduct from './admin-page/AdminSingleProduct';
-import SellerDashboard from './seller-page/util/SellerDashboard';
-import NewNavbar from './components/navbar/NewNavbar';
-import SellerSingleProduct from './seller-page/SellerSingleProduct';
-import ContactUs from './pages/contact-us/ContactUs';
-import About from './pages/about-us/About';
-import Payment from './pages/payment/Payment';
-import Shipping from './pages/shipping/Shipping';
-import FAQ from './pages/faq/FAQ';
-import Privacy from './pages/privacy/Privacy';
-import Terms from './pages/terms/Terms';
-import Security from './pages/security/Security';
-import Policy from './pages/policy/Policy';
+import Cart from "./components/Cart";
+import WishList from "./components/Wishlist";
+import Home from "./components/Home";
+import CheckoutSuccess from "./components/stripe/CheckoutSuccess";
+import SingleProduct from "./components/products/single-product/SingleProduct";
+import SellerHomePage from "./seller-page/SellerHomePage";
+import SellerAddProduct from "./seller-page/SellerAddProduct";
+import AdminLogin from "./components/auth/AdminLogin";
+import CustomerLogin from "./components/auth/CustomerLogin";
+import SellerLogin from "./components/auth/SellerLogin";
+import CustomerRegister from "./components/auth/CustomerRegister";
+import AuthProtected from "./utils/AuthProtected";
+import AdminAddProducts from "./admin-page/AdminAddProducts";
+import Footer from "./components/footer/Footer";
+import SellerRegister from "./components/auth/SellerRegister";
+import SellerUpdateProduct from "./seller-page/SellerUpdateProduct";
+import ProductListClone from "./components/products/product-list/ProductListClone";
+import ProductListing from "./admin-page/ProductListing";
+import SellersListing from "./admin-page/SellersListing";
+import AdminUpdateProduct from "./admin-page/AdminUpdateProduct";
+import SellerProductListing from "./seller-page/SellerProductListing";
+import AdminHomePageMat from "./admin-page/mat/AdminHomePageMat";
+import AdminDashboard from "./admin-page/mat/utils/Dashboard";
+import AdminSingleProduct from "./admin-page/AdminSingleProduct";
+import SellerDashboard from "./seller-page/util/SellerDashboard";
+import NewNavbar from "./components/navbar/NewNavbar";
+import SellerSingleProduct from "./seller-page/SellerSingleProduct";
+import ContactUs from "./pages/contact-us/ContactUs";
+import About from "./pages/about-us/About";
+import Payment from "./pages/payment/Payment";
+import Shipping from "./pages/shipping/Shipping";
+import FAQ from "./pages/faq/FAQ";
+import Privacy from "./pages/privacy/Privacy";
+import Terms from "./pages/terms/Terms";
+import Security from "./pages/security/Security";
+import Policy from "./pages/policy/Policy";
 
 function App() {
   const [role, setRole] = useState(null);
@@ -53,11 +53,11 @@ function App() {
 
       setRole(role);
     } else {
-      setRole('');
+      setRole("");
     }
   }, [token]);
 
-  if (role === 'admin') {
+  if (role === "admin") {
     return (
       <BrowserRouter>
         <Routes>
@@ -83,7 +83,7 @@ function App() {
       </BrowserRouter>
     );
   }
-  if (role === 'seller') {
+  if (role === "seller") {
     return (
       <BrowserRouter>
         <Routes>
@@ -113,7 +113,7 @@ function App() {
     );
   }
 
-  if (role === 'customer' || role === '') {
+  if (role === "customer" || role === "") {
     return (
       <BrowserRouter>
         <section>
@@ -181,7 +181,7 @@ function App() {
     );
   }
 
-  if (role === null) return 'loading..';
+  if (role === null) return "loading..";
   return <h1>you are not a valid user</h1>;
 }
 // }

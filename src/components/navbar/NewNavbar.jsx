@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import 'react-color-palette/lib/css/styles.css';
-import { SiFuraffinity } from 'react-icons/si';
-import { Link, NavLink } from 'react-router-dom';
-import { BsBag, BsCart2, BsMoonStars } from 'react-icons/bs';
-import { BiUserCircle } from 'react-icons/bi';
-import { MdCancel } from 'react-icons/md';
-import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeColor, logoutUser } from '../../store';
-import { handleSearchTerm } from '../../store';
-import './new-navbar.css';
-import { productCartList, productCartWishlist } from '../../store/thunks/cart';
-import { ColorPicker, useColor } from 'react-color-palette';
+import "react-color-palette/lib/css/styles.css";
+import { SiFuraffinity } from "react-icons/si";
+import { Link, NavLink } from "react-router-dom";
+import { BsBag, BsCart2, BsMoonStars } from "react-icons/bs";
+import { BiUserCircle } from "react-icons/bi";
+import { MdCancel } from "react-icons/md";
+import { AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { changeColor, logoutUser } from "../../store";
+import { handleSearchTerm } from "../../store";
+import "./new-navbar.css";
+import { productCartList, productCartWishlist } from "../../store/thunks/cart";
+import { ColorPicker, useColor } from "react-color-palette";
 
 export default function NewNavbar() {
-  const [color, setColor] = useColor('hex', '#121212');
+  const [color, setColor] = useColor("hex", "#121212");
   const [show, setShow] = useState(false);
   const [colorShow, setColorShow] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const { token } = useSelector((state) => state.auth);
   const { cartProductQty, wishlistProductQty } = useSelector(
     (state) => state.productCart
@@ -48,42 +48,42 @@ export default function NewNavbar() {
     e.preventDefault();
     console.log(searchTerm);
     dispatch(handleSearchTerm(searchTerm));
-    navigate('/product-list');
+    navigate("/product-list");
   };
 
   return (
     <header
       style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 10px',
-        position: 'sticky',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 10px",
+        position: "sticky",
         top: 0,
-        zIndex: '1000',
-        height: '100px',
-        backgroundColor: '#fff',
+        zIndex: "1000",
+        height: "100px",
+        backgroundColor: "#fff",
       }}
       className="shadow-sm"
     >
       <Link to="/">
         <div className="flex items-center gap-2">
           <SiFuraffinity className="text-6xl text-primary" />
-          <h1 className="text-2xl font-bold header-logo">FurniutreLelo</h1>
+          <h1 className="text-2xl font-bold header-logo">AapkiBook</h1>
         </div>
       </Link>
       <form
-        style={{ position: 'relative' }}
+        style={{ position: "relative" }}
         className="input-toggle"
         onSubmit={handleSubmit}
       >
         <AiOutlineSearch
           style={{
-            position: 'absolute',
-            left: '5px',
-            top: '14px',
-            fontSize: '24px',
-            color: 'gray',
+            position: "absolute",
+            left: "5px",
+            top: "14px",
+            fontSize: "24px",
+            color: "gray",
           }}
         />
         <input
@@ -91,12 +91,12 @@ export default function NewNavbar() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className=" p-3 header-nav-input"
           type="text"
-          placeholder="Search for furnitures"
+          placeholder="Search for books"
           style={{
-            backgroundColor: '#f5f5f6',
-            borderColor: '#f5f5f6',
-            paddingLeft: '36px',
-            width: '400px',
+            backgroundColor: "#f5f5f6",
+            borderColor: "#f5f5f6",
+            paddingLeft: "36px",
+            width: "400px",
           }}
         />
       </form>
@@ -106,10 +106,10 @@ export default function NewNavbar() {
           {colorShow ? (
             <div
               style={{
-                borderRadius: '100%',
-                textAlign: 'center',
-                position: 'absolute',
-                top: '100px',
+                borderRadius: "100%",
+                textAlign: "center",
+                position: "absolute",
+                top: "100px",
               }}
             >
               <ColorPicker
@@ -125,25 +125,25 @@ export default function NewNavbar() {
               <button
                 onClick={() => setColorShow((prev) => !prev)}
                 style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  cursor: 'pointer',
-                  fontSize: '16px',
+                  position: "absolute",
+                  top: "-10px",
+                  cursor: "pointer",
+                  fontSize: "16px",
                 }}
               >
-                <MdCancel style={{ color: 'gray' }} />
+                <MdCancel style={{ color: "gray" }} />
               </button>
             </div>
           ) : (
             <button
               onClick={() => setColorShow((prev) => !prev)}
               style={{
-                marginRight: '40px',
-                fontSize: '24px',
+                marginRight: "40px",
+                fontSize: "24px",
               }}
               className="text-primary"
             >
-              <BsMoonStars style={{ color: 'gray' }} />
+              <BsMoonStars style={{ color: "gray" }} />
             </button>
           )}
         </div>
@@ -153,7 +153,7 @@ export default function NewNavbar() {
               className="flex flex-col items-center gap-1 navlink-container"
               to="/cart"
             >
-              <BsCart2 className="text-2xl " style={{ color: 'gray' }} />
+              <BsCart2 className="text-2xl " style={{ color: "gray" }} />
               {/* <span className="text-sm font-bold menu-name">Cart</span> */}
               <span className="count bg-primary">{cartProductQty}</span>
             </NavLink>
@@ -163,7 +163,7 @@ export default function NewNavbar() {
               to="/wishlist"
               className="flex flex-col items-center gap-1 navlink-container"
             >
-              <AiOutlineHeart className="text-2xl " style={{ color: 'gray' }} />
+              <AiOutlineHeart className="text-2xl " style={{ color: "gray" }} />
               {/* <span className="text-sm font-bold menu-name">Wishlist</span> */}
               <span className="count bg-primary">{wishlistProductQty}</span>
             </NavLink>
@@ -189,52 +189,52 @@ export default function NewNavbar() {
             <div
               to="/customer-login"
               className="flex items-center justify-center"
-              style={{ position: 'relative' }}
+              style={{ position: "relative" }}
             >
               <button
                 // class="inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none text-white rounded text-base  md:mt-0"
                 onClick={() => setShow((prev) => !prev)}
                 // onMouseEnter={() => setShow(true)}
                 // onMouseLeave={() => setShow(false)}
-                style={{ fontSize: '30px', color: 'gray' }}
+                style={{ fontSize: "30px", color: "gray" }}
               >
                 <BiUserCircle />
               </button>
               {show && (
                 <div
                   style={{
-                    backgroundColor: 'rgba(0,255,255,0.1)',
-                    position: 'absolute',
-                    bottom: '-100px',
+                    backgroundColor: "rgba(0,255,255,0.1)",
+                    position: "absolute",
+                    bottom: "-100px",
                     right: 0,
-                    border: '1px solid teal',
-                    padding: '5px 10px',
-                    borderRadius: '5px',
-                    fontWeight: 'bold',
-                    width: '240px',
-                    backdropFilter: 'blur(10px)',
+                    border: "1px solid teal",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    fontWeight: "bold",
+                    width: "240px",
+                    backdropFilter: "blur(10px)",
                   }}
                 >
                   <Link
                     to="/customer-login"
                     style={{
-                      borderBottom: '1px solid gray',
-                      width: '100%',
-                      display: 'block',
-                      color: 'gray',
+                      borderBottom: "1px solid gray",
+                      width: "100%",
+                      display: "block",
+                      color: "gray",
                     }}
                   >
                     Customer Login/Register
                   </Link>
                   <Link
                     to="/seller-login"
-                    style={{ display: 'block', color: 'gray' }}
+                    style={{ display: "block", color: "gray" }}
                   >
                     Become A Seller
                   </Link>
                   <Link
                     to="/admin-login"
-                    style={{ display: 'block', color: 'gray' }}
+                    style={{ display: "block", color: "gray" }}
                   >
                     Admin
                   </Link>

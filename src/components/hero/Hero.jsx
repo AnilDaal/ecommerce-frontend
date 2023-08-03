@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section class="text-gray-600 body-font">
@@ -8,7 +8,7 @@ const Hero = () => {
           <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
             Before they sold out
             <br class="hidden lg:inline-block" />
-            get premium furniture
+            get premium notebook
           </h1>
           <p class="mb-8 leading-relaxed">
             Copper mug try-hard pitchfork pour-over freegan heirloom neutra air

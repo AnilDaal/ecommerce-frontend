@@ -1,8 +1,8 @@
-import React from 'react';
-import Skeleton from 'react-loading-skeleton';
-import Carousel from 'react-multi-carousel';
-import { Link } from 'react-router-dom';
-import { useGetAllProductsQuery } from '../store';
+import React from "react";
+import Skeleton from "react-loading-skeleton";
+import Carousel from "react-multi-carousel";
+import { Link } from "react-router-dom";
+import { useGetAllProductsQuery } from "../store";
 
 const responsive = {
   superLargeDesktop: {
@@ -28,6 +28,7 @@ const DummyProducts = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const content = data?.data.map((p) => {
+    console.log(p);
     return (
       <div className="border mr-4 p-2" key={p._id}>
         <Link
@@ -37,7 +38,7 @@ const DummyProducts = () => {
           <img
             alt="ecommerce"
             className="object-cover object-center w-full h-full block"
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: "contain" }}
             // src="https://dummyimage.com/420x260"
             src={p.image}
           />
@@ -56,9 +57,9 @@ const DummyProducts = () => {
       <div
         // clasName="container "
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '2rem',
+          display: "flex",
+          justifyContent: "center",
+          gap: "2rem",
         }}
       >
         <Skeleton height={160} width={160} />
@@ -103,7 +104,7 @@ export function DummyProducts2() {
             src={p.image}
             alt={p.title}
             style={{
-              height: '120px',
+              height: "120px",
             }}
           />
         </Link>
@@ -134,9 +135,9 @@ export function DummyProducts2() {
       <div
         clasName="container "
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '2rem',
+          display: "flex",
+          justifyContent: "center",
+          gap: "2rem",
         }}
       >
         <Skeleton height={160} width={160} />
